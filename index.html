@@ -559,20 +559,19 @@ rvEls[n].classList.add("vis");
 }
 }
 
-var form=document.getElementById("contactForm");
-form.addEventListener("submit",function(e){
-e.preventDefault();
-var name=document.getElementById("cf-name").value.trim();
-var phone=document.getElementById("cf-phone").value.trim();
-var service=document.getElementById("cf-service").value;
-var msg=document.getElementById("cf-msg").value.trim();
-if(!name||!phone||!service||!msg)return;
-var text="Hi ads4you! I'm interested in your services."+
-"%0A%0A*Name:* "+encodeURIComponent(name)+
-"%0A*WhatsApp:* "+encodeURIComponent(phone)+
-"%0A*Service:* "+encodeURIComponent(service)+
-"%0A%0A*Details:*%0A"+encodeURIComponent(msg);
-window.open("https://wa.me/919767066941?text="+text,"_blank");
+document.getElementById("contactForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+  var name = document.getElementById('cf-name').value.trim();
+  var phone = document.getElementById('cf-phone').value.trim();
+  var service = document.getElementById('cf-service').value;
+  var msg = document.getElementById('cf-msg').value.trim();
+  if (!name || !phone || !service || !msg) {
+    alert('Please fill all fields before sending.');
+    return;
+  }
+  var text = "Hi ads4you! 👋\n\nName: " + name + "\nWhatsApp: " + phone + "\nService Needed: " + service + "\nMessage: " + msg + "\n\nPlease get back to me.";
+  var encoded = encodeURIComponent(text);
+  window.open('https://wa.me/919767066941?text=' + encoded, '_blank');
 });
 
 })();
