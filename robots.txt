@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://hshant966.github.io/ads4you/sitemap.xml
