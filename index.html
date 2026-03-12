@@ -1,0 +1,1270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ads4you — OpenClaw Setup for Pune Businesses</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Bricolage+Grotesque:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --ink:    #0D0F1A;
+  --white:  #FFFFFF;
+  --off:    #F5F6FA;
+  --gray:   #64748B;
+  --lgray:  #E2E8F0;
+  --blue:   #2563EB;
+  --indigo: #4F46E5;
+  --orange: #F97316;
+  --amber:  #F59E0B;
+  --teal:   #0EA5E9;
+  --green:  #10B981;
+  --rose:   #F43F5E;
+  --purple: #8B5CF6;
+  --yellow: #FBBF24;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background: var(--off);
+  color: var(--ink);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── ANIMATIONS ────────────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(37,99,235,0.3); }
+  50%       { box-shadow: 0 0 0 12px rgba(37,99,235,0); }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-8px); }
+}
+
+.fade-up { animation: fadeUp 0.6s ease both; }
+.delay-1 { animation-delay: 0.1s; }
+.delay-2 { animation-delay: 0.2s; }
+.delay-3 { animation-delay: 0.3s; }
+
+/* ── HERO ──────────────────────────────────── */
+.hero {
+  background: var(--ink);
+  position: relative;
+  overflow: hidden;
+  padding: 0;
+}
+
+.hero-bg {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 20% 20%, rgba(37,99,235,0.25) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 60% at 80% 80%, rgba(249,115,22,0.2) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 40% at 60% 20%, rgba(16,185,129,0.12) 0%, transparent 50%);
+}
+
+.hero-grid {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+.hero-inner {
+  position: relative;
+  padding: 72px 40px 64px;
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.hero-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
+  color: rgba(255,255,255,0.85);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 7px 18px;
+  border-radius: 100px;
+  margin-bottom: 28px;
+  backdrop-filter: blur(8px);
+}
+
+.hero-pill span { color: var(--green); }
+
+.hero h1 {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: clamp(38px, 6vw, 72px);
+  font-weight: 800;
+  color: var(--white);
+  line-height: 1.08;
+  margin-bottom: 24px;
+  letter-spacing: -1.5px;
+}
+
+.hero h1 em {
+  font-style: normal;
+  background: linear-gradient(135deg, var(--amber), var(--orange));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-sub {
+  font-size: 18px;
+  color: rgba(255,255,255,0.65);
+  max-width: 560px;
+  margin: 0 auto 44px;
+  line-height: 1.7;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn-hero {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 32px;
+  border-radius: 14px;
+  font-size: 15px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.btn-hero:hover { transform: translateY(-2px); }
+
+.btn-hero-primary {
+  background: linear-gradient(135deg, var(--green), #059669);
+  color: #fff;
+  box-shadow: 0 8px 32px rgba(16,185,129,0.35);
+}
+.btn-hero-primary:hover { box-shadow: 0 12px 40px rgba(16,185,129,0.5); }
+
+.btn-hero-secondary {
+  background: rgba(255,255,255,0.08);
+  color: rgba(255,255,255,0.9);
+  border: 1px solid rgba(255,255,255,0.2);
+  backdrop-filter: blur(8px);
+}
+
+.hero-contact-strip {
+  margin-top: 36px;
+  padding-top: 36px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.hcs-item {
+  text-align: center;
+}
+.hcs-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+  margin-bottom: 4px;
+}
+.hcs-value {
+  font-size: 14px;
+  font-weight: 700;
+  color: rgba(255,255,255,0.85);
+}
+
+/* ── TRUST BAR ─────────────────────────────── */
+.trust-bar {
+  background: var(--white);
+  border-bottom: 1px solid var(--lgray);
+  padding: 16px 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+
+.trust-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--gray);
+}
+
+.trust-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--green);
+  flex-shrink: 0;
+}
+
+/* ── SECTION COMMON ────────────────────────── */
+.section {
+  padding: 80px 40px;
+}
+
+.section-eyebrow {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--blue);
+  margin-bottom: 16px;
+}
+
+.section-title {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: clamp(28px, 4vw, 44px);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.8px;
+  margin-bottom: 16px;
+}
+
+.section-desc {
+  font-size: 17px;
+  color: var(--gray);
+  max-width: 560px;
+  line-height: 1.7;
+}
+
+/* ── WHO WE SERVE / PAIN ───────────────────── */
+.pain-section {
+  background: var(--white);
+}
+
+.pain-section .inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.pain-header {
+  text-align: center;
+  margin-bottom: 56px;
+}
+
+.business-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.biz-card {
+  border-radius: 20px;
+  padding: 28px;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  cursor: default;
+}
+.biz-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 48px rgba(0,0,0,0.1);
+}
+
+.biz-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0; right: 0;
+  width: 120px; height: 120px;
+  border-radius: 50%;
+  opacity: 0.06;
+  background: currentColor;
+}
+
+.biz-c1 { background: #EFF6FF; color: var(--blue); }
+.biz-c2 { background: #FFF7ED; color: var(--orange); }
+.biz-c3 { background: #F0FDF4; color: var(--green); }
+.biz-c4 { background: #FDF4FF; color: var(--purple); }
+.biz-c5 { background: #FFFBEB; color: var(--amber); }
+.biz-c6 { background: #FFF1F2; color: var(--rose); }
+
+.biz-icon {
+  font-size: 32px;
+  margin-bottom: 16px;
+  display: block;
+  animation: float 4s ease-in-out infinite;
+}
+.biz-c2 .biz-icon { animation-delay: 0.5s; }
+.biz-c3 .biz-icon { animation-delay: 1s; }
+.biz-c4 .biz-icon { animation-delay: 1.5s; }
+.biz-c5 .biz-icon { animation-delay: 2s; }
+.biz-c6 .biz-icon { animation-delay: 2.5s; }
+
+.biz-type {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  color: inherit;
+}
+
+.biz-pain {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 12px;
+  line-height: 1.3;
+}
+
+.biz-detail {
+  font-size: 14px;
+  color: var(--gray);
+  line-height: 1.65;
+  margin-bottom: 16px;
+}
+
+.biz-solution {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  color: inherit;
+  background: rgba(255,255,255,0.7);
+  padding: 8px 14px;
+  border-radius: 100px;
+  width: fit-content;
+}
+
+/* ── SERVICES ──────────────────────────────── */
+.services-section {
+  background: var(--ink);
+  position: relative;
+  overflow: hidden;
+}
+
+.services-section::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(37,99,235,0.15) 0%, transparent 60%);
+}
+
+.services-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.services-header {
+  text-align: center;
+  margin-bottom: 56px;
+}
+
+.services-header .section-title { color: var(--white); }
+.services-header .section-eyebrow { color: var(--amber); }
+.services-header .section-desc { color: rgba(255,255,255,0.55); margin: 0 auto; }
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2px;
+  border-radius: 24px;
+  overflow: hidden;
+  background: rgba(255,255,255,0.06);
+}
+
+.svc-card {
+  background: rgba(255,255,255,0.04);
+  padding: 36px 32px;
+  position: relative;
+  transition: background 0.3s;
+}
+.svc-card:hover {
+  background: rgba(255,255,255,0.08);
+}
+
+.svc-number {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.svc-num-dot {
+  width: 28px; height: 28px;
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.s1 .svc-num-dot { background: rgba(37,99,235,0.25); color: var(--teal); }
+.s2 .svc-num-dot { background: rgba(249,115,22,0.2); color: var(--orange); }
+.s3 .svc-num-dot { background: rgba(16,185,129,0.2); color: var(--green); }
+.s4 .svc-num-dot { background: rgba(139,92,246,0.2); color: var(--purple); }
+.s5 .svc-num-dot { background: rgba(245,158,11,0.2); color: var(--amber); }
+
+.s1 .svc-number { color: var(--teal); }
+.s2 .svc-number { color: var(--orange); }
+.s3 .svc-number { color: var(--green); }
+.s4 .svc-number { color: var(--purple); }
+.s5 .svc-number { color: var(--amber); }
+
+.svc-icon { font-size: 36px; margin-bottom: 16px; display: block; }
+
+.svc-title {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 12px;
+}
+
+.svc-desc {
+  font-size: 14px;
+  color: rgba(255,255,255,0.55);
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+
+.svc-outcomes {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.svc-outcomes li {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 13px;
+  color: rgba(255,255,255,0.75);
+  line-height: 1.5;
+}
+
+.svc-outcomes li::before {
+  content: '✓';
+  font-size: 11px;
+  font-weight: 800;
+  width: 18px; height: 18px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.s1 .svc-outcomes li::before { background: rgba(37,99,235,0.25); color: var(--teal); }
+.s2 .svc-outcomes li::before { background: rgba(249,115,22,0.2); color: var(--orange); }
+.s3 .svc-outcomes li::before { background: rgba(16,185,129,0.2); color: var(--green); }
+.s4 .svc-outcomes li::before { background: rgba(139,92,246,0.2); color: var(--purple); }
+.s5 .svc-outcomes li::before { background: rgba(245,158,11,0.2); color: var(--amber); }
+
+/* ── HOW WE WORK ───────────────────────────── */
+.how-section {
+  background: var(--off);
+}
+
+.how-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.how-inner .section-title { margin-bottom: 8px; }
+
+.steps-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  margin-top: 56px;
+  position: relative;
+}
+
+.steps-row::before {
+  content: '';
+  position: absolute;
+  top: 32px; left: 12%; right: 12%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--blue), var(--orange), var(--green), var(--purple));
+  opacity: 0.25;
+}
+
+.step-item {
+  text-align: center;
+  padding: 0 12px;
+}
+
+.step-circle {
+  width: 64px; height: 64px;
+  border-radius: 20px;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--white);
+  margin: 0 auto 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.step-item:nth-child(1) .step-circle { background: linear-gradient(135deg, var(--blue), var(--indigo)); }
+.step-item:nth-child(2) .step-circle { background: linear-gradient(135deg, var(--orange), var(--amber)); }
+.step-item:nth-child(3) .step-circle { background: linear-gradient(135deg, var(--green), var(--teal)); }
+.step-item:nth-child(4) .step-circle { background: linear-gradient(135deg, var(--purple), var(--rose)); }
+
+.step-title {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 8px;
+}
+
+.step-desc {
+  font-size: 13px;
+  color: var(--gray);
+  line-height: 1.6;
+}
+
+/* ── WHY US ────────────────────────────────── */
+.why-section {
+  background: var(--white);
+}
+
+.why-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 24px;
+  margin-top: 56px;
+}
+
+.why-card {
+  padding: 28px 24px;
+  border-radius: 16px;
+  border: 1.5px solid var(--lgray);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.why-card:hover {
+  border-color: var(--blue);
+  box-shadow: 0 4px 24px rgba(37,99,235,0.08);
+}
+
+.why-icon { font-size: 28px; margin-bottom: 16px; }
+
+.why-title {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 8px;
+}
+
+.why-desc {
+  font-size: 13px;
+  color: var(--gray);
+  line-height: 1.65;
+}
+
+/* ── FINAL CTA ─────────────────────────────── */
+.cta-section {
+  background: linear-gradient(135deg, #1E3A8A 0%, #1E40AF 40%, #1D4ED8 70%, #2563EB 100%);
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+}
+
+.cta-section::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 50% 80% at 10% 50%, rgba(249,115,22,0.2) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 60% at 90% 20%, rgba(16,185,129,0.15) 0%, transparent 50%);
+}
+
+.cta-inner {
+  position: relative;
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 80px 40px;
+}
+
+.cta-badge {
+  display: inline-block;
+  background: rgba(255,255,255,0.15);
+  color: rgba(255,255,255,0.9);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 7px 18px;
+  border-radius: 100px;
+  margin-bottom: 28px;
+  border: 1px solid rgba(255,255,255,0.2);
+}
+
+.cta-title {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: clamp(32px, 5vw, 52px);
+  font-weight: 800;
+  color: var(--white);
+  line-height: 1.1;
+  letter-spacing: -1px;
+  margin-bottom: 20px;
+}
+
+.cta-title span { color: var(--yellow); }
+
+.cta-sub {
+  font-size: 17px;
+  color: rgba(255,255,255,0.75);
+  margin-bottom: 44px;
+  line-height: 1.6;
+}
+
+.cta-buttons {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 44px;
+}
+
+.btn-cta-main {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--yellow);
+  color: var(--ink);
+  font-size: 16px;
+  font-weight: 800;
+  padding: 18px 36px;
+  border-radius: 14px;
+  text-decoration: none;
+  box-shadow: 0 8px 32px rgba(251,191,36,0.4);
+  transition: transform 0.2s, box-shadow 0.2s;
+  animation: pulse-glow 2.5s infinite;
+}
+.btn-cta-main:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 48px rgba(251,191,36,0.5);
+}
+
+.btn-cta-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: transparent;
+  color: rgba(255,255,255,0.9);
+  font-size: 15px;
+  font-weight: 700;
+  padding: 18px 32px;
+  border-radius: 14px;
+  text-decoration: none;
+  border: 2px solid rgba(255,255,255,0.25);
+  transition: background 0.2s, border-color 0.2s;
+}
+.btn-cta-ghost:hover {
+  background: rgba(255,255,255,0.1);
+  border-color: rgba(255,255,255,0.5);
+}
+
+.contact-strip {
+  display: flex;
+  justify-content: center;
+  gap: 36px;
+  flex-wrap: wrap;
+  padding-top: 36px;
+  border-top: 1px solid rgba(255,255,255,0.15);
+}
+
+.cs-item .label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.4);
+  margin-bottom: 4px;
+}
+.cs-item .val {
+  font-size: 15px;
+  font-weight: 700;
+  color: rgba(255,255,255,0.9);
+}
+
+/* ── FOOTER BAR ────────────────────────────── */
+.footer-bar {
+  background: #080A12;
+  padding: 16px 40px;
+  text-align: center;
+  font-size: 12px;
+  color: #374151;
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.footer-bar span { color: #4B5563; }
+.footer-bar strong { color: var(--green); }
+
+/* ── RESPONSIVE ────────────────────────────── */
+@media (max-width: 768px) {
+  .section { padding: 56px 24px; }
+  .hero-inner { padding: 56px 24px 48px; }
+  .steps-row { grid-template-columns: 1fr 1fr; }
+  .steps-row::before { display: none; }
+  .trust-bar { padding: 14px 24px; gap: 16px; }
+  .hero-contact-strip { gap: 20px; }
+  .cta-inner { padding: 56px 24px; }
+  .contact-strip { gap: 20px; }
+  .footer-bar { flex-direction: column; gap: 8px; }
+}
+
+@media (max-width: 480px) {
+  .steps-row { grid-template-columns: 1fr; }
+  .business-grid { grid-template-columns: 1fr; }
+  .services-grid { grid-template-columns: 1fr; }
+  .why-grid { grid-template-columns: 1fr; }
+  .hero h1 { font-size: 36px; letter-spacing: -1px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-inner">
+    <div class="hero-pill fade-up">📍 Wakad, Pune &nbsp;•&nbsp; <span>Udyam Registered</span></div>
+    <h1 class="fade-up delay-1">
+      Automate Your Business<br>
+      <em>With OpenClaw</em>
+    </h1>
+    <p class="hero-sub fade-up delay-2">
+      Get a complete OpenClaw setup for your Pune business. One-time fee ₹2000–5000.
+      WhatsApp bots, automation, AI agents — ready in 2–5 days. No tech skills needed.
+    </p>
+    <div class="hero-actions fade-up delay-3">
+      <a class="btn-hero btn-hero-primary" href="https://wa.me/919767066941?text=Hi%2C%20I%20want%20to%20setup%20OpenClaw%20for%20my%20business">
+        📲 Get Started on WhatsApp
+      </a>
+      <a class="btn-hero btn-hero-secondary" href="https://hshant966.github.io/ads4you">
+        🌐 See Our Website
+      </a>
+    </div>
+    <div class="hero-contact-strip fade-up">
+      <div class="hcs-item">
+        <div class="hcs-label">WhatsApp / Call</div>
+        <div class="hcs-value">+91 97670 66941</div>
+      </div>
+      <div class="hcs-item">
+        <div class="hcs-label">Email</div>
+        <div class="hcs-value">ads4you@zohomail.com</div>
+      </div>
+      <div class="hcs-item">
+        <div class="hcs-label">Location</div>
+        <div class="hcs-value">Wakad, Pune</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── TRUST BAR ── -->
+<div class="trust-bar">
+  <div class="trust-item"><div class="trust-dot"></div> Udyam Registered (MSME)</div>
+  <div class="trust-item"><div class="trust-dot"></div> GeM Government Portal Listed</div>
+  <div class="trust-item"><div class="trust-dot"></div> Skill India Certified</div>
+  <div class="trust-item"><div class="trust-dot"></div> NSIC B2B Listed</div>
+  <div class="trust-item"><div class="trust-dot"></div> 50% Advance · 50% On Delivery</div>
+</div>
+
+<!-- ── ABOUT FOUNDER ── -->
+<section class="section" style="background: var(--white);">
+  <div class="inner" style="max-width: 1100px; margin: 0 auto;">
+    <div class="section-eyebrow">About Founder</div>
+    <h2 class="section-title">Meet Prashant</h2>
+    <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 40px; align-items: center; margin-top: 40px;">
+      <div style="text-align: center;">
+        <div style="width: 180px; height: 180px; border-radius: 50%; background: linear-gradient(135deg, var(--blue), var(--indigo)); margin: 0 auto; display: flex; align-items: center; justify-content: center; font-size: 60px; color: white;">👨‍💼</div>
+        <p style="margin-top: 16px; font-weight: 700; font-size: 18px;">Prashant</p>
+        <p style="color: var(--gray);">Founder, ads4you</p>
+      </div>
+      <div>
+        <p style="margin-bottom: 16px; line-height: 1.8;">
+          I started ads4you because I saw too many small businesses in Pune struggling with technology.
+          They were losing customers to bigger competitors simply because they couldn't afford
+          expensive automation tools. I knew there had to be a better way.
+        </p>
+        <p style="margin-bottom: 16px;">
+          After extensive research, I discovered OpenClaw — a powerful, open-source AI automation platform.
+          I realized that by setting up customized OpenClaw instances for businesses at an affordable price,
+          I could level the playing field for Pune's small enterprises.
+        </p>
+        <p style="margin-bottom: 16px;">
+          Today, I've helped over 50+ local businesses automate their workflows with OpenClaw.
+          My mission is simple: bring enterprise-grade AI automation to every kirana shop, clinic,
+          garage, and tiffin service in Pune.
+        </p>
+        <div style="display: flex; gap: 24px; margin-top: 24px;">
+          <div><strong>5+ Years</strong><br><span style="color: var(--gray); font-size: 13px;">Experience</span></div>
+          <div><strong>50+</strong><br><span style="color: var(--gray); font-size: 13px;">Projects</span></div>
+          <div><strong>10</strong><br><span style="color: var(--gray); font-size: 13px;">Cities</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PAIN POINTS ── -->
+<section class="section pain-section">
+  <div class="inner">
+    <div class="pain-header">
+      <div class="section-eyebrow">Who We Help</div>
+      <h2 class="section-title">Pune Businesses Losing Time & Money</h2>
+      <p class="section-desc" style="margin:0 auto">
+        Manual work, missed customers, and no automation — we fix all with OpenClaw.
+      </p>
+    </div>
+
+    <div class="business-grid">
+
+      <div class="biz-card biz-c1">
+        <span class="biz-icon">📱</span>
+        <div class="biz-type">Mobile / Laptop Shop</div>
+        <div class="biz-pain">New customers can't find you — your competitor shows first on Google</div>
+        <p class="biz-detail">
+          Without online presence, you lose hundreds of local searchers. OpenClaw helps automate your Google listing, WhatsApp catalog, and customer enquiries.
+        </p>
+        <div class="biz-solution">✦ OpenClaw setup includes SEO automation</div>
+      </div>
+
+      <div class="biz-card biz-c2">
+        <span class="biz-icon">🏥</span>
+        <div class="biz-type">Clinic / Doctor / Hospital</div>
+        <div class="biz-pain">Appointment calls all day, missed bookings at night, no reminders</div>
+        <p class="biz-detail">
+          Your staff spends hours on calls. Patients call at 10 PM and get no answer. They go elsewhere. OpenClaw automates booking 24/7 with WhatsApp confirmations and reminders.
+        </p>
+        <div class="biz-solution">✦ Automated booking + reminders</div>
+      </div>
+
+      <div class="biz-card biz-c3">
+        <span class="biz-icon">🍱</span>
+        <div class="biz-type">Tiffin / Food Delivery</div>
+        <div class="biz-pain">Orders on WhatsApp, paper, and calls — confusion, wrong deliveries</div>
+        <p class="biz-detail">
+          30 customers, 30 different chats. One missed order, one wrong delivery, you lose a subscription. OpenClaw centralizes all orders on WhatsApp with auto-billing.
+        </p>
+        <div class="biz-solution">✦ WhatsApp bot manages all orders</div>
+      </div>
+
+      <div class="biz-card biz-c4">
+        <span class="biz-icon">🔧</span>
+        <div class="biz-type">Garage / Auto Workshop</div>
+        <div class="biz-pain">Customers come once, never return — no follow-up, no service reminders</div>
+        <p class="biz-detail">
+          A customer's next service is due in 3 months. You never reminded them. They go to the shop they drive past. OpenClaw sends automatic service reminders via WhatsApp.
+        </p>
+        <div class="biz-solution">✦ Auto reminders via OpenClaw</div>
+      </div>
+
+      <div class="biz-card biz-c5">
+        <span class="biz-icon">📚</span>
+        <div class="biz-type">Coaching Institute</div>
+        <div class="biz-pain">Fee reminders by phone call, no digital receipts, parents not updated</div>
+        <p class="biz-detail">
+          Every month you call parents for fees. Some pick up. Some don't. No receipt. No record. OpenClaw auto-sends fee reminders and generates digital receipts instantly.
+        </p>
+        <div class="biz-solution">✦ Automated fee collection + receipts</div>
+      </div>
+
+      <div class="biz-card biz-c6">
+        <span class="biz-icon">🏪</span>
+        <div class="biz-type">Retail Shop / Kirana / CA Office</div>
+        <div class="biz-pain">No online catalog, no WhatsApp store, losing customers to bigger brands</div>
+        <p class="biz-detail">
+          Big shops have apps and WhatsApp catalogs. Your loyal customers still walk in — but their kids order online elsewhere. OpenClaw creates your digital WhatsApp store in minutes.
+        </p>
+        <div class="biz-solution">✦ Digital catalog + WhatsApp bot</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── SERVICES (OpenClaw Setup Feature Cards) ── -->
+<section class="section services-section">
+  <div class="services-inner">
+    <div class="services-header">
+      <div class="section-eyebrow">Our Service</div>
+      <h2 class="section-title">OpenClaw Setup — What You Get</h2>
+      <p class="section-desc">
+        One-time installation, configuration, and training. Your business starts automating within days.
+      </p>
+    </div>
+
+    <div class="services-grid">
+
+      <div class="svc-card s1">
+        <div class="svc-number">
+          <div class="svc-num-dot">01</div>
+          Complete Setup
+        </div>
+        <span class="svc-icon">🌐</span>
+        <div class="svc-title">Full OpenClaw Installation</div>
+        <p class="svc-desc">
+          We handle everything: server setup, OpenClaw installation, API integration, and security configuration. Your instance is production-ready in 2–5 days.
+        </p>
+        <ul class="svc-outcomes">
+          <li>Linux server provisioning (VPS)</li>
+          <li>OpenClaw instance deployed</li>
+          <li>API keys (Claude, Gemini, etc.) configured</li>
+          <li>Telegram bot & web dashboard access</li>
+        </ul>
+      </div>
+
+      <div class="svc-card s2">
+        <div class="svc-number">
+          <div class="svc-num-dot">02</div>
+          AI Agent Building
+        </div>
+        <span class="svc-icon">🤖</span>
+        <div class="svc-title">Custom Agent Creation</div>
+        <p class="svc-desc">
+          We build your first automation agents tailored to your business: booking bots, order takers, reminder bots, answer engines.
+        </p>
+        <ul class="svc-outcomes">
+          <li>1–3 custom agents built for you</li>
+          <li>WhatsApp & Telegram connected</li>
+          <li>Natural Hindi & Marathi support</li>
+          <li>Knowledge base (docs, FAQs) loaded</li>
+        </ul>
+      </div>
+
+      <div class="svc-card s3">
+        <div class="svc-number">
+          <div class="svc-num-dot">03</div>
+          Integrations
+        </div>
+        <span class="svc-icon">🔗</span>
+        <div class="svc-title">Automation & Integrations</div>
+        <p class="svc-desc">
+          Connect OpenClaw to your existing tools: Google Sheets, calendars, payment gateways, and more. We automate your manual workflows.
+        </p>
+        <ul class="svc-outcomes">
+          <li>Google Calendar sync for appointments</li>
+          <li>Auto invoices via Google Sheets</li>
+          <li>Payment reminders & confirmations</li>
+          <li>Telegram alerts to your team</li>
+        </ul>
+      </div>
+
+      <div class="svc-card s4">
+        <div class="svc-number">
+          <div class="svc-num-dot">04</div>
+          Training
+        </div>
+        <span class="svc-icon">📚</span>
+        <div class="svc-title">Hands-on Training</div>
+        <p class="svc-desc">
+          A 1-hour personal session (Hindi/English/Marathi) teaches you how to manage agents, tweak prompts, and monitor performance. You'll be confident.
+        </p>
+        <ul class="svc-outcomes">
+          <li>Live video training (Google Meet)</li>
+          <li>Simple admin guide (PDF)</li>
+          <li>Access to video tutorials</li>
+          <li>30 days of support included</li>
+        </ul>
+      </div>
+
+      <div class="svc-card s5">
+        <div class="svc-number">
+          <div class="svc-num-dot">05</div>
+          Support
+        </div>
+        <span class="svc-icon">🛠️</span>
+        <div class="svc-title">Ongoing Maintenance</div>
+        <p class="svc-desc">
+          We keep your OpenClaw instance updated, secure, and running smoothly. Optional annual plans for continued updates and enhancements.
+        </p>
+        <ul class="svc-outcomes">
+          <li>Security patches & updates</li>
+          <li>AI model upgrades</li>
+          <li>Performance monitoring</li>
+          <li>Optional annual renewal ₹500/yr</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── PORTFOLIO (Showcase) ── -->
+<section class="section" style="background: var(--off);">
+  <div class="inner" style="max-width: 1100px; margin: 0 auto;">
+    <div class="section-eyebrow">Our Work</div>
+    <h2 class="section-title">Real Results for Pune Businesses</h2>
+    <p class="section-desc" style="margin: 0 auto 40px;">
+      See how local businesses transformed after we set up OpenClaw for them.
+    </p>
+    <div class="business-grid">
+      <div class="biz-card biz-c1">
+        <h3 style="font-size: 18px; font-weight: 700; margin-bottom: 12px;">Shreeji Home Foods</h3>
+        <p style="margin-bottom: 8px; font-size: 14px;"><strong>Problem:</strong> 100+ daily WhatsApp orders, manual billing, wrong items, lost messages.</p>
+        <p style="margin-bottom: 8px; font-size: 14px;"><strong>Solution:</strong> OpenClaw WhatsApp bot with menu, auto-billing, and payment verification.</p>
+        <p style="margin-bottom: 12px; font-size: 14px;"><strong>Result:</strong> Order errors dropped 90%, 2 hours/day saved, customer satisfaction up.</p>
+        <div style="font-size: 12px; font-weight: 700;">OpenClaw Setup + WhatsApp Bot</div>
+      </div>
+
+      <div class="biz-card biz-c2">
+        <h3 style="font-size: 18px; font-weight: 700; margin-bottom: 12px;">Wakad Dental Care</h3>
+        <p style="margin-bottom: 8px; font-size: 14px;"><strong>Problem:</strong> Missed appointment calls, empty slots, no night booking.</p>
+        <p style="margin-bottom: 8px; font-size: 14px;"><strong>Solution:</strong> OpenClaw booking agent on WhatsApp, auto-reminders 24 hrs and 1 hr before.</p>
+        <p style="margin-bottom: 12px; font-size: 14px;"><strong>Result:</strong> No-show rate dropped 70%, schedule always full.</p>
+        <div style="font-size: 12px; font-weight: 700;">OpenClaw + Calendar Integration</div>
+      </div>
+
+      <div class="biz-card biz-c3">
+        <h3 style="font-size: 18px; font-weight: 700; margin-bottom: 12px;">Pune Auto Works</h3>
+        <p style="margin-bottom: 8px; font-size: 14px;"><strong>Problem:</strong> Customers forgot service dates, no repeat business.</p>
+        <p style="margin-bottom: 8px; font-size: 14px;"><strong>Solution:</strong> OpenClaw reminder bot triggered 3 months after last service.</p>
+        <p style="margin-bottom: 12px; font-size: 14px;"><strong>Result:</strong> Repeat customers increased 40%, steady revenue stream.</p>
+        <div style="font-size: 12px; font-weight: 700;">OpenClaw Automation</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── TESTIMONIALS ── -->
+<section class="section" style="background: var(--white);">
+  <div class="inner" style="max-width: 900px; margin: 0 auto;">
+    <div class="section-eyebrow">Testimonials</div>
+    <h2 class="section-title">What Our Clients Say</h2>
+    <div class="why-grid" style="margin-top: 40px;">
+      <div class="why-card" style="border: 1.5px solid var(--lgray); padding: 24px; border-radius: 16px;">
+        <p style="font-style: italic; margin-bottom: 16px;">"After OpenClaw setup, my clinic's appointment booking is fully automated. I no longer answer calls at night, and patients get instant confirmations. Best ₹3000 I ever spent!"</p>
+        <p><strong>— Dr. S. Patil</strong><br><span style="color: var(--gray);">Wakad Dental Clinic</span></p>
+      </div>
+
+      <div class="why-card" style="border: 1.5px solid var(--lgray); padding: 24px; border-radius: 16px;">
+        <p style="font-style: italic; margin-bottom: 16px;">"My tiffin service used to be chaotic. With OpenClaw WhatsApp bot, everything is automatic — orders, billing, delivery times. My customers love the instant replies. Thank you Prashant!"</p>
+        <p><strong>— Anita Sharma</strong><br><span style="color: var(--gray);">Shreeji Home Foods</span></p>
+      </div>
+
+      <div class="why-card" style="border: 1.5px solid var(--lgray); padding: 24px; border-radius: 16px;">
+        <p style="font-style: italic; margin-bottom: 16px;">"The training was excellent. Even though I'm not tech-savvy, Prashant explained everything in simple Marathi. Now I manage my OpenClaw bot myself. Highly recommended!"</p>
+        <p><strong>— Rajesh Kulkarni</strong><br><span style="color: var(--gray);">Pune Auto Works</span></p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── HOW WE WORK (Process) ── -->
+<section class="section how-section">
+  <div class="how-inner">
+    <div class="section-eyebrow">Our Process</div>
+    <h2 class="section-title">Simple. Transparent. No Surprises.</h2>
+    <p class="section-desc" style="margin:0 auto">
+      We work the way Pune businesses expect — honest, upfront, and fast.
+    </p>
+
+    <div class="steps-row">
+      <div class="step-item">
+        <div class="step-circle">1</div>
+        <div class="step-title">You Contact Us</div>
+        <p class="step-desc">WhatsApp or call. Tell us your need in 2 minutes. Hindi, Marathi, English — all fine.</p>
+      </div>
+      <div class="step-item">
+        <div class="step-circle">2</div>
+        <div class="step-title">We Give You a Quote</div>
+        <p class="step-desc">We analyze and send clear price (₹2000–5000). No surprises. No hidden cost.</p>
+      </div>
+      <div class="step-item">
+        <div class="step-circle">3</div>
+        <div class="step-title">50% Advance via UPI</div>
+        <p class="step-desc">Pay 50% to start. We begin same day. No long waiting queues.</p>
+      </div>
+      <div class="step-item">
+        <div class="step-circle">4</div>
+        <div class="step-title">Delivery + Balance</div>
+        <p class="step-desc">We deliver your OpenClaw instance, train you, and deploy. Pay remaining 50%. Done!</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── TRUST BAR (REPEAT) ── -->
+<div class="trust-bar">
+  <div class="trust-item"><div class="trust-dot"></div> Udyam Registered (MSME)</div>
+  <div class="trust-item"><div class="trust-dot"></div> GeM Government Portal Listed</div>
+  <div class="trust-item"><div class="trust-dot"></div> Skill India Certified</div>
+  <div class="trust-item"><div class="trust-dot"></div> NSIC B2B Listed</div>
+  <div class="trust-item"><div class="trust-dot"></div> 50% Advance · 50% On Delivery</div>
+</div>
+
+<!-- ── WHY US (Social Proof) ── -->
+<section class="section why-section">
+  <div class="why-inner">
+    <div style="text-align:center; margin-bottom: 8px;">
+      <div class="section-eyebrow">Why ads4you</div>
+      <h2 class="section-title">Built For Small Business. Built For Pune.</h2>
+    </div>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-icon">🏠</div>
+        <div class="why-title">We Are Local</div>
+        <p class="why-desc">Based in Wakad. We understand Pune businesses, Pune customers, and the Pune market. No remote consultants who don't know your area.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">💬</div>
+        <div class="why-title">Hindi · Marathi · English</div>
+        <p class="why-desc">Talk to us in whatever language is comfortable. No formal language needed. We are here to help, not impress.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">⚡</div>
+        <div class="why-title">Fast Delivery</div>
+        <p class="why-desc">We don't take weeks. Most OpenClaw setups delivered in 2–5 days. Your business can't wait, and we don't make it wait.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">📋</div>
+        <div class="why-title">Udyam Registered MSME</div>
+        <p class="why-desc">Officially registered business. GeM listed. NSIC B2B listed. Skill India certified. You are dealing with a real, verified company.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🔒</div>
+        <div class="why-title">50% Advance Only</div>
+        <p class="why-desc">You pay 50% to start. Rest on delivery. Your money is safe. If we don't deliver, you don't pay the balance.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🛠️</div>
+        <div class="why-title">Free Tools. Real Results.</div>
+        <p class="why-desc">We use the best AI tools available — many of them free — so your project costs stay low but the quality stays high.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FAQ ── -->
+<section class="section" style="background: var(--white);">
+  <div class="inner" style="max-width: 800px; margin: 0 auto;">
+    <div class="section-eyebrow">FAQ</div>
+    <h2 class="section-title">Frequently Asked Questions</h2>
+    <div style="margin-top: 32px;">
+      <details style="margin-bottom: 16px; padding: 16px; border: 1px solid var(--lgray); border-radius: 8px;">
+        <summary style="font-weight: 700; cursor: pointer;">What is the cost of OpenClaw setup?</summary>
+        <p style="margin-top: 8px; color: var(--gray);">Our standard OpenClaw setup package starts at ₹2000 and goes up to ₹5000 depending on your business complexity and specific requirements. We provide a free consultation to give an exact quote.</p>
+      </details>
+
+      <details style="margin-bottom: 16px; padding: 16px; border: 1px solid var(--lgray); border-radius: 8px;">
+        <summary style="font-weight: 700; cursor: pointer;">How long does setup take?</summary>
+        <p style="margin-top: 8px; color: var(--gray);">Most setups are completed within 2–5 business days after advance payment. Complex automations may take a little longer.</p>
+      </details>
+
+      <details style="margin-bottom: 16px; padding: 16px; border: 1px solid var(--lgray); border-radius: 8px;">
+        <summary style="font-weight: 700; cursor: pointer;">What payment methods do you accept?</summary>
+        <p style="margin-top: 8px; color: var(--gray);">We accept UPI, bank transfer, and cash. 50% advance to start, 50% on delivery.</p>
+      </details>
+
+      <details style="margin-bottom: 16px; padding: 16px; border: 1px solid var(--lgray); border-radius: 8px;">
+        <summary style="font-weight: 700; cursor: pointer;">Do I need technical knowledge?</summary>
+        <p style="margin-top: 8px; color: var(--gray);">No. We handle all technical work. After training, you'll be able to manage your OpenClaw instance with basic computer skills.</p>
+      </details>
+
+      <details style="margin-bottom: 16px; padding: 16px; border: 1px solid var(--lgray); border-radius: 8px;">
+        <summary style="font-weight: 700; cursor: pointer;">What support is included?</summary>
+        <p style="margin-top: 8px; color: var(--gray);">All packages include 30 days of support after delivery for bugs and minor fixes. Optional annual maintenance available for ₹500/year.</p>
+      </details>
+
+      <details style="margin-bottom: 16px; padding: 16px; border: 1px solid var(--lgray); border-radius: 8px;">
+        <summary style="font-weight: 700; cursor: pointer;">Can I use my own AI models?</summary>
+        <p style="margin-top: 8px; color: var(--gray);">Yes. OpenClaw supports multiple providers: Anthropic Claude, Google Gemini, Meta Llama, Groq, and more. We configure your preferred models.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ── FINAL CTA ── -->
+<section class="section cta-section">
+  <div class="cta-inner">
+    <div class="cta-badge">📲 Start Today</div>
+    <h2 class="cta-title">
+      Ready to Automate<br>
+      Your <span>Business?</span>
+    </h2>
+    <p class="cta-sub">
+      Just a 5-minute WhatsApp chat. Tell us your one biggest problem.
+      We'll tell you exactly how OpenClaw can solve it.
+    </p>
+    <div class="cta-buttons">
+      <a class="btn-cta-main" href="https://wa.me/919767066941?text=Hi%2C%20I%20want%20to%20setup%20OpenClaw%20for%20my%20business">
+        📲 WhatsApp: 97670 66941
+      </a>
+      <a class="btn-cta-ghost" href="#services">
+        🌐 View Services
+      </a>
+    </div>
+    <div class="contact-strip">
+      <div class="cs-item">
+        <div class="label">WhatsApp / Call</div>
+        <div class="val">+91 97670 66941</div>
+      </div>
+      <div class="cs-item">
+        <div class="label">Email</div>
+        <div class="val">ads4you@zohomail.com</div>
+      </div>
+      <div class="cs-item">
+        <div class="label">Location</div>
+        <div class="val">Wakad, Pune, MH</div>
+      </div>
+      <div class="cs-item">
+        <div class="label">Udyam</div>
+        <div class="val">UDYAM-MH-26-1092780</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── LEGAL FOOTER ── -->
+<footer style="background: #080A12; color: var(--gray); padding: 32px 40px; text-align: center; font-size: 13px;">
+  <div style="max-width: 1100px; margin: 0 auto;">
+    <div style="display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; margin-bottom: 16px;">
+      <a href="#privacy" style="color: inherit; text-decoration: none;">Privacy Policy</a>
+      <a href="#terms" style="color: inherit; text-decoration: none;">Terms & Conditions</a>
+      <a href="#refund" style="color: inherit; text-decoration: none;">Refund Policy</a>
+    </div>
+    <p>© 2025 ads4you. All rights reserved.</p>
+    <p style="margin-top: 8px;">Udyam Registration: <strong>UDYAM-MH-26-1092780</strong></p>
+  </div>
+</footer>
+
+</body>
+</html>
