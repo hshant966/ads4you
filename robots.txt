@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://hshant966.github.io/ads4you/sitemap.xml
+
+# Crawl delay (be gentle)
+Crawl-delay: 10

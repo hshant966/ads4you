@@ -1,0 +1,6 @@
+# If you buy a custom domain later (e.g. ads4you.in),
+# replace this file's content with just your domain:
+# ads4you.in
+#
+# For now, your site runs on:
+# https://hshant966.github.io/ads4you/
