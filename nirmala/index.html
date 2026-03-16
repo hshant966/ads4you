@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nirmala Associates × ads4you — Personal AI Assistant Proposal</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800;900&family=DM+Sans:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#070B12;--bg2:#0D1420;--bg3:#111827;
+  --gold:#E8A020;--gold2:#F5C842;--ora:#E85D20;
+  --green:#00C896;--red:#FF5555;--blue:#4A9EBB;
+  --purple:#9B6DFF;--pink:#FF6B9D;
+  --w:#F4F0EA;--mu:#8A9BB0;--bdr:rgba(232,160,32,.15);
+}
+body{background:var(--bg);color:var(--w);font-family:'DM Sans',system-ui,sans-serif;min-height:100vh;overflow-x:hidden}
+::-webkit-scrollbar{width:3px}::-webkit-scrollbar-thumb{background:linear-gradient(var(--gold),var(--ora));border-radius:2px}
+
+/* BG */
+.bg-grid{position:fixed;inset:0;background-image:linear-gradient(rgba(232,160,32,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(232,160,32,.03) 1px,transparent 1px);background-size:32px 32px;pointer-events:none;z-index:0}
+.bg-orb1{position:fixed;top:-15%;left:-5%;width:55%;height:55%;background:radial-gradient(ellipse,rgba(232,160,32,.1) 0%,transparent 65%);pointer-events:none;z-index:0;animation:orb 14s ease-in-out infinite alternate}
+.bg-orb2{position:fixed;bottom:-15%;right:-5%;width:50%;height:50%;background:radial-gradient(ellipse,rgba(155,109,255,.08) 0%,transparent 65%);pointer-events:none;z-index:0;animation:orb 11s ease-in-out infinite alternate-reverse}
+.bg-orb3{position:fixed;top:45%;left:35%;width:35%;height:35%;background:radial-gradient(ellipse,rgba(0,200,150,.06) 0%,transparent 65%);pointer-events:none;z-index:0;animation:orb 9s ease-in-out infinite alternate}
+@keyframes orb{from{transform:translate(0,0) scale(1)}to{transform:translate(3%,4%) scale(1.05)}}
+
+.page{position:relative;z-index:1}
+
+/* ── NAV TABS ── */
+.nav{background:rgba(13,20,32,.97);backdrop-filter:blur(16px);border-bottom:1px solid var(--bdr);padding:0 20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:0;position:sticky;top:0;z-index:200;box-shadow:0 4px 30px rgba(0,0,0,.5)}
+.nav-brand{display:flex;flex-direction:column;padding:12px 0}
+.nav-badge{font-size:.4rem;background:linear-gradient(90deg,var(--gold),var(--ora));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;letter-spacing:3px;text-transform:uppercase;font-weight:700;margin-bottom:2px}
+.nav-title{font-size:.9rem;font-weight:900;font-family:'Syne',system-ui;color:var(--w)}
+.nav-tabs{display:flex;gap:0;overflow-x:auto}
+.tab{padding:16px 18px;background:none;border:none;border-bottom:2px solid transparent;color:var(--mu);font-size:.58rem;font-weight:600;cursor:pointer;letter-spacing:1px;text-transform:uppercase;white-space:nowrap;transition:all .2s;font-family:'DM Sans',system-ui}
+.tab.active{color:var(--gold);border-bottom-color:var(--gold)}
+.tab:hover:not(.active){color:var(--w);border-bottom-color:rgba(232,160,32,.3)}
+
+/* ── SECTION ── */
+.section{display:none;padding:24px 20px 80px;max-width:980px;margin:0 auto}
+.section.active{display:block}
+
+/* ── HERO ── */
+.hero{text-align:center;padding:48px 20px 40px;position:relative}
+.hero-from{display:inline-flex;align-items:center;gap:8px;background:rgba(232,160,32,.08);border:1px solid var(--bdr);font-size:.46rem;color:var(--gold);letter-spacing:3px;text-transform:uppercase;padding:6px 18px;margin-bottom:16px}
+.hero-from::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--gold);animation:pulse 1.5s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+.hero-name{font-size:clamp(2.2rem,7vw,4.5rem);font-weight:900;font-family:'Syne',system-ui;line-height:.95;letter-spacing:-2px;margin-bottom:16px}
+.hero-name .gold{background:linear-gradient(135deg,var(--gold),var(--ora));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-name .purple{background:linear-gradient(135deg,var(--purple),#6B8FFF);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-tagline{font-size:.82rem;color:var(--mu);max-width:560px;margin:0 auto 28px;line-height:1.7}
+.hero-meta{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;margin-bottom:32px}
+.meta-pill{display:flex;align-items:center;gap:6px;font-size:.58rem;color:var(--mu);background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);padding:6px 14px}
+.meta-pill span{color:var(--gold);font-weight:700}
+.hero-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:0}
+.hero-card{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);padding:18px 14px;text-align:center;transition:all .25s;cursor:default}
+.hero-card:hover{background:rgba(255,255,255,.04);border-color:var(--bdr);transform:translateY(-2px)}
+.hc-icon{font-size:1.8rem;margin-bottom:8px}
+.hc-val{font-size:1.3rem;font-weight:900;font-family:'Syne',system-ui;color:var(--gold);letter-spacing:-1px}
+.hc-label{font-size:.52rem;color:var(--mu);margin-top:4px;text-transform:uppercase;letter-spacing:1px}
+
+/* ── SECTION HEADER ── */
+.sec-head{margin-bottom:28px}
+.sec-head-label{font-size:.44rem;color:var(--gold);letter-spacing:3px;text-transform:uppercase;font-weight:700;margin-bottom:8px;display:flex;align-items:center;gap:8px}
+.sec-head-label::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,var(--bdr),transparent)}
+.sec-head-title{font-size:clamp(1.3rem,4vw,2rem);font-weight:900;font-family:'Syne',system-ui;letter-spacing:-.5px;line-height:1.1;margin-bottom:8px}
+.sec-head-sub{font-size:.7rem;color:var(--mu);line-height:1.7;max-width:600px}
+
+/* ── PANELS ── */
+.panel{background:linear-gradient(135deg,rgba(13,20,32,.9),rgba(10,16,28,.9));border:1px solid rgba(255,255,255,.06);padding:18px 20px;margin-bottom:12px;backdrop-filter:blur(8px)}
+.panel-gold{border-color:var(--bdr);background:linear-gradient(135deg,rgba(232,160,32,.06),rgba(232,101,26,.04))}
+.panel-purple{border-color:rgba(155,109,255,.2);background:linear-gradient(135deg,rgba(155,109,255,.06),rgba(107,143,255,.04))}
+.panel-green{border-color:rgba(0,200,150,.2);background:linear-gradient(135deg,rgba(0,200,150,.06),rgba(0,180,140,.04))}
+.panel-red{border-color:rgba(255,85,85,.2);background:linear-gradient(135deg,rgba(255,85,85,.06),rgba(220,50,50,.04))}
+
+.panel-label{font-size:.44rem;letter-spacing:3px;text-transform:uppercase;font-weight:700;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.panel-label::after{content:'';flex:1;height:1px;background:rgba(255,255,255,.06)}
+
+/* ── PAIN POINTS ── */
+.pain-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+.pain-item{display:flex;gap:10px;align-items:flex-start;padding:12px 14px;background:rgba(255,85,85,.04);border:1px solid rgba(255,85,85,.1);border-left:3px solid var(--red)}
+.pain-icon{font-size:1.1rem;flex-shrink:0;margin-top:1px}
+.pain-title{font-size:.65rem;font-weight:700;color:var(--w);margin-bottom:3px}
+.pain-desc{font-size:.58rem;color:var(--mu);line-height:1.5}
+
+/* ── MARKET ── */
+.market-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:16px}
+.market-card{background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.06);padding:14px;text-align:center;border-top:2px solid var(--gold)}
+.mc-val{font-size:1.4rem;font-weight:900;font-family:'Syne',system-ui;color:var(--gold);letter-spacing:-1px;line-height:1}
+.mc-label{font-size:.52rem;color:var(--mu);margin-top:4px;line-height:1.4}
+
+/* ── OPPORTUNITY ── */
+.opp-list{display:flex;flex-direction:column;gap:8px}
+.opp-item{display:flex;gap:12px;align-items:flex-start;padding:12px 14px;background:rgba(0,200,150,.04);border:1px solid rgba(0,200,150,.12);border-left:3px solid var(--green)}
+.opp-num{font-size:.9rem;font-weight:900;color:var(--green);font-family:'Syne',system-ui;flex-shrink:0;min-width:22px}
+.opp-title{font-size:.65rem;font-weight:700;color:var(--w);margin-bottom:2px}
+.opp-desc{font-size:.58rem;color:var(--mu);line-height:1.5}
+
+/* ── SYSTEMS ── */
+.systems-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+.sys-card{padding:14px 16px;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);border-left:3px solid var(--gold);transition:all .2s}
+.sys-card:hover{background:rgba(255,255,255,.04);transform:translateY(-1px)}
+.sys-row{display:flex;align-items:center;gap:10px;margin-bottom:6px}
+.sys-icon{font-size:1.3rem}
+.sys-name{font-size:.65rem;font-weight:700;color:var(--w)}
+.sys-desc{font-size:.58rem;color:var(--mu);line-height:1.5;margin-bottom:8px}
+.sys-tags{display:flex;gap:4px;flex-wrap:wrap}
+.sys-tag{font-size:.42rem;color:var(--green);background:rgba(0,200,150,.08);border:1px solid rgba(0,200,150,.18);padding:2px 7px;letter-spacing:.5px}
+
+/* ── PRICING ── */
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.price-card{padding:20px 16px;border:1px solid rgba(255,255,255,.06);background:rgba(255,255,255,.02);text-align:center;position:relative;overflow:hidden;transition:all .2s}
+.price-card:hover{transform:translateY(-3px)}
+.price-card.featured{border-color:var(--gold);background:linear-gradient(135deg,rgba(232,160,32,.08),rgba(232,101,26,.05));box-shadow:0 0 40px rgba(232,160,32,.1)}
+.price-card.ai-pack{border-color:var(--purple);background:linear-gradient(135deg,rgba(155,109,255,.08),rgba(107,143,255,.05));box-shadow:0 0 40px rgba(155,109,255,.1)}
+.featured-tag{position:absolute;top:0;left:0;right:0;background:linear-gradient(90deg,var(--gold),var(--ora));color:#070B12;font-size:.44rem;font-weight:900;letter-spacing:2px;text-transform:uppercase;padding:4px 0;text-align:center}
+.ai-tag{position:absolute;top:0;left:0;right:0;background:linear-gradient(90deg,var(--purple),#6B8FFF);color:white;font-size:.44rem;font-weight:900;letter-spacing:2px;text-transform:uppercase;padding:4px 0;text-align:center}
+.price-tier{font-size:.46rem;color:var(--mu);letter-spacing:2px;text-transform:uppercase;margin-bottom:6px;margin-top:18px}
+.price-name{font-size:.85rem;font-weight:900;font-family:'Syne',system-ui;color:var(--w);margin-bottom:14px;line-height:1.2}
+.price-setup{font-size:1.6rem;font-weight:900;font-family:'Syne',system-ui;line-height:1;letter-spacing:-1px;margin-bottom:4px}
+.price-mo{font-size:.65rem;color:var(--mu);margin-bottom:16px}
+.price-divider{height:1px;background:rgba(255,255,255,.06);margin-bottom:14px}
+.price-items{list-style:none;text-align:left;margin-bottom:16px}
+.price-items li{font-size:.6rem;color:var(--mu);padding:4px 0;display:flex;align-items:flex-start;gap:8px;line-height:1.45}
+.price-items li::before{content:'✓';color:var(--green);font-weight:700;flex-shrink:0;margin-top:1px}
+.price-items li.ai-feat::before{content:'🤖';font-size:.7rem}
+.price-cta{display:block;padding:12px;font-size:.6rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;text-decoration:none;text-align:center;cursor:pointer;transition:all .2s;border:none;width:100%}
+.price-cta.gold{background:linear-gradient(135deg,var(--gold),var(--ora));color:#070B12}
+.price-cta.outline{background:rgba(232,160,32,.08);border:1px solid rgba(232,160,32,.3);color:var(--gold)}
+.price-cta.purple-btn{background:linear-gradient(135deg,var(--purple),#6B8FFF);color:white}
+.price-cta:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(0,0,0,.3)}
+.year-total{display:inline-block;background:rgba(0,200,150,.08);border:1px solid rgba(0,200,150,.2);color:var(--green);font-size:.55rem;font-weight:700;padding:4px 10px;margin-top:8px}
+
+/* ── AI PA SECTION ── */
+.pa-hero{background:linear-gradient(135deg,rgba(155,109,255,.1),rgba(107,143,255,.06),rgba(0,200,150,.05));border:1px solid rgba(155,109,255,.25);padding:28px 24px;text-align:center;margin-bottom:20px;position:relative;overflow:hidden}
+.pa-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(155,109,255,.08),transparent 60%);pointer-events:none}
+.pa-icon{font-size:3.5rem;margin-bottom:12px;display:block}
+.pa-title{font-size:clamp(1.4rem,4vw,2rem);font-weight:900;font-family:'Syne',system-ui;margin-bottom:8px;background:linear-gradient(135deg,var(--purple),#6B8FFF,var(--green));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.pa-sub{font-size:.7rem;color:var(--mu);line-height:1.7;max-width:520px;margin:0 auto}
+
+.flow-grid{display:grid;grid-template-columns:1fr;gap:8px}
+.flow-item{display:flex;gap:14px;align-items:flex-start;padding:14px 16px;background:rgba(155,109,255,.04);border:1px solid rgba(155,109,255,.12);border-left:3px solid var(--purple)}
+.flow-num{width:26px;height:26px;min-width:26px;background:linear-gradient(135deg,var(--purple),#6B8FFF);color:white;font-size:.58rem;font-weight:900;display:flex;align-items:center;justify-content:center;border-radius:50%;font-family:'DM Mono',monospace}
+.flow-title{font-size:.68rem;font-weight:700;color:var(--w);margin-bottom:3px}
+.flow-desc{font-size:.6rem;color:var(--mu);line-height:1.55}
+.flow-tag{display:inline-block;font-size:.42rem;background:rgba(155,109,255,.12);border:1px solid rgba(155,109,255,.25);color:var(--purple);padding:2px 8px;margin-top:5px;letter-spacing:.5px}
+
+.use-cases-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+.uc-card{padding:14px 16px;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);transition:all .2s}
+.uc-card:hover{background:rgba(155,109,255,.05);border-color:rgba(155,109,255,.2)}
+.uc-header{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.uc-icon{font-size:1.4rem}
+.uc-title{font-size:.65rem;font-weight:700;color:var(--w)}
+.uc-trigger{font-size:.55rem;color:var(--purple);font-style:italic;margin-bottom:6px}
+.uc-response{font-size:.58rem;color:var(--mu);line-height:1.5;background:rgba(0,0,0,.2);padding:8px 10px;border-left:2px solid var(--green)}
+
+/* ── DEMO SECTION ── */
+.demo-container{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.chat-window{background:#0A1018;border:1px solid rgba(255,255,255,.08);border-radius:12px;overflow:hidden}
+.chat-header{background:linear-gradient(135deg,rgba(155,109,255,.2),rgba(107,143,255,.15));padding:14px 16px;display:flex;align-items:center;gap:12px;border-bottom:1px solid rgba(255,255,255,.07)}
+.chat-avatar{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--purple),var(--green));display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+.chat-name{font-size:.72rem;font-weight:700;color:var(--w)}
+.chat-status{font-size:.52rem;color:var(--green);display:flex;align-items:center;gap:4px}
+.chat-status::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse 1.5s ease-in-out infinite}
+.chat-msgs{padding:14px;min-height:320px;display:flex;flex-direction:column;gap:10px;overflow-y:auto;max-height:400px}
+.msg{max-width:85%;padding:10px 12px;font-size:.62rem;line-height:1.55}
+.msg.ai{background:linear-gradient(135deg,rgba(155,109,255,.15),rgba(107,143,255,.1));border:1px solid rgba(155,109,255,.2);align-self:flex-start;border-radius:0 10px 10px 10px}
+.msg.user{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);align-self:flex-end;border-radius:10px 0 10px 10px;color:var(--mu)}
+.msg-lang{font-size:.44rem;color:var(--purple);margin-bottom:3px;letter-spacing:1px;text-transform:uppercase}
+.msg-time{font-size:.44rem;color:rgba(255,255,255,.25);margin-top:4px}
+.chat-input{padding:12px;border-top:1px solid rgba(255,255,255,.06);display:flex;gap:8px}
+.chat-input input{flex:1;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);color:var(--w);padding:8px 12px;font-size:.6rem;font-family:'DM Sans',system-ui;outline:none}
+.chat-input input:focus{border-color:rgba(155,109,255,.4)}
+.chat-input button{background:linear-gradient(135deg,var(--purple),#6B8FFF);border:none;color:white;padding:8px 14px;font-size:.6rem;font-weight:700;cursor:pointer;letter-spacing:1px}
+
+.wa-preview{background:#075E54;border:1px solid rgba(255,255,255,.08);border-radius:12px;overflow:hidden}
+.wa-header{background:#128C7E;padding:14px 16px;display:flex;align-items:center;gap:12px;border-bottom:1px solid rgba(255,255,255,.1)}
+.wa-icon{width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;font-size:1.1rem}
+.wa-name{font-size:.72rem;font-weight:700;color:white}
+.wa-sub{font-size:.52rem;color:rgba(255,255,255,.6)}
+.wa-msgs{padding:14px;background:#0C1B18;min-height:320px;max-height:400px;overflow-y:auto;display:flex;flex-direction:column;gap:8px}
+.wa-msg{max-width:85%;padding:8px 12px;font-size:.62rem;line-height:1.55;border-radius:0 8px 8px 8px;position:relative}
+.wa-msg.from-ai{background:#1F2C34;color:#e9e9e9;align-self:flex-start}
+.wa-msg.to-sahaj{background:#005C4B;color:#e9e9e9;align-self:flex-end;border-radius:8px 0 8px 8px}
+.wa-time{font-size:.42rem;color:rgba(255,255,255,.4);margin-top:3px;text-align:right}
+.wa-tick{color:#53BDEB;font-size:.55rem}
+
+/* ── TECH STACK ── */
+.stack-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.stack-card{padding:12px 14px;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);text-align:center}
+.stack-icon{font-size:1.5rem;margin-bottom:6px}
+.stack-name{font-size:.62rem;font-weight:700;color:var(--w);margin-bottom:3px}
+.stack-role{font-size:.52rem;color:var(--mu);line-height:1.4}
+.stack-free{font-size:.42rem;color:var(--green);background:rgba(0,200,150,.08);border:1px solid rgba(0,200,150,.2);padding:2px 6px;margin-top:5px;display:inline-block}
+
+/* ── TIMELINE ── */
+.timeline{display:flex;flex-direction:column;gap:0}
+.tl-item{display:flex;gap:16px;padding-bottom:20px;position:relative}
+.tl-item::before{content:'';position:absolute;left:16px;top:32px;bottom:0;width:1px;background:linear-gradient(var(--bdr),transparent)}
+.tl-item:last-child::before{display:none}
+.tl-dot{width:32px;height:32px;min-width:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.65rem;font-weight:900;font-family:'DM Mono',monospace;flex-shrink:0}
+.tl-body{}
+.tl-week{font-size:.44rem;color:var(--gold);letter-spacing:2px;text-transform:uppercase;margin-bottom:3px;font-weight:700}
+.tl-title{font-size:.72rem;font-weight:700;color:var(--w);margin-bottom:4px}
+.tl-tasks{list-style:none}
+.tl-tasks li{font-size:.6rem;color:var(--mu);padding:3px 0;display:flex;align-items:flex-start;gap:6px;line-height:1.4}
+.tl-tasks li::before{content:'→';color:var(--gold);flex-shrink:0}
+
+/* ── CTA ── */
+.final-cta{background:linear-gradient(135deg,rgba(232,160,32,.12),rgba(232,101,26,.08),rgba(155,109,255,.06));border:1px solid var(--bdr);padding:40px 28px;text-align:center;margin-top:20px;position:relative;overflow:hidden}
+.final-cta::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% -20%,rgba(232,160,32,.08),transparent 60%);pointer-events:none}
+.cta-title{font-size:clamp(1.2rem,4vw,1.8rem);font-weight:900;font-family:'Syne',system-ui;margin-bottom:10px;background:linear-gradient(135deg,var(--gold),var(--ora));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.cta-sub{font-size:.7rem;color:var(--mu);margin-bottom:24px;line-height:1.7;max-width:460px;margin-left:auto;margin-right:auto}
+.cta-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.cta-btn{padding:16px 32px;font-size:.65rem;font-weight:900;letter-spacing:2px;text-transform:uppercase;text-decoration:none;cursor:pointer;border:none;transition:all .2s;font-family:'DM Sans',system-ui}
+.cta-btn.primary{background:linear-gradient(135deg,var(--gold),var(--ora));color:#070B12;box-shadow:0 6px 30px rgba(232,160,32,.3)}
+.cta-btn.secondary{background:rgba(155,109,255,.12);border:1px solid rgba(155,109,255,.3);color:var(--purple)}
+.cta-btn:hover{transform:translateY(-2px);box-shadow:0 10px 40px rgba(0,0,0,.3)}
+.footer-note{font-size:.52rem;color:rgba(255,255,255,.2);margin-top:16px}
+
+/* ── DEMO CHAT ANIMATIONS ── */
+.typing{display:flex;align-items:center;gap:4px;padding:10px 14px;background:linear-gradient(135deg,rgba(155,109,255,.15),rgba(107,143,255,.1));border:1px solid rgba(155,109,255,.2);align-self:flex-start;border-radius:0 10px 10px 10px}
+.typing span{width:6px;height:6px;background:var(--purple);border-radius:50%;animation:typeDot .8s ease-in-out infinite}
+.typing span:nth-child(2){animation-delay:.15s}
+.typing span:nth-child(3){animation-delay:.3s}
+@keyframes typeDot{0%,60%,100%{transform:translateY(0);opacity:.5}30%{transform:translateY(-4px);opacity:1}}
+
+@media(max-width:700px){
+  .hero-cards{grid-template-columns:1fr 1fr}
+  .pain-grid{grid-template-columns:1fr}
+  .market-grid{grid-template-columns:repeat(2,1fr)}
+  .pricing-grid{grid-template-columns:1fr}
+  .systems-grid{grid-template-columns:1fr}
+  .use-cases-grid{grid-template-columns:1fr}
+  .demo-container{grid-template-columns:1fr}
+  .stack-grid{grid-template-columns:repeat(2,1fr)}
+}
+</style>
+</head>
+<body>
+<div class="bg-grid"></div><div class="bg-orb1"></div><div class="bg-orb2"></div><div class="bg-orb3"></div>
+
+<div class="page">
+<!-- ══════════════════════ NAV ══════════════════════ -->
+<nav class="nav">
+  <div class="nav-brand">
+    <div class="nav-badge">ads4you AI Studio × Nirmala Associates</div>
+    <div class="nav-title">Personal AI Assistant Proposal — Sahaj Dada</div>
+  </div>
+  <div class="nav-tabs">
+    <button class="tab active" onclick="showTab('overview')">📋 Overview</button>
+    <button class="tab" onclick="showTab('market')">📊 Market</button>
+    <button class="tab" onclick="showTab('systems')">⚙️ Systems</button>
+    <button class="tab" onclick="showTab('ai-pa')">🤖 AI PA</button>
+    <button class="tab" onclick="showTab('demo')">🎬 Live Demo</button>
+    <button class="tab" onclick="showTab('pricing')">💰 Pricing</button>
+    <button class="tab" onclick="showTab('roadmap')">🗓️ Roadmap</button>
+  </div>
+</nav>
+
+<!-- ══════════════════════ OVERVIEW ══════════════════════ -->
+<div id="tab-overview" class="section active">
+  <div class="hero">
+    <div class="hero-from">✦ Personal Proposal for Sahaj Dada — Nirmala Associates</div>
+    <div class="hero-name">
+      Sahaj Dada,<br>
+      Let AI Be Your<br>
+      <span class="gold">Personal Assistant.</span>
+    </div>
+    <div class="hero-tagline">
+      You are running Nirmala Associates alone — managing clients, workers, materials, follow-ups, accounts — everything on one phone and one brain. That is not business. That is survival. We are here to change that.
+    </div>
+    <div class="hero-meta">
+      <div class="meta-pill">📍 Latur, Marathwada</div>
+      <div class="meta-pill">🏗️ Construction + Interior</div>
+      <div class="meta-pill">📞 <span>+91 98501 98960</span></div>
+      <div class="meta-pill">🏢 Nirmal Associates (JustDial Listed)</div>
+    </div>
+    <div class="hero-cards">
+      <div class="hero-card">
+        <div class="hc-icon">👤</div>
+        <div class="hc-val">1</div>
+        <div class="hc-label">Person doing everything</div>
+      </div>
+      <div class="hero-card">
+        <div class="hc-icon">📵</div>
+        <div class="hc-val">Zero</div>
+        <div class="hc-label">AI systems working for you</div>
+      </div>
+      <div class="hero-card">
+        <div class="hc-icon">💸</div>
+        <div class="hc-val">₹2-3L</div>
+        <div class="hc-label">Revenue lost monthly to chaos</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec-head">
+    <div class="sec-head-label">The Real Problems</div>
+    <div class="sec-head-title">What is Silently Killing Nirmala Associates</div>
+    <div class="sec-head-sub">These are not small problems. Each one is costing you money, energy, and time you can never get back.</div>
+  </div>
+
+  <div class="pain-grid">
+    <div class="pain-item">
+      <div class="pain-icon">📞</div>
+      <div><div class="pain-title">Answering Every Call Yourself</div><div class="pain-desc">Clients call while you're on-site. Workers call during client meetings. You miss calls. You forget follow-ups. Every missed call is a project you didn't get.</div></div>
+    </div>
+    <div class="pain-item">
+      <div class="pain-icon">💰</div>
+      <div><div class="pain-title">No System for Money Tracking</div><div class="pain-desc">How much does the Patil project still owe? Which supplier hasn't been paid? You know this in your head — but heads forget. Lakhs slip through.</div></div>
+    </div>
+    <div class="pain-item">
+      <div class="pain-icon">🔍</div>
+      <div><div class="pain-title">Invisible on Google</div><div class="pain-desc">People in Latur search "interior designer near me" or "construction contractor Latur" every day. They cannot find Nirmala Associates. They find someone else.</div></div>
+    </div>
+    <div class="pain-item">
+      <div class="pain-icon">👷</div>
+      <div><div class="pain-title">No Site Updates Without Calling</div><div class="pain-desc">Clients call you at 9 PM asking "kya hua site pe aaj?" You have to call the supervisor. Then call the client back. This wastes 30-45 minutes every day.</div></div>
+    </div>
+    <div class="pain-item">
+      <div class="pain-icon">😴</div>
+      <div><div class="pain-title">No Rest. No Free Time.</div><div class="pain-desc">You work 14-hour days. Business grows — but you feel like you're drowning. There is no system. There is only you. That is the problem we will solve.</div></div>
+    </div>
+    <div class="pain-item">
+      <div class="pain-icon">🤝</div>
+      <div><div class="pain-title">Leads Go Cold Without Follow-Up</div><div class="pain-desc">Someone enquires about a renovation. You get busy. You forget to call back. In 3 days they hired someone else. This happens 3-4 times every month.</div></div>
+    </div>
+  </div>
+
+  <div class="final-cta" style="margin-top:28px">
+    <div class="cta-title">Prashant ne promise kiya — AI aapka PA banega.</div>
+    <div class="cta-sub">One AI assistant. Handles your calls, updates clients, follows up on leads, tracks money, updates you on WhatsApp. Sahaj Dada focuses only on building.</div>
+    <div class="cta-btns">
+      <button class="cta-btn primary" onclick="showTab('ai-pa')">🤖 See the AI PA →</button>
+      <button class="cta-btn secondary" onclick="showTab('demo')">🎬 Live Demo →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════ MARKET ══════════════════════ -->
+<div id="tab-market" class="section">
+  <div class="sec-head">
+    <div class="sec-head-label">Market Research — Latur, Marathwada</div>
+    <div class="sec-head-title">The Opportunity Nobody Is Grabbing</div>
+    <div class="sec-head-sub">Latur is one of India's fastest growing Tier-2 cities. Construction demand is exploding. But zero contractors are using AI. First mover advantage is available right now.</div>
+  </div>
+
+  <div class="market-grid">
+    <div class="market-card">
+      <div class="mc-val">24.5L</div>
+      <div class="mc-label">Latur district population<br><span style="color:var(--gold)">Massive untapped market</span></div>
+    </div>
+    <div class="market-card">
+      <div class="mc-val">356+</div>
+      <div class="mc-label">Interior designers on JustDial Latur<br><span style="color:var(--red)">All without AI</span></div>
+    </div>
+    <div class="market-card">
+      <div class="mc-val">0</div>
+      <div class="mc-label">AI-enabled contractors in Latur<br><span style="color:var(--green)">First mover = YOU</span></div>
+    </div>
+    <div class="market-card">
+      <div class="mc-val">₹1T</div>
+      <div class="mc-label">India real estate by 2030<br><span style="color:var(--gold)">Tier-2 cities leading growth</span></div>
+    </div>
+    <div class="market-card">
+      <div class="mc-val">PMAY</div>
+      <div class="mc-label">Govt housing push in Marathwada<br><span style="color:var(--green)">Massive construction demand</span></div>
+    </div>
+    <div class="market-card">
+      <div class="mc-val">11</div>
+      <div class="mc-label">Sugar factories + MIDC in Latur<br><span style="color:var(--gold)">Industrial + commercial boom</span></div>
+    </div>
+  </div>
+
+  <div class="panel panel-gold" style="margin-bottom:16px">
+    <div class="panel-label" style="color:var(--gold)">📍 About Latur — Why This Market is Goldmine Right Now</div>
+    <p style="font-size:.68rem;color:var(--mu);line-height:1.8;margin-bottom:12px">Latur is in Maharashtra's Marathwada region — a district of 24.54 lakh people that has emerged as a vital business hub. Known as the "Sugar Belt of Maharashtra" with 11 cooperative sugar factories, it has a thriving MIDC industrial corridor and is positioned as one of India's fastest-growing Tier-2 cities.</p>
+    <p style="font-size:.68rem;color:var(--mu);line-height:1.8">Recent signals: A premium hotel (Enrise by Sayaji) just opened in the MIDC area — confirming business travel demand. Government PMAY housing scheme is pushing construction. Zero competitors are using AI yet. <strong style="color:var(--gold)">Nirmala Associates can become the most visible, most trusted, most automated contractor in Latur within 6 months.</strong></p>
+  </div>
+
+  <div class="sec-head" style="margin-top:28px">
+    <div class="sec-head-label">Competitive Gap</div>
+    <div class="sec-head-title">Where Nirmala Associates Wins</div>
+  </div>
+
+  <div class="opp-list">
+    <div class="opp-item">
+      <div class="opp-num">01</div>
+      <div><div class="opp-title">First AI-Enabled Contractor in Latur</div><div class="opp-desc">Every other contractor answers calls manually, tracks money in notebooks, has zero online portfolio. Nirmala Associates can be the only one with a 24/7 AI assistant — a massive trust signal.</div></div>
+    </div>
+    <div class="opp-item">
+      <div class="opp-num">02</div>
+      <div><div class="opp-title">Marathi + Hindi AI Voice — Local Feel</div><div class="opp-desc">The AI will speak in Marathi — the language of Latur. Clients will feel they are talking to someone local, not a robot. This is not available with any competitor right now.</div></div>
+    </div>
+    <div class="opp-item">
+      <div class="opp-num">03</div>
+      <div><div class="opp-title">WhatsApp-First Updates — Zero Extra App</div><div class="opp-desc">Updates go directly to Sahaj Dada's WhatsApp. No new app to learn. Clients get updates on WhatsApp too. Entire system works on phones everyone already has.</div></div>
+    </div>
+    <div class="opp-item">
+      <div class="opp-num">04</div>
+      <div><div class="opp-title">MIDC + Industrial Client Base</div><div class="opp-desc">With Latur's MIDC expansion, commercial construction projects are growing. An AI-enabled contractor with a professional online presence is far more likely to win these tenders.</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════ SYSTEMS ══════════════════════ -->
+<div id="tab-systems" class="section">
+  <div class="sec-head">
+    <div class="sec-head-label">Digital Systems</div>
+    <div class="sec-head-title">8 Systems That Run Nirmala Associates on Autopilot</div>
+    <div class="sec-head-sub">Each system does a specific job. Together, they replace the need for a full-time assistant, a receptionist, a social media manager, and an accountant.</div>
+  </div>
+
+  <div class="systems-grid">
+    <div class="sys-card" style="border-left-color:#4285F4">
+      <div class="sys-row"><div class="sys-icon">🌐</div><div class="sys-name">Google Business Profile — Latur</div></div>
+      <div class="sys-desc">Nirmala Associates appears when anyone searches "interior designer Latur" or "construction contractor near Latur railway station". Free visibility that works 24/7.</div>
+      <div class="sys-tags"><span class="sys-tag">+visibility</span><span class="sys-tag">+leads</span><span class="sys-tag">free</span></div>
+    </div>
+    <div class="sys-card" style="border-left-color:#FF9500">
+      <div class="sys-row"><div class="sys-icon">🔍</div><div class="sys-name">JustDial + IndiaMart Optimization</div></div>
+      <div class="sys-desc">Nirmala Associates is already on JustDial. We optimize the listing, add portfolio photos, and ensure you appear in the top 5 for Latur construction searches.</div>
+      <div class="sys-tags"><span class="sys-tag">+ranking</span><span class="sys-tag">+calls</span></div>
+    </div>
+    <div class="sys-card" style="border-left-color:#25D366">
+      <div class="sys-row"><div class="sys-icon">🤖</div><div class="sys-name">WhatsApp AI Bot — Marathi/Hindi</div></div>
+      <div class="sys-desc">Every lead who messages Nirmala Associates gets an instant reply in Marathi — portfolio, pricing range, and site visit booking. Sahaj Dada gets the qualified enquiry.</div>
+      <div class="sys-tags"><span class="sys-tag">+response</span><span class="sys-tag">+conversion</span><span class="sys-tag">Marathi</span></div>
+    </div>
+    <div class="sys-card" style="border-left-color:var(--purple)">
+      <div class="sys-row"><div class="sys-icon">📞</div><div class="sys-name">AI Voice PA — Inbound Calls</div></div>
+      <div class="sys-desc">When a client calls Nirmala Associates, the AI answers in Marathi, gets details, gives site updates, or books a callback. Sahaj Dada is not disturbed unless it's urgent.</div>
+      <div class="sys-tags"><span class="sys-tag">+freedom</span><span class="sys-tag">Marathi voice</span><span class="sys-tag">24/7</span></div>
+    </div>
+    <div class="sys-card" style="border-left-color:var(--purple)">
+      <div class="sys-row"><div class="sys-icon">📲</div><div class="sys-name">AI Outbound Calls — Employee Site Reports</div></div>
+      <div class="sys-desc">AI calls site supervisors every evening, collects daily progress report in Hindi/Marathi, and sends Sahaj Dada a WhatsApp summary. No more hunting for updates.</div>
+      <div class="sys-tags"><span class="sys-tag">+site visibility</span><span class="sys-tag">auto-report</span></div>
+    </div>
+    <div class="sys-card" style="border-left-color:var(--purple)">
+      <div class="sys-row"><div class="sys-icon">💬</div><div class="sys-name">AI Client Update Calls</div></div>
+      <div class="sys-desc">Every Friday, AI calls each active client, gives a site progress update, and asks if they have any concerns. Client feels cared for. Sahaj Dada gets free time.</div>
+      <div class="sys-tags"><span class="sys-tag">+client trust</span><span class="sys-tag">+retention</span></div>
+    </div>
+    <div class="sys-card" style="border-left-color:var(--gold)">
+      <div class="sys-row"><div class="sys-icon">💰</div><div class="sys-name">DhanaTrack — Cash Management</div></div>
+      <div class="sys-desc">Tracks income and expenses across all active projects. Alerts Sahaj Dada on WhatsApp when payment is overdue, material cost exceeds budget, or profit margin drops.</div>
+      <div class="sys-tags"><span class="sys-tag">+cash tracking</span><span class="sys-tag">WhatsApp alerts</span></div>
+    </div>
+    <div class="sys-card" style="border-left-color:var(--gold)">
+      <div class="sys-row"><div class="sys-icon">📁</div><div class="sys-name">Portfolio Automation + Social</div></div>
+      <div class="sys-desc">Project photos → automatically posted to Instagram and Facebook every week with Marathi captions. Professional portfolio website with before/after gallery. Zero manual effort.</div>
+      <div class="sys-tags"><span class="sys-tag">+brand</span><span class="sys-tag">+referrals</span><span class="sys-tag">auto-post</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════ AI PA ══════════════════════ -->
+<div id="tab-ai-pa" class="section">
+  <div class="pa-hero">
+    <span class="pa-icon">🤖</span>
+    <div class="pa-title">Meet SARTHI — Sahaj Dada's Personal AI Assistant</div>
+    <div class="pa-sub">SARTHI (Marathi: सारथी — the charioteer) handles all the chaos so Sahaj Dada can focus on what he does best: building great things for his clients.</div>
+  </div>
+
+  <div class="sec-head">
+    <div class="sec-head-label">How SARTHI Works</div>
+    <div class="sec-head-title">One AI. Three Superpowers.</div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:24px">
+    <div class="panel panel-purple" style="text-align:center;padding:20px 14px">
+      <div style="font-size:2rem;margin-bottom:8px">📞</div>
+      <div style="font-size:.72rem;font-weight:700;color:var(--purple);margin-bottom:6px">Handles Calls</div>
+      <div style="font-size:.6rem;color:var(--mu);line-height:1.55">Answers client calls in Marathi. Gives updates. Books callbacks. Qualifies new leads.</div>
+    </div>
+    <div class="panel panel-green" style="text-align:center;padding:20px 14px">
+      <div style="font-size:2rem;margin-bottom:8px">📱</div>
+      <div style="font-size:.72rem;font-weight:700;color:var(--green);margin-bottom:6px">WhatsApp Updates</div>
+      <div style="font-size:.6rem;color:var(--mu);line-height:1.55">Sends Sahaj Dada daily summaries — site reports, payments due, client concerns — all on WhatsApp.</div>
+    </div>
+    <div class="panel panel-gold" style="text-align:center;padding:20px 14px">
+      <div style="font-size:2rem;margin-bottom:8px">🔄</div>
+      <div style="font-size:.72rem;font-weight:700;color:var(--gold);margin-bottom:6px">Calls Employees</div>
+      <div style="font-size:.6rem;color:var(--mu);line-height:1.55">Calls site supervisors every evening. Collects daily progress. Sends summary to Sahaj Dada.</div>
+    </div>
+  </div>
+
+  <div class="sec-head">
+    <div class="sec-head-label">SARTHI in Action</div>
+    <div class="sec-head-title">What SARTHI Does Every Day</div>
+  </div>
+
+  <div class="flow-grid" style="margin-bottom:24px">
+    <div class="flow-item">
+      <div class="flow-num">1</div>
+      <div><div class="flow-title">7:00 AM — Good Morning Report on WhatsApp</div><div class="flow-desc">SARTHI sends Sahaj Dada a WhatsApp message: Today's active sites, pending payments, client callbacks scheduled, material orders due. Full picture in 30 seconds.</div><div class="flow-tag">WhatsApp</div></div>
+    </div>
+    <div class="flow-item">
+      <div class="flow-num">2</div>
+      <div><div class="flow-title">During Day — Handles All Incoming Calls</div><div class="flow-desc">Client calls Nirmala Associates number. SARTHI answers in Marathi: "Namaskar! Mi Nirmala Associates madhe SARTHI boltoy. Sahaj Sir currently site var ahet. Mi tumchi madad karu shakto ka?" — gets details, sends Sahaj Dada a WhatsApp alert if urgent.</div><div class="flow-tag">Marathi Voice Call</div></div>
+    </div>
+    <div class="flow-item">
+      <div class="flow-num">3</div>
+      <div><div class="flow-title">6:00 PM — Calls Site Supervisors</div><div class="flow-desc">SARTHI automatically calls each site supervisor: "Aaj site var kiti kaam zale? Konte material lagale? Kahi problem ahe ka?" — collects answers, converts to WhatsApp report for Sahaj Dada. No more daily chase calls.</div><div class="flow-tag">Outbound AI Call</div></div>
+    </div>
+    <div class="flow-item">
+      <div class="flow-num">4</div>
+      <div><div class="flow-title">Friday — Client Update Calls</div><div class="flow-desc">SARTHI calls every active client: "Sahaj Sir ne sandesh pathavla ahe — aapla site progress update: [reads update]. Kahi concerns ahet ka?" — clients feel VIP treatment. Sahaj Dada gets free time.</div><div class="flow-tag">Client Satisfaction</div></div>
+    </div>
+    <div class="flow-item">
+      <div class="flow-num">5</div>
+      <div><div class="flow-title">Payment Overdue Alert</div><div class="flow-desc">When a payment is 7 days overdue, SARTHI calls the client: "Nirmala Associates boltoy. Sahaj Sir yanche sandeshanusaar — payment reminder ahe." Polite, professional, automated. No awkwardness for Sahaj Dada.</div><div class="flow-tag">Auto Collection</div></div>
+    </div>
+    <div class="flow-item">
+      <div class="flow-num">6</div>
+      <div><div class="flow-title">New Lead — Instant WhatsApp + Follow-Up</div><div class="flow-desc">Someone enquires about Nirmala Associates. SARTHI sends them portfolio on WhatsApp within 60 seconds. Day 3: follow-up. Day 7: project gallery. Day 14: special offer. All automatic.</div><div class="flow-tag">Lead Nurture</div></div>
+    </div>
+  </div>
+
+  <div class="sec-head">
+    <div class="sec-head-label">Marathi Language</div>
+    <div class="sec-head-title">SARTHI Speaks Your Language</div>
+  </div>
+  <div class="use-cases-grid">
+    <div class="uc-card">
+      <div class="uc-header"><div class="uc-icon">👤</div><div class="uc-title">Client Asks for Update</div></div>
+      <div class="uc-trigger">Client calls: "Majha renovation kiti dinant honar?"</div>
+      <div class="uc-response">SARTHI: "Namaskar ji! Tumcha renovation karobari kaam 80% complete zale ahe. Sahaj Sir estimate karta ki 8-10 diwsat poorn hoil. Mi tumala WhatsApp var detailed report pathavto. Theek ahe ka?"</div>
+    </div>
+    <div class="uc-card">
+      <div class="uc-header"><div class="uc-icon">👷</div><div class="uc-title">Site Supervisor Report</div></div>
+      <div class="uc-trigger">SARTHI calls supervisor at 6 PM</div>
+      <div class="uc-response">SARTHI: "Namaskar! Aaj site war konti progress zali? Kiti workers hote? Kahi material laglay ka? Sahaj Sir sathi hi mahiti ghenchi aahe." — records answer, sends WhatsApp summary.</div>
+    </div>
+    <div class="uc-card">
+      <div class="uc-header"><div class="uc-icon">💰</div><div class="uc-title">Payment Reminder</div></div>
+      <div class="uc-trigger">Payment overdue by 7 days</div>
+      <div class="uc-response">SARTHI: "Namaskar! Mi Nirmala Associates madhun boltoy. Tumchi payment ₹85,000 — 7 diwsapasun pending ahe. Sahaj Sir ne request keli ahe ki ya aathwadhyat payment karave. Kahi problem ahe ka?"</div>
+    </div>
+    <div class="uc-card">
+      <div class="uc-header"><div class="uc-icon">🆕</div><div class="uc-title">New Lead Enquiry</div></div>
+      <div class="uc-trigger">Someone enquires: "Ghar renovation karavyache ahe"</div>
+      <div class="uc-response">SARTHI (WhatsApp): "Namaskar! 🏠 Nirmala Associates - Latur. Aapla enquiry milala. Sahaj Sir cha 10 varshanche experience renovation madhye ahe. Portfolio pathavto — ekda bagha. Site visit saathi best time sangaychay ka?" + portfolio PDF</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════ DEMO ══════════════════════ -->
+<div id="tab-demo" class="section">
+  <div class="sec-head">
+    <div class="sec-head-label">Live Demo</div>
+    <div class="sec-head-title">SARTHI in Action — Try It Now</div>
+    <div class="sec-head-sub">This is a working demo of how SARTHI communicates. Type any message in Marathi, Hindi or English — SARTHI will respond as the AI PA for Nirmala Associates.</div>
+  </div>
+
+  <div class="demo-container">
+    <!-- SARTHI CHAT -->
+    <div class="chat-window">
+      <div class="chat-header">
+        <div class="chat-avatar">🤖</div>
+        <div>
+          <div class="chat-name">SARTHI — Nirmala Associates AI PA</div>
+          <div class="chat-status">Online · Marathi / Hindi / English</div>
+        </div>
+      </div>
+      <div class="chat-msgs" id="chatMsgs">
+        <div class="msg ai">
+          <div class="msg-lang">Marathi</div>
+          Namaskar! 🙏 Mi SARTHI — Nirmala Associates cha AI assistant. Sahaj Sir currently site var ahet. Mi tumchi madad karu shakto. Tumhala kay saangayche ahe?
+          <div class="msg-time">Just now</div>
+        </div>
+      </div>
+      <div class="chat-input">
+        <input type="text" id="chatInput" placeholder="Type in Marathi, Hindi or English..." onkeydown="if(event.key==='Enter')sendChat()">
+        <button onclick="sendChat()">SEND</button>
+      </div>
+    </div>
+
+    <!-- WHATSAPP PREVIEW -->
+    <div class="wa-preview">
+      <div class="wa-header">
+        <div class="wa-icon">📱</div>
+        <div>
+          <div class="wa-name">SARTHI → Sahaj Dada</div>
+          <div class="wa-sub">WhatsApp Business · Auto-updates</div>
+        </div>
+      </div>
+      <div class="wa-msgs" id="waMsgs">
+        <div class="wa-msg from-ai">
+          <div>🌅 <strong>Good Morning Report</strong><br>📅 Mon, 17 Mar 2025</div>
+          <div style="margin-top:8px;font-size:.58rem">
+            🏗️ Active Sites: 3<br>
+            👷 Workers today: 12<br>
+            💰 Pending payments: ₹1.85L<br>
+            📞 Callbacks due: 2<br>
+            ⚠️ Patil project: cement delivery today
+          </div>
+          <div class="wa-time">7:00 AM <span class="wa-tick">✓✓</span></div>
+        </div>
+        <div class="wa-msg from-ai">
+          <div>📞 <strong>New Lead Captured</strong></div>
+          <div style="margin-top:6px;font-size:.58rem">
+            👤 Name: Ramesh Kulkarni<br>
+            📍 Location: Latur city<br>
+            🏠 Need: 3BHK interior<br>
+            💬 Budget: "10-15 lakh"<br>
+            ✅ Portfolio sent on WhatsApp
+          </div>
+          <div class="wa-time">11:32 AM <span class="wa-tick">✓✓</span></div>
+        </div>
+        <div class="wa-msg from-ai">
+          <div>👷 <strong>Site Report — Shinde Bungalow</strong></div>
+          <div style="margin-top:6px;font-size:.58rem">
+            📊 Progress: Flooring 60% done<br>
+            👷 Workers: 4 on site<br>
+            🧱 Material: Tiles arrived ✓<br>
+            ⚠️ Issue: Electrician late tomorrow<br>
+            📅 Est completion: 12 more days
+          </div>
+          <div class="wa-time">6:15 PM <span class="wa-tick">✓✓</span></div>
+        </div>
+        <div class="wa-msg from-ai">
+          <div>💰 <strong>Payment Alert</strong></div>
+          <div style="margin-top:6px;font-size:.58rem">
+            ⚠️ Desai renovation — ₹75,000 overdue 8 days<br>
+            📞 SARTHI ne reminder call kela<br>
+            ✅ Client ne said: "Thursday la deto"
+          </div>
+          <div class="wa-time">6:45 PM <span class="wa-tick">✓✓</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel panel-purple" style="margin-top:16px">
+    <div class="panel-label" style="color:var(--purple)">🛠️ Free Demo Tech Stack — No Cost Until Deal is Closed</div>
+    <div class="stack-grid">
+      <div class="stack-card">
+        <div class="stack-icon">🧠</div>
+        <div class="stack-name">Claude API (Anthropic)</div>
+        <div class="stack-role">AI brain — understands Marathi, Hindi, English. Responds naturally.</div>
+        <div class="stack-free">FREE tier available</div>
+      </div>
+      <div class="stack-card">
+        <div class="stack-icon">📞</div>
+        <div class="stack-name">Bolna AI / Vapi.ai</div>
+        <div class="stack-role">Indian language voice calling — Marathi support. Inbound + outbound.</div>
+        <div class="stack-free">Free trial calls</div>
+      </div>
+      <div class="stack-card">
+        <div class="stack-icon">💬</div>
+        <div class="stack-name">WhatsApp Business API</div>
+        <div class="stack-role">Sends updates to Sahaj Dada + clients. Works on existing numbers.</div>
+        <div class="stack-free">FREE via Meta</div>
+      </div>
+      <div class="stack-card">
+        <div class="stack-icon">📊</div>
+        <div class="stack-name">Google Sheets</div>
+        <div class="stack-role">Stores project data, payments, client info. SARTHI reads and updates it.</div>
+        <div class="stack-free">FREE</div>
+      </div>
+      <div class="stack-card">
+        <div class="stack-icon">🔗</div>
+        <div class="stack-name">Make.com (Automation)</div>
+        <div class="stack-role">Connects all tools. Triggers right actions at right times.</div>
+        <div class="stack-free">FREE tier</div>
+      </div>
+      <div class="stack-card">
+        <div class="stack-icon">🌐</div>
+        <div class="stack-name">GitHub Pages</div>
+        <div class="stack-role">Hosts portfolio website. Fast, free, professional.</div>
+        <div class="stack-free">FREE</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════ PRICING ══════════════════════ -->
+<div id="tab-pricing" class="section">
+  <div class="sec-head">
+    <div class="sec-head-label">Investment Plans</div>
+    <div class="sec-head-title">Choose What Nirmala Associates Needs</div>
+    <div class="sec-head-sub">Three clear options. The AI PA is a separate add-on or included in the top tier. All prices are one-time setup + monthly retainer.</div>
+  </div>
+
+  <div class="pricing-grid">
+    <!-- STARTER -->
+    <div class="price-card">
+      <div class="price-tier">Starter</div>
+      <div class="price-name">Digital Foundation</div>
+      <div class="price-setup" style="color:var(--gold)">₹20,000</div>
+      <div class="price-mo">+ ₹5,000 / month</div>
+      <div class="price-divider"></div>
+      <ul class="price-items">
+        <li>Google Business Profile setup</li>
+        <li>JustDial listing optimization</li>
+        <li>Portfolio website (GitHub Pages)</li>
+        <li>WhatsApp AI bot (basic)</li>
+        <li>10 Instagram posts / month</li>
+        <li>Basic lead tracking (Google Sheets)</li>
+      </ul>
+      <div class="year-total">Year 1 Total: ₹80,000</div>
+      <a href="https://wa.me/919767066941?text=Sahaj here. Starter plan for Nirmala Associates." class="price-cta outline" style="margin-top:12px;display:block">Start →</a>
+    </div>
+
+    <!-- FEATURED -->
+    <div class="price-card featured">
+      <div class="featured-tag">✦ Most Popular — Recommended</div>
+      <div class="price-tier">Full System</div>
+      <div class="price-name">Digital + AI PA<br>Complete</div>
+      <div class="price-setup" style="color:var(--gold)">₹45,000</div>
+      <div class="price-mo">+ ₹9,000 / month</div>
+      <div class="price-divider"></div>
+      <ul class="price-items">
+        <li>Everything in Starter</li>
+        <li>SARTHI AI PA — WhatsApp daily reports</li>
+        <li>WhatsApp bot — Marathi / Hindi</li>
+        <li>Inbound call handling (AI answers)</li>
+        <li>Employee site report collection</li>
+        <li>Weekly client update messages</li>
+        <li>DhanaTrack cash management</li>
+        <li>Lead follow-up sequences (30 days)</li>
+        <li>20 social posts / month</li>
+        <li>Monthly performance report</li>
+      </ul>
+      <div class="year-total">Year 1 Total: ₹1,53,000</div>
+      <a href="https://wa.me/919767066941?text=Sahaj here. Full system plan for Nirmala Associates." class="price-cta gold" style="margin-top:12px;display:block">Get Started →</a>
+    </div>
+
+    <!-- AI PACK -->
+    <div class="price-card ai-pack">
+      <div class="ai-tag">🤖 Full AI PA + Voice Calling</div>
+      <div class="price-tier">Premium</div>
+      <div class="price-name">SARTHI Complete<br>Voice + Automation</div>
+      <div class="price-setup" style="color:var(--purple)">₹70,000</div>
+      <div class="price-mo">+ ₹14,000 / month</div>
+      <div class="price-divider"></div>
+      <ul class="price-items">
+        <li>Everything in Full System</li>
+        <li class="ai-feat">Outbound AI calling — site supervisors</li>
+        <li class="ai-feat">Outbound AI calling — client updates</li>
+        <li class="ai-feat">Outbound AI calling — payment reminders</li>
+        <li class="ai-feat">Inbound AI call handling — full Marathi</li>
+        <li class="ai-feat">AI video creation for social media</li>
+        <li>Priority support — 2hr response</li>
+        <li>Custom AI training on Sahaj's voice</li>
+        <li>Quarterly strategy review calls</li>
+      </ul>
+      <div class="year-total" style="color:var(--purple);background:rgba(155,109,255,.08);border-color:rgba(155,109,255,.25)">Year 1 Total: ₹2,38,000</div>
+      <a href="https://wa.me/919767066941?text=Sahaj here. Premium SARTHI plan for Nirmala Associates." class="price-cta purple-btn" style="margin-top:12px;display:block">Get SARTHI →</a>
+    </div>
+  </div>
+
+  <div class="panel panel-gold" style="margin-top:16px">
+    <div class="panel-label" style="color:var(--gold)">💡 ROI — What Nirmala Associates Gets Back</div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px">
+      <div style="text-align:center;padding:12px">
+        <div style="font-size:1.4rem;font-weight:900;font-family:'Syne',system-ui;color:var(--green)">+3-5</div>
+        <div style="font-size:.58rem;color:var(--mu);margin-top:4px">New projects/month from digital leads alone</div>
+      </div>
+      <div style="text-align:center;padding:12px">
+        <div style="font-size:1.4rem;font-weight:900;font-family:'Syne',system-ui;color:var(--green)">₹60K+</div>
+        <div style="font-size:.58rem;color:var(--mu);margin-top:4px">Monthly revenue increase (conservative estimate)</div>
+      </div>
+      <div style="text-align:center;padding:12px">
+        <div style="font-size:1.4rem;font-weight:900;font-family:'Syne',system-ui;color:var(--green)">20x</div>
+        <div style="font-size:.58rem;color:var(--mu);margin-top:4px">ROI on Full System in Year 1</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════ ROADMAP ══════════════════════ -->
+<div id="tab-roadmap" class="section">
+  <div class="sec-head">
+    <div class="sec-head-label">Execution Roadmap</div>
+    <div class="sec-head-title">From Zero to Full AI PA in 30 Days</div>
+    <div class="sec-head-sub">Clear week-by-week plan. Sahaj Dada needs to share only: project photos, contact list, and phone access. Prashant handles everything else.</div>
+  </div>
+
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-dot" style="background:linear-gradient(135deg,var(--red),var(--ora));color:white">W1</div>
+      <div class="tl-body">
+        <div class="tl-week">Week 1 — Foundation</div>
+        <div class="tl-title">Digital Presence Goes Live</div>
+        <ul class="tl-tasks">
+          <li>Google Business Profile setup + verification (Latur)</li>
+          <li>JustDial listing optimized with new photos + categories</li>
+          <li>Portfolio website deployed (GitHub Pages)</li>
+          <li>WhatsApp Business API connected</li>
+          <li>DhanaTrack project data entry begins</li>
+        </ul>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot" style="background:linear-gradient(135deg,var(--ora),var(--gold));color:#070B12">W2</div>
+      <div class="tl-body">
+        <div class="tl-week">Week 2 — Bot & Automation</div>
+        <div class="tl-title">SARTHI WhatsApp Brain Activated</div>
+        <ul class="tl-tasks">
+          <li>WhatsApp AI bot trained in Marathi + Hindi for Nirmala Associates</li>
+          <li>Lead capture + portfolio auto-send configured</li>
+          <li>Good morning daily report automation live</li>
+          <li>Lead follow-up 30-day sequence built</li>
+          <li>Google Sheets project database setup</li>
+        </ul>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot" style="background:linear-gradient(135deg,var(--purple),#6B8FFF);color:white">W3</div>
+      <div class="tl-body">
+        <div class="tl-week">Week 3 — Voice AI</div>
+        <div class="tl-title">SARTHI Starts Making & Taking Calls</div>
+        <ul class="tl-tasks">
+          <li>Bolna AI / Vapi voice agent setup for inbound calls (Marathi)</li>
+          <li>Site supervisor evening call automation live</li>
+          <li>Client update Friday call automation configured</li>
+          <li>Payment reminder call script built + tested</li>
+          <li>Sahaj Dada trains SARTHI on his project list</li>
+        </ul>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot" style="background:linear-gradient(135deg,var(--green),#00E5B0);color:#070B12">W4</div>
+      <div class="tl-body">
+        <div class="tl-week">Week 4 — Full System Live</div>
+        <div class="tl-title">SARTHI Running on Autopilot</div>
+        <ul class="tl-tasks">
+          <li>All systems tested end-to-end</li>
+          <li>Sahaj Dada walkthrough + handover training (1 hour)</li>
+          <li>Social media content calendar for next 30 days scheduled</li>
+          <li>First performance report generated</li>
+          <li>Deal officially live — monthly retainer begins</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="final-cta">
+    <div class="cta-title">Sahaj Dada — SARTHI is Ready to Work for You.</div>
+    <div class="cta-sub">Prashant Handge · ads4you AI Studio · UDYAM-MH-26-1092780 · Pune<br>Aapla relative, aapla trusted partner. Let's build this together.</div>
+    <div class="cta-btns">
+      <a href="https://wa.me/919767066941?text=Sahaj here. I want to start with Nirmala Associates + SARTHI AI PA." class="cta-btn primary">💬 WhatsApp Prashant Now</a>
+      <a href="tel:+919767066941" class="cta-btn secondary">📞 Call Directly</a>
+    </div>
+    <div class="footer-note">ads4you@zohomail.com · +91 97670 66941 · Wakad, Pune · UDYAM Certified Micro Enterprise</div>
+  </div>
+</div>
+</div><!-- /page -->
+
+<script>
+function showTab(name){
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.getElementById('tab-'+name).classList.add('active');
+  event.target.classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+// SARTHI Demo Chat
+const RESPONSES = {
+  marathi: [
+    {trigger:['update','status','kaam','progress','kiti'],reply:"Site update pathavtoy:\n\n🏗️ Shinde Bungalow — Flooring 60%\n🏠 Kulkarni Renovation — Painting 40%\n🏢 Patil Office — Complete 90%\n\nSahaj Sir la WhatsApp var detailed report pathavla ahe. ✓"},
+    {trigger:['payment','paise','due','outstanding','borje'],reply:"💰 Pending Payments:\n\n📌 Desai Renovation — ₹75,000 (8 days overdue)\n📌 Joshi Bungalow — ₹1,20,000 (due this week)\n\nSARTHI ne Desai saheb la reminder call kela — Thursday la deto mhanaley. ✓"},
+    {trigger:['lead','enquiry','nava','client','renovation','interior'],reply:"Namaskar! 🙏 Nirmala Associates - Latur.\n\nTumcha enquiry milala. Sahaj Sir 10+ varshanche expert ahet construction & interior design madhye.\n\n📁 Portfolio pathavtoy...\n📞 Site visit saathi time sangate?\n\nMi Sahaj Sir la alert kela ahe. ✓"},
+    {trigger:['worker','labour','employee','site','kitne','hajar'],reply:"👷 Aajche Site Reports:\n\nShinde Site: 4 workers (Ramesh + team)\nKulkarni Site: 3 workers\nPatil Office: 5 workers\n\nTotal: 12 workers aaj. Attendance 100%. ✓"},
+  ],
+  default: [
+    "Namaskar! 🙏 Mi SARTHI — Nirmala Associates AI PA. Tumhala kay saangayche ahe?\n\nMi he karu shakto:\n• Site updates\n• Payment status\n• New lead handling\n• Worker attendance\n• Sahaj Sir la alert\n\nKay havi ahe?",
+    "Sahaj Sir currently site inspection la ahet. Mi tumchi mahiti note karli ahe. SARTHI tumhala 2 tasant callback denyacha prayatna karil. Yog asel ka?\n\nEkhada urgent asel tar WhatsApp var URGENT lihun pathava — mi Sahaj Sir la alert karto lagech. ✓",
+    "Samjhle! Mi hi request process karto. Sahaj Sir la WhatsApp alert pathavtoy aata. 📱\n\nTumcha number save karto — follow-up 1 tasant heil. Nirmala Associates chi seva tumhala avadali asel asha asha karto! 🙏"
+  ]
+};
+
+let msgCount = 0;
+function sendChat(){
+  const input = document.getElementById('chatInput');
+  const text = input.value.trim();
+  if(!text) return;
+  input.value = '';
+  
+  const msgs = document.getElementById('chatMsgs');
+  const userMsg = document.createElement('div');
+  userMsg.className = 'msg user';
+  userMsg.innerHTML = text + '<div class="msg-time">Just now</div>';
+  msgs.appendChild(userMsg);
+  
+  // Show typing
+  const typing = document.createElement('div');
+  typing.className = 'typing';
+  typing.innerHTML = '<span></span><span></span><span></span>';
+  msgs.appendChild(typing);
+  msgs.scrollTop = msgs.scrollHeight;
+  
+  setTimeout(() => {
+    msgs.removeChild(typing);
+    let reply = RESPONSES.default[msgCount % RESPONSES.default.length];
+    const lower = text.toLowerCase();
+    for(const r of RESPONSES.marathi){
+      if(r.trigger.some(t => lower.includes(t))){ reply = r.reply; break; }
+    }
+    const aiMsg = document.createElement('div');
+    aiMsg.className = 'msg ai';
+    aiMsg.innerHTML = '<div class="msg-lang">SARTHI · Marathi/Hindi/English</div>' + reply.replace(/\n/g,'<br>') + '<div class="msg-time">Just now</div>';
+    msgs.appendChild(aiMsg);
+    msgs.scrollTop = msgs.scrollHeight;
+    
+    // Add to WA preview
+    addWAMsg('📩 New interaction logged:\n"' + text.substring(0,40) + (text.length>40?'...':'') + '"\n✅ SARTHI responded in Marathi');
+    msgCount++;
+  }, 1400);
+}
+
+function addWAMsg(text){
+  const wa = document.getElementById('waMsgs');
+  const now = new Date();
+  const time = now.getHours()+':'+String(now.getMinutes()).padStart(2,'0');
+  const div = document.createElement('div');
+  div.className = 'wa-msg from-ai';
+  div.innerHTML = '<div style="font-size:.6rem">'+text.replace(/\n/g,'<br>')+'</div><div class="wa-time">'+time+' <span class="wa-tick">✓✓</span></div>';
+  wa.appendChild(div);
+  wa.scrollTop = wa.scrollHeight;
+}
+
+document.getElementById('chatInput').addEventListener('keydown', function(e){
+  if(e.key === 'Enter') sendChat();
+});
+</script>
+</body>
+</html>
