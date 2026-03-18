@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>SARTHI — Nirmala Associates AI PA</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+
+/* ── THEME VARIABLES ── */
+body.light {
+  --bg-page: #f0f2f5;
+  --bg-header: #075e54;
+  --bg-header2: #128c7e;
+  --bg-chat: #efeae2;
+  --bg-bubble-bot: #ffffff;
+  --bg-bubble-user: #d9fdd3;
+  --bg-surface: #ffffff;
+  --bg-surface2: #f0f2f5;
+  --bg-input: #ffffff;
+  --bg-tabs: #075e54;
+  --tab-active: #ffffff;
+  --tab-inactive: rgba(255,255,255,0.6);
+  --tab-indicator: #25d366;
+  --text-primary: #111b21;
+  --text-secondary: #667781;
+  --text-bubble: #111b21;
+  --text-time: #667781;
+  --ticks: #53bdeb;
+  --border: rgba(0,0,0,0.08);
+  --chip-bg: #ffffff;
+  --chip-border: rgba(7,94,84,0.3);
+  --chip-text: #075e54;
+  --chip-hover-bg: #075e54;
+  --online: #25d366;
+  --notif-bg: #ffffff;
+  --notif-item: #f8f9fa;
+  --shadow: 0 2px 8px rgba(0,0,0,0.12);
+  --chat-pattern: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cdefs%3E%3Cpattern id='p' width='80' height='80' patternUnits='userSpaceOnUse'%3E%3Cpath d='M20 20c0-5.5 4.5-10 10-10s10 4.5 10 10-4.5 10-10 10-10-4.5-10-10zm40 0c0-5.5 4.5-10 10-10s10 4.5 10 10-4.5 10-10 10-10-4.5-10-10zM20 60c0-5.5 4.5-10 10-10s10 4.5 10 10-4.5 10-10 10-10-4.5-10-10z' fill='%23c8b8a2' fill-opacity='0.12'/%3E%3C/pattern%3E%3C/defs%3E%3Crect width='100%25' height='100%25' fill='url(%23p)'/%3E%3C/svg%3E");
+}
+body.dark {
+  --bg-page: #111b21;
+  --bg-header: #202c33;
+  --bg-header2: #2a3942;
+  --bg-chat: #0b141a;
+  --bg-bubble-bot: #1f2c34;
+  --bg-bubble-user: #005c4b;
+  --bg-surface: #1f2c34;
+  --bg-surface2: #182229;
+  --bg-input: #2a3942;
+  --bg-tabs: #202c33;
+  --tab-active: #00a884;
+  --tab-inactive: #8696a0;
+  --tab-indicator: #00a884;
+  --text-primary: #e9edef;
+  --text-secondary: #8696a0;
+  --text-bubble: #e9edef;
+  --text-time: #8696a0;
+  --ticks: #53bdeb;
+  --border: rgba(255,255,255,0.06);
+  --chip-bg: #1f2c34;
+  --chip-border: rgba(0,168,132,0.3);
+  --chip-text: #00a884;
+  --chip-hover-bg: #00a884;
+  --online: #00a884;
+  --notif-bg: #1f2c34;
+  --notif-item: #182229;
+  --shadow: 0 2px 8px rgba(0,0,0,0.4);
+  --chat-pattern: none;
+}
+
+body {
+  background: var(--bg-page);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 16px;
+  font-family: 'Roboto', sans-serif;
+  transition: background 0.3s;
+}
+
+/* ── Top bar ── */
+.topbar {
+  width: 100%;
+  max-width: 430px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  padding: 0 4px;
+}
+.topbar-logo {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--bg-header);
+  font-family: 'Noto Sans Devanagari', sans-serif;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+body.dark .topbar-logo { color: #00a884; }
+.theme-toggle {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 6px 14px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s;
+  box-shadow: var(--shadow);
+}
+.theme-toggle:hover { opacity: 0.85; }
+
+/* ── Phone frame ── */
+.phone {
+  width: 100%;
+  max-width: 430px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2), 0 0 0 1px var(--border);
+  transition: box-shadow 0.3s;
+}
+
+/* ── WA Header ── */
+.wh {
+  background: var(--bg-header);
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  position: relative;
+}
+.wh::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 1px;
+  background: rgba(0,0,0,0.1);
+}
+.wh-back { color: rgba(255,255,255,0.85); font-size: 20px; cursor: pointer; line-height: 1; }
+.wh-av {
+  width: 38px; height: 38px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #128c7e, #25d366);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 17px; flex-shrink: 0;
+  border: 1.5px solid rgba(255,255,255,0.2);
+}
+.wh-info { flex: 1; min-width: 0; }
+.wh-name {
+  font-size: 15px; font-weight: 600; color: #fff;
+  font-family: 'Noto Sans Devanagari', sans-serif;
+}
+.wh-sub {
+  font-size: 12px; color: rgba(255,255,255,0.75);
+  display: flex; align-items: center; gap: 4px; margin-top: 1px;
+}
+.wh-sub-dot { width: 6px; height: 6px; border-radius: 50%; background: #25d366; }
+.wh-icons { display: flex; gap: 18px; color: rgba(255,255,255,0.85); font-size: 17px; cursor: pointer; }
+
+/* ── Tabs ── */
+.tabs {
+  display: flex;
+  background: var(--bg-tabs);
+  border-bottom: 1px solid var(--border);
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.tabs::-webkit-scrollbar { display: none; }
+.tab {
+  flex-shrink: 0;
+  padding: 10px 13px;
+  font-size: 11.5px;
+  font-weight: 500;
+  color: var(--tab-inactive);
+  cursor: pointer;
+  border-bottom: 2.5px solid transparent;
+  white-space: nowrap;
+  font-family: 'Noto Sans Devanagari', sans-serif;
+  transition: all 0.15s;
+}
+.tab.on { color: var(--tab-active); border-bottom-color: var(--tab-indicator); }
+body.light .tab.on { color: #fff; border-bottom-color: #25d366; }
+
+/* ── Chat ── */
+.chat {
+  height: 420px;
+  overflow-y: auto;
+  background-color: var(--bg-chat);
+  background-image: var(--chat-pattern);
+  padding: 10px 10px 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  scroll-behavior: smooth;
+}
+.chat::-webkit-scrollbar { width: 3px; }
+.chat::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+/* Date chip */
+.date-chip {
+  align-self: center;
+  background: var(--bg-surface);
+  color: var(--text-secondary);
+  font-size: 11.5px;
+  padding: 4px 12px;
+  border-radius: 8px;
+  margin: 6px 0;
+  box-shadow: var(--shadow);
+  font-family: 'Roboto', sans-serif;
+}
+
+/* Bubbles */
+.msg-wrap { display: flex; flex-direction: column; animation: fadeUp 0.22s ease; }
+@keyframes fadeUp { from{opacity:0;transform:translateY(6px)} to{opacity:1;transform:translateY(0)} }
+
+.bubble {
+  max-width: 80%;
+  padding: 7px 10px 4px;
+  border-radius: 8px;
+  font-size: 14px;
+  line-height: 1.55;
+  font-family: 'Noto Sans Devanagari', sans-serif;
+  word-break: break-word;
+  position: relative;
+  color: var(--text-bubble);
+  transition: background 0.3s;
+}
+.bubble.bot {
+  background: var(--bg-bubble-bot);
+  border-top-left-radius: 0;
+  align-self: flex-start;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.12);
+}
+.bubble.bot::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -8px;
+  border-top: 8px solid var(--bg-bubble-bot);
+  border-left: 8px solid transparent;
+}
+.bubble.user {
+  background: var(--bg-bubble-user);
+  border-top-right-radius: 0;
+  align-self: flex-end;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.12);
+}
+.bubble.user::before {
+  content: '';
+  position: absolute;
+  top: 0; right: -8px;
+  border-top: 8px solid var(--bg-bubble-user);
+  border-right: 8px solid transparent;
+}
+body.light .bubble.user { color: #111b21; }
+body.light .bubble.bot { color: #111b21; }
+
+.msg-meta {
+  display: flex; align-items: center; justify-content: flex-end;
+  gap: 3px; margin-top: 2px; padding-top: 1px;
+}
+.msg-time { font-size: 11px; color: var(--text-time); font-family: 'Roboto', sans-serif; }
+.ticks { font-size: 12px; color: var(--ticks); }
+
+/* Typing */
+.typing-wrap { display: flex; align-items: flex-end; animation: fadeUp 0.2s ease; }
+.typing-bub {
+  background: var(--bg-bubble-bot);
+  border-radius: 8px; border-top-left-radius: 0;
+  padding: 11px 14px;
+  display: flex; gap: 4px; align-items: center;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.12);
+  position: relative;
+}
+.typing-bub::before {
+  content: ''; position: absolute; top: 0; left: -8px;
+  border-top: 8px solid var(--bg-bubble-bot);
+  border-left: 8px solid transparent;
+}
+@keyframes blink { 0%,60%,100%{transform:translateY(0);opacity:0.4} 30%{transform:translateY(-4px);opacity:1} }
+.dot { width: 7px; height: 7px; border-radius: 50%; background: var(--text-secondary); }
+.dot:nth-child(1){animation:blink 1.2s 0s infinite}
+.dot:nth-child(2){animation:blink 1.2s 0.2s infinite}
+.dot:nth-child(3){animation:blink 1.2s 0.4s infinite}
+
+/* Chips */
+.chips {
+  background: var(--bg-surface2);
+  padding: 8px 10px;
+  display: none;
+  flex-wrap: wrap;
+  gap: 6px;
+  border-top: 1px solid var(--border);
+}
+.chip {
+  background: var(--chip-bg);
+  border: 1.5px solid var(--chip-border);
+  border-radius: 20px;
+  padding: 7px 13px;
+  font-size: 12.5px;
+  color: var(--chip-text);
+  cursor: pointer;
+  font-family: 'Noto Sans Devanagari', sans-serif;
+  transition: all 0.15s;
+  line-height: 1.3;
+  box-shadow: var(--shadow);
+}
+.chip:hover { background: var(--chip-hover-bg); color: #fff; border-color: transparent; transform: translateY(-1px); }
+
+/* Input bar */
+.wa-input {
+  background: var(--bg-header);
+  padding: 8px 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-top: 1px solid rgba(0,0,0,0.08);
+}
+body.dark .wa-input { background: var(--bg-header); border-top-color: var(--border); }
+.wa-input-box {
+  flex: 1;
+  background: var(--bg-input);
+  border-radius: 24px;
+  padding: 9px 14px;
+  font-size: 13px;
+  color: var(--text-secondary);
+  display: flex; align-items: center; gap: 8px;
+  box-shadow: var(--shadow);
+}
+.wa-mic {
+  width: 42px; height: 42px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #128c7e, #25d366);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 17px; flex-shrink: 0;
+  box-shadow: 0 2px 8px rgba(37,211,102,0.3);
+}
+
+/* Start screen */
+.start-screen {
+  display: flex; flex-direction: column; align-items: center;
+  justify-content: center; height: 100%; gap: 14px;
+  text-align: center; padding: 20px;
+}
+.start-av {
+  width: 70px; height: 70px; border-radius: 50%;
+  background: linear-gradient(135deg, #075e54, #25d366);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 28px;
+  box-shadow: 0 0 0 6px rgba(37,211,102,0.12), 0 8px 24px rgba(37,211,102,0.25);
+}
+.start-name { font-size: 20px; font-weight: 700; color: var(--text-primary); font-family: 'Noto Sans Devanagari', sans-serif; }
+.start-desc { font-size: 13px; color: var(--text-secondary); line-height: 1.7; max-width: 280px; font-family: 'Noto Sans Devanagari', sans-serif; }
+.start-btn {
+  background: linear-gradient(135deg, #075e54, #25d366);
+  color: #fff; border: none; border-radius: 28px;
+  padding: 13px 30px; font-size: 15px; font-weight: 600;
+  cursor: pointer; font-family: 'Noto Sans Devanagari', sans-serif;
+  box-shadow: 0 4px 16px rgba(37,211,102,0.35);
+  transition: all 0.2s;
+}
+.start-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(37,211,102,0.4); }
+.start-enc { font-size: 11px; color: var(--text-secondary); display: flex; align-items: center; gap: 4px; }
+
+/* Notification panel */
+.notif-panel {
+  width: 100%;
+  max-width: 430px;
+  margin-top: 10px;
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--notif-bg);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+}
+.notif-hdr {
+  background: var(--bg-header);
+  padding: 10px 16px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.notif-hdr-title { font-size: 13px; font-weight: 600; color: #fff; font-family: 'Noto Sans Devanagari', sans-serif; }
+.notif-hdr-sub { font-size: 11px; color: rgba(255,255,255,0.65); margin-top: 1px; }
+.live-dot {
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.25);
+  border-radius: 12px; padding: 3px 10px;
+  font-size: 10px; font-weight: 700; color: #fff;
+  display: flex; align-items: center; gap: 4px;
+}
+.live-dot::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: #25d366; display: inline-block; animation: livePulse 2s infinite; }
+@keyframes livePulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+.notif-list { padding: 8px 10px 10px; display: flex; flex-direction: column; gap: 5px; }
+.notif {
+  background: var(--notif-item);
+  border-radius: 8px; padding: 9px 12px;
+  display: flex; gap: 10px; align-items: flex-start;
+  border: 1px solid var(--border);
+  animation: fadeUp 0.3s ease;
+}
+.nd { width: 8px; height: 8px; border-radius: 50%; margin-top: 5px; flex-shrink: 0; }
+.nd.g { background: #25d366; }
+.nd.y { background: #f0b429; }
+.nd.r { background: #ef4444; }
+.nb-text { font-size: 12.5px; color: var(--text-primary); font-family: 'Noto Sans Devanagari', sans-serif; line-height: 1.4; }
+.nb-time { font-size: 11px; color: var(--text-secondary); margin-top: 2px; }
+
+.footer-note { margin-top: 10px; text-align: center; font-size: 11px; color: var(--text-secondary); }
+.footer-note span { color: #075e54; font-weight: 700; }
+body.dark .footer-note span { color: #25d366; }
+</style>
+</head>
+<body class="light">
+
+<!-- Top bar -->
+<div class="topbar">
+  <div class="topbar-logo">🤖 SARTHI Demo · Nirmala Associates</div>
+  <button class="theme-toggle" onclick="toggleTheme()">
+    <span id="theme-icon">🌙</span>
+    <span id="theme-label">Dark</span>
+  </button>
+</div>
+
+<!-- Phone -->
+<div class="phone">
+
+  <!-- Header -->
+  <div class="wh">
+    <div class="wh-back">←</div>
+    <div class="wh-av">🤖</div>
+    <div class="wh-info">
+      <div class="wh-name">SARTHI — सारथी AI PA</div>
+      <div class="wh-sub"><div class="wh-sub-dot"></div>Online · Nirmala Associates, Latur</div>
+    </div>
+    <div class="wh-icons"><span>📞</span><span>⋮</span></div>
+  </div>
+
+  <!-- Tabs -->
+  <div class="tabs">
+    <div class="tab on" onclick="loadTab('client',this)">🏗️ Client</div>
+    <div class="tab" onclick="loadTab('site',this)">📋 Site</div>
+    <div class="tab" onclick="loadTab('payment',this)">💰 Payment</div>
+    <div class="tab" onclick="loadTab('lead',this)">🎯 नवा Lead</div>
+    <div class="tab" onclick="loadTab('labour',this)">👷 Labour</div>
+    <div class="tab" onclick="loadTab('material',this)">🧱 Material</div>
+  </div>
+
+  <!-- Chat -->
+  <div class="chat" id="chat">
+    <div class="start-screen" id="ss">
+      <div class="start-av">🤖</div>
+      <div class="start-name">SARTHI — सारथी</div>
+      <div class="start-desc">नमस्कार! मी Nirmala Associates चा AI Personal Assistant. Sahaj Dada ना मदत करण्यासाठी मी सदैव तयार — Marathi, Hindi आणि English मध्ये.</div>
+      <button class="start-btn" onclick="begin()">बोलणे सुरू करा 🚀</button>
+      <div class="start-enc">🔒 End-to-end encrypted · ads4you AI Studio</div>
+    </div>
+  </div>
+
+  <!-- Chips -->
+  <div class="chips" id="chips"></div>
+
+  <!-- Input bar -->
+  <div class="wa-input">
+    <div class="wa-input-box">
+      <span>😊</span>
+      <span style="flex:1">Message</span>
+      <span>📎</span>
+    </div>
+    <div class="wa-mic">🎤</div>
+  </div>
+
+</div>
+
+<!-- Notification Panel -->
+<div class="notif-panel">
+  <div class="notif-hdr">
+    <div>
+      <div class="notif-hdr-title">📲 Sahaj Dada चा WhatsApp</div>
+      <div class="notif-hdr-sub">SARTHI चे auto-updates</div>
+    </div>
+    <div class="live-dot">LIVE</div>
+  </div>
+  <div class="notif-list" id="notifs">
+    <div class="notif">
+      <div class="nd g"></div>
+      <div>
+        <div class="nb-text">🌅 <strong>सुप्रभात Report — 9:00 AM</strong><br>Active sites: 3 · Workers: 18 · Pending: ₹2.85L · नवे leads: 1</div>
+        <div class="nb-time">आज · 9:00 AM · ✓✓</div>
+      </div>
+    </div>
+    <div class="notif">
+      <div class="nd y"></div>
+      <div>
+        <div class="nb-text">⚠️ <strong>Patil Site Alert</strong><br>Cement delivery उद्यापर्यंत उशीर. Supervisor ला कळवले.</div>
+        <div class="nb-time">आज · 11:32 AM · ✓✓</div>
+      </div>
+    </div>
+    <div class="notif">
+      <div class="nd r"></div>
+      <div>
+        <div class="nb-text">🔴 <strong>Payment Overdue — Kulkarni</strong><br>₹85,000 · 8 दिवसांपासून pending. Reminder scheduled.</div>
+        <div class="nb-time">आज · 2:15 PM · ✓✓</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="footer-note">Powered by <span>ads4you AI Studio</span> · Wakad, Pune · UDYAM Certified · <span>+91 97670 66941</span></div>
+
+<script>
+const PHONE="919767066941";
+let started=false,currentTab='client';
+const now=()=>{const d=new Date();return d.getHours().toString().padStart(2,'0')+':'+d.getMinutes().toString().padStart(2,'0')};
+
+function toggleTheme(){
+  const b=document.body;
+  const isDark=b.classList.contains('dark');
+  b.classList.toggle('dark',!isDark);
+  b.classList.toggle('light',isDark);
+  document.getElementById('theme-icon').textContent=isDark?'🌙':'☀️';
+  document.getElementById('theme-label').textContent=isDark?'Dark':'Light';
+}
+
+const FLOWS={
+  client:[
+    {f:'bot',t:'नमस्कार! 🙏 मी SARTHI — Nirmala Associates चा AI PA.\nSahaj Sir सध्या Patil site वर आहेत. मी तुमची मदत करू शकतो.'},
+    {f:'user',t:'माझ्या घराचं renovation कधी पूर्ण होणार?'},
+    {f:'bot',t:'एक मिनिट — Desai Renovation चे details तपासतो...'},
+    {f:'bot',t:'✅ <b>Desai Renovation — Progress Update</b>\n\n📍 Stage: Flooring सुरू\n📊 Progress: 78% पूर्ण\n👷 आज workers: 6\n📅 Est. completion: <b>8 ते 10 दिवस</b>\n\nWhatsApp वर detailed report पाठवू का?'},
+  ],
+  site:[
+    {f:'bot',t:'नमस्कार Sahaj Sir! 🙏 संध्याकाळी 6 चा site report घेतो आता.'},
+    {f:'user',t:'Shinde Bungalow चा आजचा report सांगा.'},
+    {f:'bot',t:'📋 <b>Shinde Bungalow — आजचा Report</b>\n\n🏗️ RCC slab: पूर्ण ✅\n🧱 Brickwork 1st floor: 60%\n🪣 Plastering: अजून सुरू नाही\n👷 Mason: 4 · Helper: 6\n📦 Cement stock: 12 bags (≈3 दिवस)\n⚠️ Tiles delivery: उद्या confirm करायची\n\nSahaj Sir ला WhatsApp summary पाठवली आहे. ✓✓'},
+  ],
+  payment:[
+    {f:'bot',t:'नमस्कार! 🙏 Payment बद्दल काय मदत करू, Sahaj Sir?'},
+    {f:'user',t:'Kulkarni चं payment किती pending आहे?'},
+    {f:'bot',t:'💳 <b>Kulkarni Renovation — Payment Status</b>\n\n📌 Project: 3BHK Interior, Latur\n💰 Total contract: ₹4,80,000\n✅ Received: ₹3,95,000\n🔴 Pending: <b>₹85,000</b>\n📅 Overdue: 8 दिवसांपूर्वी\n📞 Stage: Finishing work payment\n\nSARTHI आत्ता polite reminder call करतो का?'},
+  ],
+  lead:[
+    {f:'user',t:'Namaskar! Mala 3BHK ghar banwayche ahe Latur madhe.'},
+    {f:'bot',t:'नमस्कार! 🙏 Nirmala Associates मध्ये आपले स्वागत!\n\nमी SARTHI — Sahaj Sir चा AI Assistant.\nLatur मध्ये घर बांधणी — उत्तम निर्णय! थोडी माहिती विचारतो:'},
+    {f:'bot',t:'🏠 <b>Quick Questions:</b>\n\n① Plot तयार आहे का? कुठे?\n② किती मजले हवेत?\n③ Approximate budget?\n④ Completion कधीपर्यंत हवी?\n\nही माहिती दिल्यावर Sahaj Sir <b>free site visit</b> देतील आणि accurate BOQ पाठवतील — 24 तासांत.'},
+  ],
+  labour:[
+    {f:'bot',t:'नमस्कार Sahaj Sir! 🙏 Labour management बद्दल काय मदत करू?'},
+    {f:'user',t:'आज Patil site वर किती workers आहेत?'},
+    {f:'bot',t:'👷 <b>Patil Site — आजची Attendance</b>\n\n🧱 Mason (गवंडी): 3\n🔨 Carpenter (सुतार): 2\n🔧 Plumber: 1 (afternoon)\n⚡ Electrician: उद्यापासून\n🪣 Helper: 5\n\nTotal आज: <b>11 workers</b>\n\n⚠️ Note: Electrician 1 दिवस उशीर — Sahaj Sir ला alert पाठवला आहे.'},
+  ],
+  material:[
+    {f:'bot',t:'नमस्कार! 🙏 Material tracking बद्दल काय माहिती हवी?'},
+    {f:'user',t:'Desai site वर cement आणि tiles stock किती आहे?'},
+    {f:'bot',t:'🧱 <b>Desai Renovation — Material Stock</b>\n\n🏗️ Cement: 18 bags (≈4 दिवस) ✅\n🪨 Sand (वाळू): Sufficient ✅\n🔩 Steel: Next slab साठी order done ✅\n🪟 Tiles: Delivery Thursday pending ⏳\n🎨 Paint: <b>Order अजून नाही ⚠️</b>\n\n<b>Action needed:</b> Paint order या आठवड्यात द्यायला हवा.\nSahaj Sir ला reminder set करू का?'},
+  ],
+};
+
+const CHIPS={
+  client:[
+    {t:'📅 Site visit book करा',n:'site_visit'},
+    {t:'💳 सर्व payments',n:'payment_q'},
+    {t:'📞 Sahaj Sir ला connect',n:'connect'},
+    {t:'📸 Site photos पाहा',n:'photos'},
+  ],
+  site:[
+    {t:'⚠️ Client ला delay कळवा',n:'delay_notify'},
+    {t:'📦 Material order करा',n:'mat_order'},
+    {t:'👷 Worker issue report',n:'worker_issue'},
+    {t:'📋 सर्व sites report',n:'all_sites'},
+  ],
+  payment:[
+    {t:'📞 Reminder call करा',n:'reminder_call'},
+    {t:'💬 WhatsApp message',n:'payment_wa'},
+    {t:'📊 सर्व pending',n:'all_pending'},
+    {t:'✅ Payment received',n:'mark_paid'},
+  ],
+  lead:[
+    {t:'📁 Portfolio पाठवा',n:'portfolio'},
+    {t:'📅 Site visit book करा',n:'lead_visit'},
+    {t:'💰 Quotation द्या',n:'quotation'},
+    {t:'🟢 WhatsApp वर बोलूया',n:'wa_connect',wa:true},
+  ],
+  labour:[
+    {t:'📋 सर्व sites attendance',n:'attendance'},
+    {t:'⚠️ Worker absent report',n:'absent'},
+    {t:'💰 Labour payment due',n:'labour_pay'},
+    {t:'🆕 नवा worker लागतो',n:'new_worker'},
+  ],
+  material:[
+    {t:'🛒 Order place करा',n:'order_now'},
+    {t:'📦 Delivery confirm करा',n:'delivery'},
+    {t:'💸 Supplier payment',n:'supplier_pay'},
+    {t:'📊 सर्व sites stock',n:'all_stock'},
+  ],
+};
+
+const FU={
+  site_visit:['📅 Site visit confirmed!\n\nSahaj Sir उद्या सकाळी 10 AM ते 12 PM available आहेत.\n\nतुमचा address WhatsApp वर पाठवा — ते येतील. Calendar reminder set. ✓'],
+  payment_q:['💳 Payment Summary:\n\n🔴 Kulkarni: ₹85,000 (8 days overdue)\n🔴 Desai: ₹1,20,000 (2 days overdue)\n🟡 Shinde: ₹60,000 (due Friday)\n✅ Patil: Paid\n\nTotal pending: ₹2,65,000\n\nSARTHI आज सर्वांना reminders पाठवतो.'],
+  connect:['Sahaj Sir ला alert पाठवला! 📲\n\nते 20-30 minutes मध्ये call back करतील.\n\nMeanwhile SARTHI कोणतीही माहिती देऊ शकतो. 🙏'],
+  photos:['📸 Site photos WhatsApp वर पाठवल्या!\n\nShinde Bungalow — आजच्या 8 photos\nBefore/After comparison included\n\nClient ला 6 PM ला automatically update मिळेल. ✓'],
+  delay_notify:['✅ Client ला delay notification sent:\n\n"नमस्कार! Nirmala Associates कडून update — Shinde Bungalow tiles delivery 2 दिवस उशीर होणार आहे. Sahaj Sir Thursday ला personally भेटतील. असुविधेबद्दल क्षमस्व."\n\nDelivered ✓✓'],
+  mat_order:['🛒 Tiles order placed!\n\nQuantity: 200 sq ft\nSupplier: Latur Tiles Depot\nDelivery: Thursday 10 AM\nAmount: ₹18,000\n\nSahaj Sir ला confirmation. ✓'],
+  worker_issue:['👷 Worker issue logged.\n\n2 helpers आज absent.\nSahaj Sir ला alert — backup arrange करत आहेत.\n\nClient ला progress delay कळवू का?'],
+  all_sites:['📊 सर्व Sites — आजचा Report:\n\n🏗️ Patil Bungalow: 65% · 11 workers\n🏗️ Desai Renovation: 78% · 8 workers\n🏗️ Shinde Interior: 40% · 6 workers ⚠️\n\nTotal workers today: 25\n\nSahaj Sir ला full summary WhatsApp वर पाठवली. ✓✓'],
+  reminder_call:['📞 Kulkarni साहेबांना call केला...\n\nSARTHI: "नमस्कार Kulkarni साहेब! Nirmala Associates मधून बोलतोय. Sahaj Sir च्या विनंतीनुसार ₹85,000 payment बद्दल विचारायचे होते."\n\nKulkarni: "हो, शुक्रवारी करतो."\n\n✅ Friday reminder set. Sahaj Sir ला update केले. 🙏'],
+  payment_wa:['💬 WhatsApp message delivered ✓✓\n\n"नमस्कार Kulkarni साहेब! Nirmala Associates — ₹85,000 payment reminder. Sahaj Sir ने विनंती केली आहे की या आठवड्यात complete व्हावे. कोणती अडचण असेल तर नक्की सांगावे."'],
+  all_pending:['💰 सर्व Pending Payments:\n\n🔴 Kulkarni: ₹85,000 (8 days)\n🔴 Desai: ₹1,20,000 (2 days)\n🟡 Shinde: ₹60,000 (due Fri)\n✅ Patil: Paid\n\nTotal: ₹2,65,000\n\nSARTHI आज polite reminders पाठवतो.'],
+  mark_paid:['✅ Payment marked received!\n\nKulkarni ₹85,000 — Received आज\nMode: NEFT · DhanaTrack updated\n\nReceipt automatically client ला पाठवली. Sahaj Sir ला notification. 🎉'],
+  portfolio:['📁 Portfolio पाठवत आहे...\n\n✅ 50+ completed projects\n✅ Before/After photos — Latur\n✅ Client testimonials\n✅ Price range guide\n\nSahaj Sir 24 तासांत personally call करतील. 🙏'],
+  lead_visit:['📅 Site visit booked!\n\nSahaj Sir उद्या किंवा परवा available.\n\nतुमचा address सांगाल का? SARTHI map note करतो आणि Sahaj Sir च्या calendar मध्ये add करतो. ✓'],
+  quotation:['💰 Quotation साठी माहिती लागेल:\n\n① Plot size (चौ.फू.)\n② किती floors?\n③ Interior हवे का?\n④ Standard / Premium / Luxury?\n\nही माहिती मिळाल्यावर Sahaj Sir 24 तासांत accurate BOQ पाठवतील. Free! 🙏'],
+  wa_connect:['WhatsApp वर connect होऊया! 💬\n\n"SARTHI Demo" लिहून पाठवा — Prashant (ads4you) लगेच reply करतील. ⚡'],
+  attendance:['👷 आजची Attendance:\n\n🏗️ Patil: 11 workers ✅\n🏗️ Desai: 8 workers ✅\n🏗️ Shinde: 6 workers ⚠️ (2 absent)\n\nTotal: 25 workers on field\n\nShinde site अलर्ट Sahaj Sir ला पाठवला.'],
+  absent:['⚠️ Absent report logged.\n\nSahaj Sir ला notification.\nBackup contacts:\n① Ramesh Gaikwad: 98XX\n② Suresh Patil: 97XX\n\nSARTHI call करतो का?'],
+  labour_pay:['💰 Labour Payment Due:\n\nWeekly settlement: शुक्रवार\nMasons: ₹700/day\nHelpers: ₹450/day\n\nTotal this week: ₹38,400\n\nFriday reminder set. ✓'],
+  new_worker:['🆕 Requirement noted!\n\nSahaj Sir ला message — Shinde site साठी 1 extra mason Monday पासून.\n\nते arrange करतील. SARTHI follow-up करेल. ✓'],
+  order_now:['🛒 Paint order placed!\n\nAsian Paints — 40L · ₹4,200\nSupplier: Latur Paint House\nDelivery: 2 दिवसांत\n\nSahaj Sir ला confirmation. Desai client timeline update. ✓'],
+  delivery:['📦 Delivery confirmed!\n\nTiles — Thursday 10 AM ✅\nSupervisor ला alert: ready rahayche.\nSahaj Sir: ₹18,000 Thursday ला द्यायचे. ✓'],
+  supplier_pay:['💸 Supplier Payments Due:\n\nLatur Tiles Depot: ₹18,000 (Thu)\nCement supplier: ₹12,000 (Fri)\nSteel: Paid ✅\n\nTotal due: ₹30,000\n\nSahaj Sir ला weekly summary पाठवली.'],
+  all_stock:['📊 Material Stock — सर्व Sites:\n\n🏗️ Patil: Cement LOW ⚠️\n🏗️ Desai: Tiles pending ⏳ · Paint needed ⚠️\n🏗️ Shinde: All sufficient ✅\n\nActions: 3 pending\nSahaj Sir ला summary पाठवली.'],
+};
+
+const NOTIF_MAP={
+  site_visit:['📅 Site visit booked! Client उद्या 10 AM.','g'],
+  reminder_call:['📞 Kulkarni payment call done. Friday ला येणार.','y'],
+  mark_paid:['✅ Kulkarni ₹85,000 received! DhanaTrack updated.','g'],
+  portfolio:['📁 New lead — Portfolio sent. Follow-up scheduled.','g'],
+  delay_notify:['⚠️ Shinde delay — Client notified.','y'],
+  mat_order:['🛒 Tiles ordered. Thursday delivery confirmed.','g'],
+};
+
+function begin(){
+  started=true;
+  document.getElementById('ss').remove();
+  loadTab('client',document.querySelector('.tab.on'));
+}
+
+function loadTab(tab,el){
+  if(!started)return;
+  currentTab=tab;
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('on'));
+  el.classList.add('on');
+  const chat=document.getElementById('chat');
+  chat.innerHTML='';
+  hideChips();
+  runFlow(FLOWS[tab]);
+}
+
+function runFlow(msgs){
+  const chat=document.getElementById('chat');
+  const chip=document.createElement('div');
+  chip.className='date-chip';
+  chip.textContent='आज';
+  chat.appendChild(chip);
+  let delay=300;
+  msgs.forEach((m,i)=>{
+    setTimeout(()=>{
+      if(m.f==='bot'){
+        showTyping();
+        setTimeout(()=>{
+          hideTyping();
+          addMsg(m.f,m.t);
+          if(i===msgs.length-1)setTimeout(()=>showChips(CHIPS[currentTab]),350);
+        },900);
+      } else {
+        addMsg(m.f,m.t);
+      }
+    },delay);
+    delay+=m.f==='bot'?1500:450;
+  });
+}
+
+function addMsg(from,text){
+  const chat=document.getElementById('chat');
+  const wrap=document.createElement('div');
+  wrap.className='msg-wrap';
+  wrap.style.alignItems=from==='user'?'flex-end':'flex-start';
+  const bub=document.createElement('div');
+  bub.className=`bubble ${from}`;
+  bub.innerHTML=text.replace(/\n/g,'<br>');
+  const meta=document.createElement('div');
+  meta.className='msg-meta';
+  meta.innerHTML=`<span class="msg-time">${now()}</span>${from==='bot'?'<span class="ticks">✓✓</span>':''}`;
+  bub.appendChild(meta);
+  wrap.appendChild(bub);
+  chat.appendChild(wrap);
+  chat.scrollTop=chat.scrollHeight;
+}
+
+function showChips(list){
+  const box=document.getElementById('chips');
+  box.innerHTML='';
+  box.style.display='flex';
+  list.forEach(c=>{
+    const btn=document.createElement('button');
+    btn.className='chip';
+    btn.textContent=c.t;
+    btn.onclick=()=>handleChip(c);
+    box.appendChild(btn);
+  });
+}
+
+function hideChips(){
+  const box=document.getElementById('chips');
+  box.style.display='none';
+  box.innerHTML='';
+}
+
+function handleChip(c){
+  addMsg('user',c.t);
+  hideChips();
+  if(c.wa){
+    showTyping();
+    setTimeout(()=>{
+      hideTyping();
+      const f=FU[c.n];
+      if(f)f.forEach((m,i)=>setTimeout(()=>addMsg('bot',m),i*500));
+      setTimeout(()=>{
+        const a=document.createElement('a');
+        a.href=`https://wa.me/${PHONE}?text=SARTHI Demo baghaychay`;
+        a.target='_blank';
+        a.style.cssText='display:block;background:linear-gradient(135deg,#075e54,#25d366);color:#fff;text-align:center;padding:12px 16px;border-radius:8px;font-size:14px;font-weight:600;text-decoration:none;margin:8px 10px;font-family:Noto Sans Devanagari,sans-serif;box-shadow:0 4px 12px rgba(37,211,102,0.3)';
+        a.textContent='📲 WhatsApp वर Prashant ला संपर्क करा';
+        document.getElementById('chat').appendChild(a);
+        document.getElementById('chat').scrollTop=9999;
+      },1200);
+    },800);
+    return;
+  }
+  showTyping();
+  setTimeout(()=>{
+    hideTyping();
+    const f=FU[c.n];
+    if(f){
+      f.forEach((m,i)=>setTimeout(()=>addMsg('bot',m),i*500));
+      if(NOTIF_MAP[c.n]){
+        setTimeout(()=>{
+          const[txt,type]=NOTIF_MAP[c.n];
+          addNotif(txt,type);
+        },1500);
+      }
+    }
+    setTimeout(()=>showChips(CHIPS[currentTab]),(f?f.length*500:0)+600);
+  },900);
+}
+
+function showTyping(){
+  hideTyping();
+  const chat=document.getElementById('chat');
+  const wrap=document.createElement('div');
+  wrap.className='typing-wrap';
+  wrap.id='typing';
+  wrap.innerHTML='<div class="typing-bub"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>';
+  chat.appendChild(wrap);
+  chat.scrollTop=chat.scrollHeight;
+}
+function hideTyping(){const el=document.getElementById('typing');if(el)el.remove();}
+
+function addNotif(text,type){
+  const list=document.getElementById('notifs');
+  const n=document.createElement('div');
+  n.className='notif';
+  n.innerHTML=`<div class="nd ${type}"></div><div><div class="nb-text">${text}</div><div class="nb-time">आत्ता · ${now()} · ✓✓</div></div>`;
+  list.insertBefore(n,list.firstChild);
+}
+</script>
+</body>
+</html>
