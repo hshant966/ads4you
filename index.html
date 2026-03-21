@@ -398,6 +398,29 @@ hr.div{border:none;border-top:1px solid var(--border);margin:0}
 }
 @keyframes hIn{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
 
+/* DEMO STRIP */
+.demo-strip{margin-top:2rem;animation:hIn .55s ease both .8s;opacity:0}
+.demo-strip-label{font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--t3);margin-bottom:.85rem;font-weight:600}
+.demo-strip-btns{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin-bottom:.75rem}
+.demo-btn{display:flex;align-items:center;gap:.75rem;padding:.85rem 1rem;border-radius:12px;text-decoration:none;transition:all .25s;border:1.5px solid var(--border);position:relative;overflow:hidden}
+.demo-btn:hover{transform:translateY(-3px)}
+.demo-btn-smb{background:rgba(255,107,53,.06);border-color:rgba(255,107,53,.25)}
+.demo-btn-smb:hover{border-color:rgba(255,107,53,.5);box-shadow:0 8px 28px rgba(255,107,53,.18)}
+.demo-btn-ent{background:rgba(0,212,255,.06);border-color:rgba(0,212,255,.22)}
+.demo-btn-ent:hover{border-color:rgba(0,212,255,.5);box-shadow:0 8px 28px rgba(0,212,255,.18)}
+.demo-btn-icon{font-size:1.5rem;flex-shrink:0}
+.demo-btn-title{font-size:.9rem;font-weight:700;margin-bottom:.15rem}
+.demo-btn-smb .demo-btn-title{color:#FF6B35}
+.demo-btn-ent .demo-btn-title{color:#00D4FF}
+.demo-btn-sub{font-size:.72rem;color:var(--t3);line-height:1.4}
+.demo-btn-arrow{margin-left:auto;font-size:1.1rem;flex-shrink:0;opacity:.5;transition:all .25s}
+.demo-btn:hover .demo-btn-arrow{opacity:1;transform:translateX(3px)}
+.demo-strip-pricing{display:flex;align-items:center;justify-content:center;gap:.6rem;font-size:.78rem}
+.demo-strip-pricing a{color:var(--t3);text-decoration:none;transition:color .2s}
+.demo-strip-pricing a:hover{color:var(--accent)}
+.demo-divider{color:var(--t3);opacity:.4}
+@media(max-width:600px){.demo-strip-btns{grid-template-columns:1fr}}
+
 /* ═══════════ MARQUEE ═══════════ */
 .marquee-wrap{
   overflow:hidden;position:relative;z-index:1;
@@ -951,6 +974,34 @@ footer{
       <div class="hero-btns">
         <a href="#contact" class="btn btn-p">Get a Free Automation Audit →</a>
         <a href="#portfolio" class="btn btn-s">See Our Work</a>
+      </div>
+
+      <!-- LIVE DEMO STRIP -->
+      <div class="demo-strip">
+        <div class="demo-strip-label">⚡ Try a live AI demo — see your business automated right now</div>
+        <div class="demo-strip-btns">
+          <a href="/ads4you/demo-smb" class="demo-btn demo-btn-smb">
+            <span class="demo-btn-icon">🍱</span>
+            <div>
+              <div class="demo-btn-title">Small Business Demo</div>
+              <div class="demo-btn-sub">Tiffin · Clinic · Coaching · Pharmacy · More</div>
+            </div>
+            <span class="demo-btn-arrow">→</span>
+          </a>
+          <a href="/ads4you/demo-enterprise" class="demo-btn demo-btn-ent">
+            <span class="demo-btn-icon">🏗️</span>
+            <div>
+              <div class="demo-btn-title">Enterprise Demo</div>
+              <div class="demo-btn-sub">Builder · Real Estate · Advocate · Architect</div>
+            </div>
+            <span class="demo-btn-arrow">→</span>
+          </a>
+        </div>
+        <div class="demo-strip-pricing">
+          <a href="/ads4you/pricing-smb">📋 SMB Pricing</a>
+          <span class="demo-divider">·</span>
+          <a href="/ads4you/pricing-enterprise">📋 Enterprise Pricing</a>
+        </div>
       </div>
       <div class="trust-row" role="list">
         <span class="trust-pill" role="listitem">✦ Udyam — UDYAM-MH-26-1092780</span>
