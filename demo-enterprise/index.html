@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SARTHI — Construction & Real Estate AI Demo by Ads4You</title>
+<meta name="description" content="See SARTHI working live — AI automation for builders, contractors, real estate developers, architects and advocates. WhatsApp bot, call automation, payment reminders.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--cy:#00D4FF;--cy2:#7DF9FF;--cyg:rgba(0,212,255,0.12);--cglow:rgba(0,212,255,0.28);--or:#FF6B35;--green:#25D366;--gold:#EAA220;--red:#ef4444;--tr:.38s cubic-bezier(.4,0,.2,1)}
+[data-theme="dark"]{--bg:#020508;--sf:#08101A;--sf2:#0d1822;--bd:#14202c;--bd2:#1e2e40;--tx:#EEF4F8;--t2:#6888A0;--t3:#384858;--ni:.042;--a1:rgba(0,212,255,.07);--a2:rgba(0,100,160,.04)}
+[data-theme="light"]{--bg:#F3F7FA;--sf:#FFFFFF;--sf2:#EEF4F8;--bd:#D6E4EE;--bd2:#C0D4E2;--tx:#0C1820;--t2:#486070;--t3:#88A4B4;--ni:.026;--a1:rgba(0,212,255,.06);--a2:rgba(0,120,180,.04)}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--tx);font-family:'Instrument Sans',sans-serif;min-height:100vh;overflow-x:hidden;transition:background var(--tr),color var(--tr)}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");opacity:var(--ni);pointer-events:none;z-index:0}
+body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;background:radial-gradient(ellipse 70% 50% at 0% 0%,var(--a1) 0%,transparent 55%),radial-gradient(ellipse 50% 40% at 100% 100%,var(--a2) 0%,transparent 55%);transition:background var(--tr)}
+.z1{position:relative;z-index:1}
+.top-btns{position:fixed;top:16px;right:16px;z-index:100;display:flex;gap:8px}
+.icon-btn{width:44px;height:44px;border-radius:50%;border:1.5px solid var(--bd2);background:var(--sf);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:18px;box-shadow:0 4px 16px rgba(0,0,0,.2);transition:all .28s}
+.icon-btn:hover{transform:scale(1.1);border-color:var(--cy)}
+.wa-float{position:fixed;bottom:24px;right:20px;z-index:100;display:flex;align-items:center;gap:10px;background:#25D366;color:#fff;padding:13px 20px 13px 14px;border-radius:50px;font-family:'Instrument Sans',sans-serif;font-size:13px;font-weight:700;text-decoration:none;box-shadow:0 6px 28px rgba(37,211,102,.45);transition:all .3s;white-space:nowrap}
+.wa-float:hover{transform:translateY(-3px)}
+
+/* HERO */
+.hero{text-align:center;padding:68px 20px 36px;max-width:880px;margin:0 auto}
+.pill{display:inline-flex;align-items:center;gap:8px;padding:7px 18px;border-radius:100px;border:1.5px solid var(--bd2);background:var(--sf);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--t3);margin-bottom:24px;transition:all var(--tr)}
+.ld{width:6px;height:6px;border-radius:50%;background:var(--cy);box-shadow:0 0 8px var(--cy);animation:pl 2s ease-in-out infinite}
+@keyframes pl{0%,100%{opacity:1}50%{opacity:.3}}
+.pill strong{color:var(--cy)}
+.h1{font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(36px,7.5vw,74px);font-weight:800;line-height:.92;letter-spacing:-2.5px;margin-bottom:16px}
+.h1 .gr{display:block;background:linear-gradient(110deg,var(--cy) 0%,var(--cy2) 50%,rgba(0,212,255,.45) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.tagline{font-size:16px;color:var(--t2);margin-bottom:6px;font-style:italic;transition:color var(--tr)}
+.mar{font-size:12px;color:var(--t3);letter-spacing:1px;margin-bottom:32px;transition:color var(--tr)}
+
+/* DISCLAIMER */
+.disc{max-width:720px;margin:0 auto 28px;background:rgba(0,212,255,.06);border:1.5px solid rgba(0,212,255,.18);border-radius:10px;padding:12px 18px;font-size:13px;color:var(--t2);text-align:center;line-height:1.6}
+.disc strong{color:var(--cy)}
+
+/* PAIN */
+.pain{max-width:760px;margin:0 auto 36px;background:var(--sf);border:1.5px solid var(--bd2);border-radius:16px;overflow:hidden;position:relative;box-shadow:0 4px 20px rgba(0,0,0,.15);transition:all var(--tr)}
+.pain::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--cy),transparent)}
+.pt{padding:13px 20px 0;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--t3);font-weight:700}
+.pg{display:grid;grid-template-columns:repeat(4,1fr);padding:6px 0 16px}
+.pi{padding:13px 16px;text-align:center;border-right:1.5px solid var(--bd)}
+.pi:last-child{border-right:none}
+.pnum{font-family:'Bricolage Grotesque',sans-serif;font-size:26px;font-weight:800;color:var(--cy);margin-bottom:4px;min-height:34px}
+.plbl{font-size:11px;color:var(--t3);line-height:1.4}
+@media(max-width:460px){.pg{grid-template-columns:1fr 1fr}.pi{border-bottom:1.5px solid var(--bd)}.pi:nth-child(2n){border-right:none}.pi:nth-last-child(-n+2){border-bottom:none}}
+
+/* BIZ SELECTOR */
+.bsl{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--t3);font-weight:700;text-align:center;margin-bottom:12px}
+.bsg{display:flex;flex-wrap:wrap;justify-content:center;gap:7px;max-width:760px;margin:0 auto 40px}
+.bb{padding:9px 16px;border-radius:9px;border:1.5px solid var(--bd2);background:var(--sf);color:var(--t2);font-family:'Instrument Sans',sans-serif;font-size:12px;font-weight:600;cursor:pointer;transition:all .22s;display:flex;align-items:center;gap:6px}
+.bb:hover{border-color:var(--cy);color:var(--tx);transform:translateY(-2px)}
+.bb.on{background:var(--cyg);border-color:var(--cy);color:var(--cy);box-shadow:0 5px 20px var(--cglow);transform:translateY(-2px)}
+
+/* TABS */
+.tabs{display:flex;flex-wrap:wrap;justify-content:center;gap:7px;margin-bottom:40px;padding:0 20px}
+.tab{padding:10px 18px;border-radius:9px;border:1.5px solid var(--bd2);background:var(--sf);color:var(--t2);font-family:'Instrument Sans',sans-serif;font-size:12px;font-weight:600;cursor:pointer;transition:all .25s;white-space:nowrap;display:flex;align-items:center;gap:6px}
+.tab:hover{border-color:var(--cy);color:var(--tx)}
+.tab.on{background:var(--cyg);border-color:var(--cy);color:var(--cy);box-shadow:0 4px 18px var(--cglow)}
+
+/* MAIN */
+.main{max-width:1060px;margin:0 auto;padding:0 20px 80px}
+.mod{display:none}
+.mod.on{display:block;animation:fu .4s ease forwards}
+@keyframes fu{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+
+/* ─── MODULE 1: WHATSAPP ─── */
+.wa-mod{display:grid;grid-template-columns:1fr 390px;gap:22px;align-items:start}
+@media(max-width:860px){.wa-mod{grid-template-columns:1fr}}
+.wfs{display:flex;flex-direction:column;gap:11px}
+.wf{background:var(--sf);border:1.5px solid var(--bd);border-radius:14px;overflow:hidden;cursor:pointer;transition:all .25s;position:relative}
+.wf::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--cy);opacity:0;transition:opacity .25s;border-radius:3px 0 0 3px}
+.wf.on::before{opacity:1}
+.wf.on{border-color:rgba(0,212,255,.35);box-shadow:0 6px 28px rgba(0,212,255,.1)}
+.wf:hover:not(.on){transform:translateX(3px)}
+.wfi{padding:18px 18px 18px 22px}
+.wft{display:flex;align-items:center;gap:11px;margin-bottom:7px}
+.wfic{width:38px;height:38px;border-radius:10px;background:var(--cyg);border:1.5px solid rgba(0,212,255,.2);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;transition:background .25s}
+.wf.on .wfic{background:rgba(0,212,255,.2)}
+.wftl{font-family:'Bricolage Grotesque',sans-serif;font-size:14px;font-weight:700}
+.wfd{font-size:13px;color:var(--t2);line-height:1.6;margin-bottom:10px}
+.ba{display:grid;grid-template-columns:1fr 1fr;gap:7px}
+.bc{padding:10px 12px;border-radius:8px;font-size:12px;line-height:1.5}
+.bc.bef{background:rgba(239,68,68,.07);border:1px solid rgba(239,68,68,.15);color:#fca5a5}
+.bc.aft{background:rgba(34,197,94,.07);border:1px solid rgba(34,197,94,.15);color:#86efac}
+[data-theme="light"] .bc.bef{color:#991b1b;background:rgba(239,68,68,.06)}
+[data-theme="light"] .bc.aft{color:#166534;background:rgba(34,197,94,.06)}
+.bl{font-size:9px;letter-spacing:2px;text-transform:uppercase;font-weight:700;margin-bottom:4px;opacity:.7}
+.wftry{font-size:12px;color:var(--cy);font-weight:700;margin-top:8px}
+
+/* PHONE */
+.phw{position:sticky;top:24px}
+.phs{background:#1c1c1c;border-radius:42px;padding:10px;box-shadow:0 0 0 1px rgba(255,255,255,.06),0 20px 70px rgba(0,0,0,.5),inset 0 0 0 1px rgba(255,255,255,.03)}
+[data-theme="light"] .phs{background:#2a2a2a;box-shadow:0 0 0 1px rgba(0,0,0,.15),0 14px 50px rgba(0,0,0,.2)}
+.phn{width:72px;height:5px;border-radius:3px;background:#111;margin:0 auto 9px}
+.wa2{background:#0e1a1f;border-radius:34px;overflow:hidden}
+.wa2h{background:#1f2c34;padding:12px 14px;display:flex;align-items:center;gap:10px}
+.wa2av{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--cy),var(--cy2));display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:#000;flex-shrink:0;transition:background .3s}
+.wa2nm{font-size:13px;font-weight:600;color:#fff}
+.wa2st{font-size:11px;color:rgba(255,255,255,.5)}
+.wa2st span{color:var(--green)}
+.wa2bd{height:370px;overflow-y:auto;padding:11px;background:#0a1014;display:flex;flex-direction:column;gap:7px}
+.wa2bd::-webkit-scrollbar{width:0}
+.wdv{text-align:center;margin:3px 0}
+.wdv span{background:rgba(0,0,0,.2);color:rgba(255,255,255,.38);font-size:11px;padding:3px 10px;border-radius:6px}
+[data-theme="light"] .wdv span{background:rgba(0,0,0,.07);color:rgba(0,0,0,.35)}
+.wm{display:flex;flex-direction:column;max-width:84%}
+.wm.in{align-self:flex-start}
+.wm.out{align-self:flex-end}
+.wm-b{padding:8px 11px;font-size:13px;line-height:1.55}
+.wm.in .wm-b{background:#1e2b30;color:#e9edef;border-radius:0 10px 10px 10px}
+.wm.out .wm-b{background:#005c4b;color:#e9edef;border-radius:10px 10px 0 10px}
+.wm-m{font-size:10px;color:#8696a0;margin-top:3px;display:flex;align-items:center;gap:3px}
+.wm.out .wm-m{justify-content:flex-end}
+.tick{color:#53bdeb}
+.tyw{align-self:flex-start;background:#1e2b30;border-radius:0 10px 10px 10px;padding:9px 13px;display:flex;gap:4px;width:fit-content}
+.td{width:6px;height:6px;border-radius:50%;background:#8696a0;animation:tda 1.2s ease-in-out infinite}
+.td:nth-child(2){animation-delay:.2s}.td:nth-child(3){animation-delay:.4s}
+@keyframes tda{0%,60%,100%{transform:translateY(0)}30%{transform:translateY(-5px)}}
+.qrr2{background:#0a1014;padding:7px 11px;display:flex;flex-wrap:wrap;gap:5px;border-top:1px solid rgba(255,255,255,.05)}
+.qrc2{padding:5px 11px;border-radius:13px;font-size:12px;font-weight:500;border:1px solid rgba(0,212,255,.28);color:var(--cy);background:rgba(0,212,255,.07);cursor:pointer;transition:all .2s;white-space:nowrap}
+.qrc2:hover{background:rgba(0,212,255,.18)}
+.wa2ir{background:#1f2c34;padding:9px 11px;display:flex;align-items:center;gap:9px}
+.wa2i{flex:1;background:#2a3942;border:none;outline:none;border-radius:20px;padding:9px 13px;color:#e9edef;font-family:'Instrument Sans',sans-serif;font-size:13px}
+.wa2i::placeholder{color:#8696a0}
+.wa2snd{width:40px;height:40px;border-radius:50%;background:var(--green);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;flex-shrink:0}
+.wa2snd:hover:not(:disabled){transform:scale(1.1)}
+.wa2snd:disabled{opacity:.5;cursor:not-allowed}
+.retry-msg{align-self:flex-start;display:flex;align-items:center;gap:8px;background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.2);border-radius:0 10px 10px 10px;padding:9px 13px;font-size:13px;color:#fca5a5;max-width:84%;cursor:pointer}
+.retry-msg:hover{background:rgba(239,68,68,.18)}
+
+/* ─── MODULE 2: DASHBOARD ─── */
+.kpi-g{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:18px}
+@media(max-width:680px){.kpi-g{grid-template-columns:1fr 1fr}}
+.kpi{background:var(--sf);border:1.5px solid var(--bd2);border-radius:14px;padding:20px 16px;cursor:pointer;transition:all .25s;position:relative;overflow:hidden}
+.kpi::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--cy);opacity:0;transition:opacity .25s}
+.kpi:hover{border-color:var(--cy);transform:translateY(-3px);box-shadow:0 8px 28px var(--cglow)}
+.kpi:hover::after{opacity:1}
+.ki{font-size:22px;margin-bottom:10px}
+.kv{font-family:'Bricolage Grotesque',sans-serif;font-size:28px;font-weight:800;color:var(--cy);margin-bottom:4px}
+.kl{font-size:12px;color:var(--t3)}
+.kt{font-size:11px;margin-top:4px}
+.kt.up{color:var(--green)}.kt.dn{color:var(--red)}
+.sc{background:var(--sf);border:1.5px solid var(--bd2);border-radius:12px;overflow:hidden;margin-bottom:16px;transition:all var(--tr)}
+.sc-h{display:grid;grid-template-columns:2fr 1.2fr .6fr 1fr 1.2fr;padding:12px 20px;border-bottom:1.5px solid var(--bd);font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:var(--t3)}
+.sc-r{display:grid;grid-template-columns:2fr 1.2fr .6fr 1fr 1.2fr;padding:16px 20px;border-bottom:1.5px solid rgba(255,255,255,.03);align-items:center;cursor:pointer;transition:background .2s}
+[data-theme="light"] .sc-r{border-bottom:1.5px solid var(--bd)}
+.sc-r:hover{background:rgba(0,212,255,.03)}
+.sc-r:last-child{border-bottom:none}
+.snm{font-weight:700;font-size:14px}
+.sloc{font-size:11px;color:var(--t3);margin-top:2px}
+.badge{display:inline-block;font-size:10px;letter-spacing:1px;font-weight:700;padding:3px 9px;border-radius:4px}
+.bg2{background:rgba(34,197,94,.1);color:var(--green);border:1px solid rgba(34,197,94,.2)}
+.by2{background:rgba(234,179,8,.1);color:#facc15;border:1px solid rgba(234,179,8,.2)}
+.prog{background:var(--bd2);border-radius:4px;height:5px;overflow:hidden}
+.pf{height:5px;border-radius:4px;background:linear-gradient(90deg,var(--cy),var(--cy2));transition:width 1.2s cubic-bezier(.4,0,.2,1)}
+.pct{font-size:11px;color:var(--t3);margin-top:3px}
+.spp{font-family:'Bricolage Grotesque',sans-serif;font-size:15px;font-weight:700}
+.spp.p1{color:var(--cy)}.spp.p2{color:var(--green)}
+@media(max-width:580px){.sc-h{display:none}.sc-r{grid-template-columns:1fr 1fr;gap:8px}}
+.hint{text-align:center;padding:10px;font-size:12px;color:var(--t3)}
+
+/* ─── MODULE 3: MORNING BRIEF ─── */
+.brief-g{display:grid;grid-template-columns:1fr 360px;gap:22px}
+@media(max-width:780px){.brief-g{grid-template-columns:1fr}}
+.tlh{font-family:'Bricolage Grotesque',sans-serif;font-size:21px;font-weight:700;margin-bottom:7px}
+.tlp{font-size:14px;color:var(--t2);margin-bottom:22px;line-height:1.6}
+.tl{display:flex;flex-direction:column}
+.tli{display:flex;gap:13px;padding:15px 0;border-bottom:1.5px solid var(--bd)}
+.tli:last-child{border-bottom:none}
+.tlic{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0}
+.ic-c{background:rgba(0,212,255,.1);border:1px solid rgba(0,212,255,.2)}
+.ic-o{background:rgba(255,107,53,.1);border:1px solid rgba(255,107,53,.2)}
+.ic-g{background:rgba(37,211,102,.1);border:1px solid rgba(37,211,102,.2)}
+.ic-go{background:rgba(234,162,32,.1);border:1px solid rgba(234,162,32,.2)}
+.tlt{font-size:11px;font-weight:700;color:var(--cy);letter-spacing:.5px;margin-bottom:3px}
+.tltt{font-size:14px;font-weight:600;margin-bottom:2px}
+.tlts{font-size:12px;color:var(--t2);line-height:1.5}
+.wamock{background:#0e1a1f;border-radius:18px;overflow:hidden;border:1px solid #1a2f35;box-shadow:0 14px 50px rgba(0,0,0,.4)}
+.wmh{background:#1f2c34;padding:11px 15px;display:flex;align-items:center;gap:10px}
+.wmav{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--cy),var(--cy2));display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:#000}
+.wmn{font-size:13px;font-weight:600;color:#fff}
+.wms2{font-size:11px;color:rgba(255,255,255,.5)}
+.wmb{padding:13px;background:#0a1014}
+.wmmsg{background:#1e2b30;border-radius:0 12px 12px 12px;padding:12px 14px;font-size:12.5px;line-height:1.7;color:#e9edef}
+.wmt{font-size:10px;color:#8696a0;margin-top:7px}
+
+/* ─── MODULE 4: CALL ─── */
+.call-g{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+@media(max-width:660px){.call-g{grid-template-columns:1fr}}
+.cc2{background:var(--sf);border:1.5px solid var(--bd2);border-radius:14px;padding:24px;transition:all var(--tr)}
+.cch{font-family:'Bricolage Grotesque',sans-serif;font-size:18px;font-weight:700;margin-bottom:6px}
+.ccp{font-size:13px;color:var(--t2);margin-bottom:20px;line-height:1.6}
+.phui{background:var(--bg);border:1.5px solid var(--bd2);border-radius:18px;padding:24px 16px;text-align:center;transition:background var(--tr)}
+.phcall{font-size:12px;color:var(--t3);letter-spacing:1px;margin-bottom:5px}
+.phnm{font-family:'Bricolage Grotesque',sans-serif;font-size:21px;font-weight:700;margin-bottom:4px}
+.phnum{font-size:13px;color:var(--t2);margin-bottom:20px}
+.phring{width:76px;height:76px;border-radius:50%;margin:0 auto 18px;background:rgba(37,211,102,.1);border:2px solid rgba(37,211,102,.3);display:flex;align-items:center;justify-content:center;font-size:28px;animation:ring 1.5s ease-in-out infinite}
+@keyframes ring{0%,100%{box-shadow:0 0 0 0 rgba(37,211,102,.4)}50%{box-shadow:0 0 0 16px rgba(37,211,102,0)}}
+.phacts{display:flex;justify-content:center;gap:20px;margin-bottom:13px}
+.phb{width:54px;height:54px;border-radius:50%;border:none;cursor:pointer;font-size:20px;transition:all .2s}
+.phans{background:var(--green)}.phans:hover{transform:scale(1.1);box-shadow:0 0 20px rgba(37,211,102,.5)}
+.phdec{background:var(--red)}.phdec:hover{transform:scale(1.1)}
+.phst{font-size:12px;color:var(--t3)}
+.trlist{display:flex;flex-direction:column;gap:8px;max-height:320px;overflow-y:auto}
+.trlist::-webkit-scrollbar{width:3px}
+.trlist::-webkit-scrollbar-thumb{background:var(--bd2)}
+.tri{padding:10px 12px;border-radius:8px;font-size:13px;line-height:1.6;animation:fu .3s ease forwards}
+.tri.s{background:rgba(0,212,255,.07);border:1px solid rgba(0,212,255,.12)}
+.tri.c{background:var(--sf2);border:1.5px solid var(--bd)}
+.trsp{font-size:9px;letter-spacing:2px;text-transform:uppercase;font-weight:700;margin-bottom:3px}
+.tri.s .trsp{color:var(--cy)}.tri.c .trsp{color:var(--t3)}
+.tr-empty{text-align:center;padding:28px;color:var(--t3);font-size:13px}
+.hintb{margin-top:12px;padding:12px 14px;background:rgba(0,212,255,.05);border:1px solid rgba(0,212,255,.12);border-radius:10px;font-size:13px;color:var(--t2);line-height:1.5}
+.hintb b{color:var(--cy)}
+
+/* ─── MODULE 5: PAYMENTS ─── */
+.pay-g{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:600px){.pay-g{grid-template-columns:1fr}}
+.pc2{background:var(--sf);border:1.5px solid var(--bd2);border-radius:14px;padding:22px;transition:all var(--tr)}
+.pc2 h3{font-family:'Bricolage Grotesque',sans-serif;font-size:18px;font-weight:700;margin-bottom:15px}
+.pitem{display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1.5px solid var(--bd)}
+.pitem:last-child{border-bottom:none}
+.pnm{font-size:14px;font-weight:600}
+.pd{font-size:12px;margin-top:2px}
+.pd.over{color:var(--red)}.pd.due{color:var(--gold)}.pd.ok{color:var(--green)}
+.pamt{font-family:'Bricolage Grotesque',sans-serif;font-size:16px;font-weight:700;text-align:right}
+.sndbtn{display:block;margin-top:5px;padding:5px 11px;border-radius:5px;font-size:11px;font-weight:700;letter-spacing:1px;background:rgba(37,211,102,.1);color:var(--green);border:1px solid rgba(37,211,102,.2);cursor:pointer;transition:all .2s;text-align:center}
+.sndbtn:hover{background:rgba(37,211,102,.2)}
+.sndbtn.done{background:rgba(0,212,255,.1);color:var(--cy);border-color:rgba(0,212,255,.2)}
+.rulec{background:rgba(0,212,255,.04);border:1px solid rgba(0,212,255,.12);border-radius:10px;padding:14px;margin-top:14px}
+.rlh{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--cy);font-weight:700;margin-bottom:8px}
+.rl{display:flex;align-items:center;gap:8px;padding:7px 0;border-bottom:1px solid rgba(0,212,255,.07);font-size:13px;color:var(--t2)}
+.rl:last-child{border-bottom:none}
+.rl span{color:var(--cy);font-weight:600}
+/* PAYMENT PREVIEW — fixed mobile scroll */
+.mp{margin-top:14px;display:none}
+.mph{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--cy);font-weight:700;margin-bottom:7px}
+.mpb{background:#1e2b30;border-radius:0 12px 12px 12px;padding:12px 14px;font-size:13px;line-height:1.7;color:#e9edef;overflow-x:auto;word-break:break-word}
+
+/* CTA */
+.cta-s{max-width:1060px;margin:0 auto;padding:0 20px 100px;text-align:center}
+.ctab2{background:var(--sf);border:1.5px solid var(--bd2);border-radius:20px;padding:48px 32px;position:relative;overflow:hidden;transition:all var(--tr);box-shadow:0 6px 32px rgba(0,0,0,.15)}
+.ctab2::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:52%;height:2px;background:linear-gradient(90deg,transparent,var(--cy),transparent)}
+.ctab2 h2{font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(24px,4.5vw,40px);font-weight:800;letter-spacing:-1.5px;margin-bottom:12px}
+.ctab2 h2 em{font-style:normal;color:var(--cy)}
+.ctab2 p{font-size:14px;color:var(--t2);margin-bottom:26px;max-width:460px;margin-left:auto;margin-right:auto;line-height:1.7}
+.cta-row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.btn-p{display:inline-flex;align-items:center;gap:8px;padding:13px 32px;border-radius:10px;background:var(--cy);color:#000;font-family:'Instrument Sans',sans-serif;font-size:13px;font-weight:700;text-decoration:none;box-shadow:0 6px 28px var(--cglow);transition:all .3s;border:none;cursor:pointer}
+.btn-p:hover{transform:translateY(-2px);box-shadow:0 10px 40px var(--cglow)}
+.btn-s{display:inline-flex;align-items:center;gap:8px;padding:13px 28px;border-radius:10px;background:transparent;color:var(--tx);font-family:'Instrument Sans',sans-serif;font-size:13px;font-weight:600;text-decoration:none;border:1.5px solid var(--bd2);transition:all .3s}
+.btn-s:hover{border-color:var(--cy);color:var(--cy)}
+footer{text-align:center;padding:26px 20px;border-top:1.5px solid var(--bd);font-size:11px;color:var(--t3);letter-spacing:1.5px;position:relative;z-index:1;transition:border-color var(--tr)}
+footer .a4{color:var(--cy)}
+.toast{position:fixed;bottom:90px;left:50%;transform:translateX(-50%) translateY(60px);z-index:200;background:#333;color:#fff;padding:11px 22px;border-radius:24px;font-size:13px;font-weight:600;box-shadow:0 6px 24px rgba(0,0,0,.25);transition:transform .35s cubic-bezier(.22,1,.36,1);white-space:nowrap;pointer-events:none;max-width:90vw;text-align:center}
+.toast.on{transform:translateX(-50%) translateY(0)}
+.fade{opacity:0;transform:translateY(20px);animation:fu .6s cubic-bezier(.22,1,.36,1) forwards}
+.fade:nth-child(1){animation-delay:.07s}.fade:nth-child(2){animation-delay:.13s}.fade:nth-child(3){animation-delay:.18s}.fade:nth-child(4){animation-delay:.22s}.fade:nth-child(5){animation-delay:.27s}
+</style>
+</head>
+<body>
+<div class="toast z1" id="toast"></div>
+<div class="top-btns z1">
+  <button class="icon-btn" onclick="sharePage()">🔗</button>
+  <button class="icon-btn" id="thm" onclick="toggleTheme()">☀️</button>
+</div>
+<a href="https://wa.me/919767066941?text=SARTHI%20demo%20pahila.%20Majhya%20business%20sathi%20hava%20aahe." class="wa-float z1">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.553 4.116 1.522 5.85L.073 23.927a.5.5 0 0 0 .612.612l6.077-1.449A11.94 11.94 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.891 0-3.667-.497-5.2-1.366l-.373-.217-3.87.924.924-3.87-.217-.373A9.944 9.944 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+  Get SARTHI For My Business
+</a>
+
+<section class="hero z1">
+  <div class="fade"><div class="pill"><div class="ld"></div><strong>SARTHI</strong> by <strong>Ads4You</strong> &nbsp;·&nbsp; Construction AI Demo</div></div>
+  <h1 class="h1 fade">Tumcha Business.<br><span class="gr">Fully Automated.</span></h1>
+  <p class="tagline fade">"Calls answered. Leads followed. Payments tracked. Sites updated. Automatically."</p>
+  <p class="mar fade">✦ SARTHI — Tumcha AI Sahayak. Pratyek site. Pratyek payment. Aata automatic. ✦</p>
+
+  <div class="disc fade">
+    🤖 <strong>This is a live working demo.</strong> Everything here is real AI. Your SARTHI will be customized with your business name, your client names, your sites, your language.
+  </div>
+
+  <div class="pain fade">
+    <div class="pt">📉 What your business loses every month — without SARTHI</div>
+    <div class="pg">
+      <div class="pi"><div class="pnum" id="s1">₹0</div><div class="plbl">Monthly revenue lost to missed leads</div></div>
+      <div class="pi"><div class="pnum" id="s2">0</div><div class="plbl">Minutes wasted on daily update calls</div></div>
+      <div class="pi"><div class="pnum" id="s3">0%</div><div class="plbl">Leads lost without follow-up system</div></div>
+      <div class="pi"><div class="pnum">0 sec</div><div class="plbl">SARTHI response — even at 2 AM</div></div>
+    </div>
+  </div>
+
+  <div class="bsl fade">Select your business type</div>
+  <div class="bsg fade">
+    <button class="bb on" onclick="setBiz('construction',this)">🏗️ Builder / Contractor</button>
+    <button class="bb" onclick="setBiz('realestate',this)">🏢 Real Estate Developer</button>
+    <button class="bb" onclick="setBiz('interior',this)">🏠 Interior Designer</button>
+    <button class="bb" onclick="setBiz('lawyer',this)">⚖️ Advocate / Law Firm</button>
+    <button class="bb" onclick="setBiz('architect',this)">📐 Architect</button>
+    <button class="bb" onclick="setBiz('broker',this)">🏘️ Property Broker</button>
+  </div>
+
+  <div class="tabs fade">
+    <button class="tab on" onclick="showMod('wa',this)">💬 WhatsApp Bot</button>
+    <button class="tab" onclick="showMod('dash',this)">📊 Live Dashboard</button>
+    <button class="tab" onclick="showMod('brief',this)">🌅 Morning Brief</button>
+    <button class="tab" onclick="showMod('call',this)">📞 AI Call Demo</button>
+    <button class="tab" onclick="showMod('pay',this)">💰 Payment Reminders</button>
+  </div>
+</section>
+
+<div class="main z1">
+
+<!-- WA MODULE -->
+<div class="mod on" id="mod-wa">
+  <div class="wa-mod">
+    <div class="wfs">
+      <div class="wf on" onclick="setWF(0)">
+        <div class="wfi"><div class="wft"><div class="wfic">🎯</div><div class="wftl" id="wf0t">Lead Capture & Qualification</div></div>
+        <div class="wfd" id="wf0d">New lead calls at midnight — SARTHI answers, qualifies project, collects contact, sends portfolio. Zero lead ever missed.</div>
+        <div class="ba"><div class="bc bef"><div class="bl">❌ Before</div>Miss 5-6 calls/week. Each could be ₹5-20L project.</div><div class="bc aft"><div class="bl">✅ After</div>100% calls captured. Every lead qualified automatically.</div></div>
+        <div class="wftry">▶ Type anything below to try live</div></div>
+      </div>
+      <div class="wf" onclick="setWF(1)">
+        <div class="wfi"><div class="wft"><div class="wfic">🔄</div><div class="wftl" id="wf1t">30-Day Lead Follow-Up</div></div>
+        <div class="wfd" id="wf1d">Prospect enquired but went quiet? Bot follows up Day 3, 7, 14, 30 automatically. Converts cold leads.</div>
+        <div class="ba"><div class="bc bef"><div class="bl">❌ Before</div>38% construction leads lost. Nobody followed up. Your money.</div><div class="bc aft"><div class="bl">✅ After</div>Every lead followed for 30 days. Nothing falls through.</div></div>
+        <div class="wftry">▶ Try: "Project ke baare mein bataiye"</div></div>
+      </div>
+      <div class="wf" onclick="setWF(2)">
+        <div class="wfi"><div class="wft"><div class="wfic">📊</div><div class="wftl" id="wf2t">Client Site Update Bot</div></div>
+        <div class="wfd" id="wf2d">Client texts "site update chahiye" — bot shares latest progress, photos, upcoming milestones. Zero interruption calls for you.</div>
+        <div class="ba"><div class="bc bef"><div class="bl">❌ Before</div>45 min/day on update calls. Site work interrupted.</div><div class="bc aft"><div class="bl">✅ After</div>Clients self-serve 24/7. You work uninterrupted.</div></div>
+        <div class="wftry">▶ Try: "Site ka kya update hai?"</div></div>
+      </div>
+      <div class="wf" onclick="setWF(3)">
+        <div class="wfi"><div class="wft"><div class="wfic">💰</div><div class="wftl" id="wf3t">Payment Reminder Bot</div></div>
+        <div class="wfd" id="wf3d">Payment overdue? Bot sends professional reminder with payment link. No awkward personal call. Relationship maintained.</div>
+        <div class="ba"><div class="bc bef"><div class="bl">❌ Before</div>Chasing payments personally. Awkward. Cash flow delayed.</div><div class="bc aft"><div class="bl">✅ After</div>Automated reminders. Professional. Client pays faster.</div></div>
+        <div class="wftry">▶ Try: "Payment status?"</div></div>
+      </div>
+    </div>
+
+    <div class="phw z1">
+      <div class="phs">
+        <div class="phn"></div>
+        <div class="wa2">
+          <div class="wa2h">
+            <div class="wa2av" id="wav2">S</div>
+            <div><div class="wa2nm" id="wan2">SARTHI — Nirmala Associates</div><div class="wa2st"><span>●</span> AI Active 24/7</div></div>
+          </div>
+          <div class="wa2bd" id="wa2bd">
+            <div class="wdv"><span>Today</span></div>
+            <div class="wm in"><div class="wm-b">Hello, project discuss karna tha</div><div class="wm-m">Just now</div></div>
+            <div class="wm out"><div class="wm-b">Namaskar! 🙏 SARTHI boltoy — Nirmala Associates AI Assistant.<br><br>Sahaj Sir aata site visit var ahet.<br><br>🏗️ Amachya services:<br>• Residential Construction<br>• Commercial Interior<br>• Renovation & Remodeling<br><br>Kaunsya project baddal bolayche aahe? 👇</div><div class="wm-m">Just now <span class="tick">✓✓</span></div></div>
+          </div>
+          <div class="qrr2" id="qrr2">
+            <span class="qrc2" onclick="sendQ2('New construction project')">New project</span>
+            <span class="qrc2" onclick="sendQ2('Site ka kya update hai?')">Site update</span>
+            <span class="qrc2" onclick="sendQ2('Quote chahiye')">Get quote</span>
+            <span class="qrc2" onclick="sendQ2('Payment status?')">Payment</span>
+          </div>
+          <div class="wa2ir">
+            <input class="wa2i" id="wa2i" placeholder="Type a message..." onkeydown="if(event.key==='Enter'&&!event.shiftKey)sendMsg2()">
+            <button class="wa2snd" id="wa2snd" onclick="sendMsg2()"><svg width="17" height="17" viewBox="0 0 24 24" fill="white"><path d="M2 21l21-9L2 3v7l15 2-15 2z"/></svg></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- DASHBOARD MODULE -->
+<div class="mod" id="mod-dash">
+  <div class="kpi-g">
+    <div class="kpi" onclick="showToast('Patil Residency: Cement delivery 11 AM. SARTHI notified supervisor automatically.')"><div class="ki">🏗️</div><div class="kv" id="kv1">0</div><div class="kl">Active Sites</div><div class="kt up">↑ 1 new this month</div></div>
+    <div class="kpi" onclick="showToast('₹3.85L pending — SARTHI sending auto-reminders to 3 clients today')"><div class="ki">💰</div><div class="kv" id="kv2">₹0</div><div class="kl">Pending Payments</div><div class="kt dn">₹40K overdue >30d</div></div>
+    <div class="kpi" onclick="showToast('7 new leads this week: 3 Google, 2 JustDial, 2 WhatsApp — all replied by SARTHI')"><div class="ki">🎯</div><div class="kv" id="kv3">0</div><div class="kl">New Leads This Week</div><div class="kt up">↑ 3x vs last month</div></div>
+    <div class="kpi" onclick="showToast('12 workers active. 2 absent — SARTHI sent alerts to you at 8 AM')"><div class="ki">👷</div><div class="kv" id="kv4">0</div><div class="kl">Workers Active Today</div><div class="kt dn">2 absent — alerted</div></div>
+  </div>
+  <div class="sc">
+    <div class="sc-h"><div>Site / Client</div><div>Progress</div><div>Workers</div><div>Status</div><div>Payment</div></div>
+    <div class="sc-r" onclick="showToast('Patil Residency: 72% done. Plastering in progress. Completion April 15.')"><div><div class="snm">Patil Residency</div><div class="sloc">Hinjewadi Phase 2 · 3BHK</div></div><div><div class="prog"><div class="pf" data-w="72"></div></div><div class="pct">72%</div></div><div style="font-size:14px;font-weight:700">4</div><div><span class="badge bg2">On Track</span></div><div class="spp p1">₹1.2L due</div></div>
+    <div class="sc-r" onclick="showToast('Sharma Villa: 2 absent today. Delayed 3 days. SARTHI alert sent to you at 8 AM.')"><div><div class="snm">Sharma Villa</div><div class="sloc">Baner · Villa Renovation</div></div><div><div class="prog"><div class="pf" data-w="45"></div></div><div class="pct">45%</div></div><div style="font-size:14px;font-weight:700">3</div><div><span class="badge by2">Delayed 3d</span></div><div class="spp p1">₹85K due</div></div>
+    <div class="sc-r" onclick="showToast('Kulkarni Office: 88% done. Client paid in full. SARTHI sent thank-you message automatically.')"><div><div class="snm">Kulkarni Office</div><div class="sloc">Wakad · Commercial Interior</div></div><div><div class="prog"><div class="pf" data-w="88"></div></div><div class="pct">88%</div></div><div style="font-size:14px;font-weight:700">3</div><div><span class="badge bg2">On Track</span></div><div class="spp p2">✅ Paid</div></div>
+    <div class="sc-r" onclick="showToast('Desai Farmhouse: Just started. Site visit confirmed Saturday 11 AM.')"><div><div class="snm">Desai Farmhouse</div><div class="sloc">Mulshi · New Construction</div></div><div><div class="prog"><div class="pf" data-w="15"></div></div><div class="pct">15%</div></div><div style="font-size:14px;font-weight:700">2</div><div><span class="badge bg2">Started</span></div><div class="spp p1">₹1.8L due</div></div>
+  </div>
+  <div class="hint">👆 Click any row to see SARTHI's action on that site</div>
+</div>
+
+<!-- MORNING BRIEF MODULE -->
+<div class="mod" id="mod-brief">
+  <div class="brief-g">
+    <div>
+      <div class="tlh">SARTHI sends this to you every morning at 9:00 AM</div>
+      <div class="tlp">One WhatsApp message. Your entire business status. No calls needed. Always accurate.</div>
+      <div class="tl">
+        <div class="tli"><div class="tlic ic-c">📊</div><div><div class="tlt">9:00 AM — AUTO</div><div class="tltt">Full business summary</div><div class="tlts">All sites, payments, leads, workers — one message. Start every day fully informed.</div></div></div>
+        <div class="tli"><div class="tlic ic-o">📞</div><div><div class="tlt">During Day — AUTO</div><div class="tltt">Missed calls handled</div><div class="tlts">SARTHI qualifies leads, books callbacks only for serious prospects.</div></div></div>
+        <div class="tli"><div class="tlic ic-g">👷</div><div><div class="tlt">6:00 PM — AUTO</div><div class="tltt">Site supervisor reports collected</div><div class="tlts">SARTHI calls each supervisor, sends you WhatsApp summary.</div></div></div>
+        <div class="tli"><div class="tlic ic-go">💰</div><div><div class="tlt">As Needed — AUTO</div><div class="tltt">Payment reminders sent</div><div class="tlts">Day 7, 15, 30 — professional reminders. No awkward calls ever again.</div></div></div>
+      </div>
+    </div>
+    <div class="wamock">
+      <div class="wmh"><div class="wmav">S</div><div><div class="wmn">SARTHI → You</div><div class="wms2">Delivered 9:00 AM ✓✓</div></div></div>
+      <div class="wmb">
+        <div class="wmmsg">
+          🌅 <b>Subh Sakal! — Aajcha Report</b><br>
+          📅 <b>March 21, 2026</b><br><br>
+          🏗️ <b>Active Sites: 4</b><br>
+          ├ Patil Residency — 72% ✅<br>
+          ├ Sharma Villa — 45% ⚠️ (2 absent)<br>
+          ├ Kulkarni Office — 88% ✅<br>
+          └ Desai Farmhouse — 15% 🆕<br><br>
+          💰 <b>Pending: ₹3.85L</b><br>
+          ├ Kulkarni ₹1.2L — reminder sent ✅<br>
+          └ Patil ₹85K — 14 days overdue ⚠️<br><br>
+          🎯 <b>New Leads: 2 overnight</b><br>
+          ├ Ramesh Joshi — 3BHK Renovation<br>
+          └ Priya Shah — Office Interior<br><br>
+          📞 <b>1 missed call — SARTHI spoke</b><br>
+          └ Callback booked today 11 AM<br><br>
+          ⚡ <b>Priority aaj:</b><br>
+          1. Cement confirm — Patil site<br>
+          2. Call Ramesh Joshi<br>
+          3. Sharma Villa worker issue
+          <div class="wmt">9:00 AM ✓✓</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CALL MODULE -->
+<div class="mod" id="mod-call">
+  <div style="text-align:center;margin-bottom:26px">
+    <div style="font-family:'Bricolage Grotesque',sans-serif;font-size:22px;font-weight:700;margin-bottom:7px">SARTHI answers in Marathi & Hindi — 24 hours, 7 days</div>
+    <div style="font-size:14px;color:var(--t2);max-width:520px;margin:0 auto">Client calls at 2 AM. You're asleep. SARTHI picks up, speaks naturally, handles the query, sends you WhatsApp summary.</div>
+  </div>
+  <div class="call-g">
+    <div class="cc2">
+      <div class="cch">📞 Incoming Call Simulation</div>
+      <div class="ccp">Click Answer to see SARTHI handle a client site update call in Marathi.</div>
+      <div class="phui">
+        <div class="phcall">Incoming Call</div>
+        <div class="phnm" id="callnm">Ramesh Patil</div>
+        <div class="phnum">+91 956 1375 001</div>
+        <div class="phring" id="pring">📞</div>
+        <div class="phacts"><button class="phb phdec" onclick="decCall()">📵</button><button class="phb phans" onclick="ansCall()">📞</button></div>
+        <div class="phst" id="callst">SARTHI is ready to answer...</div>
+      </div>
+      <div class="hintb">💡 <b>After every call:</b> SARTHI sends you a WhatsApp summary with caller name, query, and action taken — instantly.</div>
+    </div>
+    <div class="cc2">
+      <div class="cch">📝 Live Transcript</div>
+      <div class="ccp">Natural Marathi. No robotic feel. Real AI understanding.</div>
+      <div class="trlist" id="trl"><div class="tr-empty">📞<br><br>Answer the call to see<br>SARTHI in action</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- PAYMENTS MODULE -->
+<div class="mod" id="mod-pay">
+  <div style="text-align:center;margin-bottom:26px">
+    <div style="font-family:'Bricolage Grotesque',sans-serif;font-size:22px;font-weight:700;margin-bottom:7px">Never chase payments manually again</div>
+    <div style="font-size:14px;color:var(--t2);max-width:500px;margin:0 auto">Click "Send Reminder" to see exactly what your client receives on WhatsApp.</div>
+  </div>
+  <div class="pay-g">
+    <div class="pc2">
+      <h3>💰 Pending Payments</h3>
+      <div class="pitem"><div><div class="pnm">Ramesh Kulkarni</div><div class="pd over">⚠️ 28 days overdue</div></div><div><div class="pamt">₹1,20,000</div><div class="sndbtn" id="pb1" onclick="sendRem('Ramesh Kulkarni','1,20,000','28','1')">Send Reminder</div></div></div>
+      <div class="pitem"><div><div class="pnm">Priya Sharma</div><div class="pd over">⚠️ 14 days overdue</div></div><div><div class="pamt">₹85,000</div><div class="sndbtn" id="pb2" onclick="sendRem('Priya Sharma','85,000','14','2')">Send Reminder</div></div></div>
+      <div class="pitem"><div><div class="pnm">Sunil Desai</div><div class="pd due">Due in 3 days</div></div><div><div class="pamt">₹2,10,000</div><div class="sndbtn" id="pb3" onclick="sendRem('Sunil Desai','2,10,000','0','3')">Send Reminder</div></div></div>
+      <div class="pitem"><div><div class="pnm">Meena Joshi</div><div class="pd ok">✅ Paid yesterday</div></div><div><div class="pamt" style="color:var(--green)">₹45,000</div></div></div>
+    </div>
+    <div class="pc2">
+      <h3>⚡ SARTHI Auto-Rules</h3>
+      <div class="rulec">
+        <div class="rlh">Automation — Running Always</div>
+        <div class="rl">📅 <span>Day 7:</span> Polite WhatsApp reminder</div>
+        <div class="rl">📅 <span>Day 15:</span> Second reminder + payment link</div>
+        <div class="rl">📅 <span>Day 30:</span> AI voice call from SARTHI</div>
+        <div class="rl">📅 <span>Day 45:</span> Alert sent to you for action</div>
+        <div class="rl">✅ <span>On payment:</span> Auto thank-you + receipt</div>
+      </div>
+      <div class="mp" id="mprev">
+        <div class="mph">WhatsApp Message Sent to Client</div>
+        <div class="mpb" id="mpbody"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div><!-- /main -->
+
+<section class="cta-s z1">
+  <div class="ctab2">
+    <h2>This is your business<br>on <em>SARTHI.</em></h2>
+    <p>Everything you saw — customized with your sites, clients, language. Ready in 30 days. Starting ₹35,000.</p>
+    <div class="cta-row">
+      <a href="https://wa.me/919767066941?text=SARTHI%20demo%20pahila.%20Majhya%20business%20sathi%20hava%20aahe." class="btn-p">🚀 Get SARTHI For My Business →</a>
+      <button class="btn-s" onclick="sharePage()">🔗 Share This Demo</button>
+    </div>
+  </div>
+</section>
+
+<footer class="z1">Ads<span class="a4">4</span>You AI Automation Studio &nbsp;·&nbsp; UDYAM-MH-26-1092780 &nbsp;·&nbsp; Wakad, Pune &nbsp;·&nbsp; ads4you@zohomail.com</footer>
+
+<script>
+const BIZC={
+  construction:{icon:'S',nm:'SARTHI — Nirmala Associates',p1:240000,p2:45,p3:38,
+    wf0t:'Lead Capture & Qualification',wf0d:'New lead calls midnight — SARTHI answers, qualifies project, collects contact, sends portfolio. Zero lead ever missed again.',
+    wf1t:'30-Day Lead Follow-Up',wf1d:'Prospect asked about project and went quiet? Bot follows up Day 3, 7, 14, 30 with portfolio, testimonials, new work photos.',
+    wf2t:'Client Site Update Bot',wf2d:'Client texts "site update chahiye" — bot shares latest progress, photos, upcoming milestones. Saves 45 min/day on calls.',
+    wf3t:'Payment Reminder Bot',wf3d:'Payment overdue? Bot sends professional reminder with payment link. No awkward personal call. Relationship maintained.',
+    qr:['New construction project','Site ka kya update hai?','Quote chahiye','Payment status?'],
+    welcome:'Namaskar! 🙏 SARTHI boltoy — Nirmala Associates AI Assistant.\n\nSahaj Sir aata site visit var ahet.\n\n🏗️ Amachya services:\n• Residential Construction\n• Commercial Interior\n• Renovation & Remodeling\n\nKaunsya project baddal bolayche aahe? 👇',
+    sys:'You are SARTHI, WhatsApp AI for "Nirmala Associates" construction company. Reply in Hinglish (Hindi+English), professional, max 90 words. Services: residential construction, commercial interior, renovation. If project query: ask location, type, timeline, budget. If site update: say 75% complete, on track April 15. If quote: ask details, share estimate in 24hrs. End with one clear next step.'
+  },
+  realestate:{icon:'R',nm:'SARTHI — Raj Realty',p1:180000,p2:35,p3:42,
+    wf0t:'Property Enquiry Bot',wf0d:'Buyer asks about 3BHK flat at 11 PM — bot shares available inventory, pricing, floor plans. Books site visit automatically.',
+    wf1t:'Buyer Follow-Up Sequence',wf1d:'Buyer visited but did not decide? Bot follows up with new photos, payment scheme, possession timeline — automatically.',
+    wf2t:'Site Visit Booking Bot',wf2d:'Interested buyer wants to visit — bot shows available slots, books, sends location, sends reminder 2 hours before.',
+    wf3t:'Token & Agreement Follow-up',wf3d:'Buyer paid token but docs pending? Bot follows up with checklist, bank loan guidance, registration appointment booking.',
+    qr:['3BHK flat available?','Site visit book karo','EMI calculate karo','Payment scheme?'],
+    welcome:'Namaskar! 🏢 Raj Realty AI Assistant.\n\nReady to possess properties:\n🏠 2BHK: ₹45L – 55L\n🏠 3BHK: ₹65L – 80L\n🏢 Commercial: ₹80L – 1.2Cr\n\n📍 Hinjewadi Phase 3 | RERA Registered\n\nKaunsi property interested hai? 👇',
+    sys:'You are a WhatsApp AI for "Raj Realty" developer Pune. Hinglish, professional, helpful, max 90 words. 2BHK ₹45-55L, 3BHK ₹65-80L, Commercial ₹80L-1.2Cr. RERA registered. If enquiry: ask family size, budget, timeline. If site visit: book Mon-Sun 10AM-6PM. End with one clear next step.'
+  },
+  interior:{icon:'I',nm:'SARTHI — Riya Interiors',p1:80000,p2:25,p3:35,
+    wf0t:'Interior Design Enquiry Bot',wf0d:'Client asks for modular kitchen quote at 10 PM — bot asks dimensions, style, budget; sends portfolio of similar work. Enquiry never lost.',
+    wf1t:'Project Milestone Updates',wf1d:'Client wants update — bot shares completion percentage, work done this week, what comes next. Trust built automatically.',
+    wf2t:'Material Selection Helper',wf2d:'Client confused about tiles or paint — bot shares curated options based on style and budget. Decisions made faster.',
+    wf3t:'Post-Handover Follow-Up',wf3d:'Project complete? Bot checks after 7 days asking for feedback and Google review. Reputation built on autopilot.',
+    qr:['Modular kitchen quote?','Project update?','Materials show karo','My project complete?'],
+    welcome:'Namaskar! 🏠 Riya Interiors AI Assistant.\n\n200+ projects completed ✨\n• Modular Kitchens\n• Full Home Interiors\n• Office Interiors\n\n💰 Budget: ₹3,000/sqft onwards\n📍 Pune & Nashik\n\nKaunsa room ka plan hai? 👇',
+    sys:'You are a WhatsApp AI for "Riya Interiors" Pune. Hinglish, creative, enthusiastic, max 90 words. 200+ projects, modular kitchens, home & office interiors, ₹3,000/sqft onwards. If enquiry: ask room size, style (modern/traditional), budget. If quote: ask dimensions, share ballpark in 24hrs. End with one clear next step.'
+  },
+  lawyer:{icon:'L',nm:'SARTHI — Advocate Sharma',p1:50000,p2:20,p3:30,
+    wf0t:'Legal Consultation Booking',wf0d:'Client needs legal advice at 9 PM — bot collects case brief, explains services, books appointment. 100% confidential.',
+    wf1t:'Case Status Update Bot',wf1d:'Client texts "mera case kahan tak hua?" — bot provides latest hearing date, next steps. Client feels informed without disturbing advocate.',
+    wf2t:'Document Checklist Delivery',wf2d:'Client asks what to bring — bot sends complete formatted checklist for their specific case type instantly.',
+    wf3t:'Court Hearing Reminder',wf3d:'Court date in 3 days? Bot sends auto-reminder with court number and what to bring. Zero missed appearances.',
+    qr:['Consultation book karo','Case status?','Documents list','Fees kitni?'],
+    welcome:'Namaskar! ⚖️ Advocate Sharma — AI Assistant.\n\n• Property & Real Estate Law\n• Business & Corporate Law\n• Family & Civil Disputes\n• Criminal Defense\n\n🔒 100% Confidential\n⏰ Mon–Sat: 10 AM – 7 PM\n\nKya legal help chahiye? 👇',
+    sys:'You are a WhatsApp AI for "Advocate Sharma" law firm Pune. Hinglish, professional, reassuring, max 90 words. Property, Corporate, Family, Criminal law. Consultation ₹1,500, Mon-Sat 10AM-7PM. ALWAYS emphasize 100% confidentiality. End with one clear next step.'
+  },
+  architect:{icon:'A',nm:'SARTHI — Designcraft Architects',p1:90000,p2:30,p3:35,
+    wf0t:'Project Enquiry & Briefing',wf0d:'Client wants to build new home — bot collects plot size, style, budget, timeline. Sends portfolio. Schedules site visit automatically.',
+    wf1t:'Design Approval Follow-Up',wf1d:'Sent design drawings but client went quiet? Bot follows up with revision offer, keeps project moving.',
+    wf2t:'Drawing Delivery Notification',wf2d:'New drawing set ready? Bot notifies client with PDF link and change summary. All on WhatsApp.',
+    wf3t:'Construction Quality Tracking',wf3d:'Bot helps collect supervisor photos, flag deviations from drawings, alerts architect and client simultaneously.',
+    qr:['New house design?','Site visit book karo','Portfolio dekho','Project status?'],
+    welcome:'Namaskar! 📐 Designcraft Architects AI.\n\n150+ residential projects\n40+ commercial projects ✨\nAward-winning designs\n\n📍 Pune | Delhi | Mumbai\n💰 Design fees: ₹80/sqft onwards\n\nKya project plan kar rahe ho? 👇',
+    sys:'You are a WhatsApp AI for "Designcraft Architects" Pune. Hinglish, creative, professional, max 90 words. 150+ residential, 40+ commercial projects. Design fees ₹80/sqft onwards. If enquiry: ask plot size, floors, style, budget. End with one clear next step.'
+  },
+  broker:{icon:'B',nm:'SARTHI — PropEdge Realty',p1:60000,p2:25,p3:38,
+    wf0t:'Property Requirement Matching',wf0d:'Buyer shares "3BHK Hinjewadi under 60L" — bot shows matching inventory, sends photos, books site visit. No more day-and-night calls.',
+    wf1t:'Seller Lead Follow-Up',wf1d:'Property listed but no buyer yet? Bot sends weekly market update, new enquiries, pricing suggestions to seller.',
+    wf2t:'Site Visit Coordination',wf2d:'Both buyer and seller confirmed — bot coordinates time, sends both parties confirmation, location, and reminders.',
+    wf3t:'Deal Progress Tracker',wf3d:'Deal in documentation? Bot tracks pending tasks, reminds both parties of next steps. Nothing falls through.',
+    qr:['3BHK available?','My property status?','Site visit book karo','Deal update?'],
+    welcome:'Namaskar! 🏘️ PropEdge Realty AI.\n\n500+ properties listed\n📍 Pune | Nashik | Aurangabad\n✅ RERA registered agents\n\nBuy, sell ya rent — kya dhundh rahe ho? 👇',
+    sys:'You are a WhatsApp AI for "PropEdge Realty" broker Pune. Hinglish, helpful, energetic, max 90 words. 500+ properties, Pune/Nashik/Aurangabad, RERA registered. If buyer: ask BHK, area, budget, possession. If seller: ask type, area, expected price. End with one clear next step.'
+  }
+};
+
+let curBiz='construction';let busy2=false;let lastReq2=0;
+
+function toggleTheme(){const h=document.documentElement,d=h.getAttribute('data-theme')==='dark';h.setAttribute('data-theme',d?'light':'dark');document.getElementById('thm').textContent=d?'🌙':'☀️'}
+function sharePage(){
+  if(navigator.share){navigator.share({title:'SARTHI — Construction AI Demo by Ads4You',url:window.location.href})}
+  else{navigator.clipboard.writeText(window.location.href).then(()=>showToast('🔗 Demo link copied! Share with your contacts.'))}
+}
+
+function cu(id,target,pre,suf,dur){
+  const el=document.getElementById(id);if(!el)return;
+  let v=0;const step=target/60;
+  const t=setInterval(()=>{v=Math.min(v+step,target);el.textContent=pre+Math.floor(v).toLocaleString('en-IN')+suf;if(v>=target)clearInterval(t)},dur/60);
+}
+setTimeout(()=>{
+  cu('s1',240000,'₹','',1400);cu('s2',45,'','min/day',1100);cu('s3',38,'','%',1000);
+  cu('kv1',4,'','',700);cu('kv2',385000,'₹','',1200);cu('kv3',7,'','',700);cu('kv4',12,'','',700);
+},500);
+setTimeout(()=>{document.querySelectorAll('.pf').forEach(b=>{b.style.width=(b.dataset.w||0)+'%'})},900);
+
+function setBiz(biz,btn){
+  curBiz=biz;
+  document.querySelectorAll('.bb').forEach(b=>b.classList.remove('on'));
+  btn.classList.add('on');
+  const b=BIZC[biz];
+  document.getElementById('wav2').textContent=b.icon;
+  document.getElementById('wan2').textContent=b.nm;
+  cu('s1',b.p1,'₹','',700);cu('s2',b.p2,'','min/day',700);cu('s3',b.p3,'','%',700);
+  ['wf0t','wf0d','wf1t','wf1d','wf2t','wf2d','wf3t','wf3d'].forEach(id=>document.getElementById(id).textContent=b[id]);
+  document.getElementById('qrr2').innerHTML=b.qr.map(q=>`<span class="qrc2" onclick="sendQ2('${q.replace(/'/g,"&#39;")}')">${q}</span>`).join('');
+  resetWA(b);
+}
+
+function resetWA(b){
+  const m=document.getElementById('wa2bd');
+  m.innerHTML=`<div class="wdv"><span>Today</span></div><div class="wm in"><div class="wm-b">Hello, help chahiye</div><div class="wm-m">Just now</div></div><div class="wm out"><div class="wm-b">${b.welcome.replace(/\n/g,'<br>')}</div><div class="wm-m">Just now <span class="tick">✓✓</span></div></div>`;
+  m.scrollTop=m.scrollHeight;
+}
+
+function setWF(idx){
+  document.querySelectorAll('.wf').forEach((f,i)=>f.classList.toggle('on',i===idx));
+  const demos=['Project quote chahiye, details discuss karein','Site update chahiye — kab complete hoga?','Payment reminder bhejo please','Invoice generate karo client ke liye'];
+  const inp=document.getElementById('wa2i');inp.value=demos[idx];inp.focus();
+}
+
+function showMod(id,btn){
+  document.querySelectorAll('.mod').forEach(m=>m.classList.remove('on'));
+  document.querySelectorAll('.tab').forEach(b=>b.classList.remove('on'));
+  document.getElementById('mod-'+id).classList.add('on');
+  btn.classList.add('on');
+}
+
+function sendQ2(t){document.getElementById('wa2i').value=t;sendMsg2()}
+
+async function sendMsg2(){
+  const now=Date.now();
+  if(busy2||now-lastReq2<1200)return;
+  const inp=document.getElementById('wa2i');
+  const text=inp.value.trim();if(!text)return;
+  lastReq2=now;inp.value='';
+  addMsg2(text,'in');
+  busy2=true;
+  const btn=document.getElementById('wa2snd');btn.disabled=true;
+  showTyping2();
+  try{
+    const b=BIZC[curBiz];
+    const r=await fetch('https://api.anthropic.com/v1/messages',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:200,system:b.sys,messages:[{role:'user',content:text}]})
+    });
+    if(!r.ok)throw new Error('API '+r.status);
+    const d=await r.json();
+    hideTyping2();
+    addMsg2(d.content?.[0]?.text||'Ek second... dobara try karein 🙏','out');
+  }catch(e){
+    hideTyping2();
+    addRetry2(text);
+  }
+  busy2=false;btn.disabled=false;
+}
+
+function addMsg2(text,dir){
+  const m=document.getElementById('wa2bd');
+  const now=new Date();const t=now.getHours()+':'+String(now.getMinutes()).padStart(2,'0');
+  const el=document.createElement('div');el.className=`wm ${dir}`;
+  el.innerHTML=`<div class="wm-b">${text.replace(/\n/g,'<br>').replace(/</g,'&lt;')}</div><div class="wm-m">${t}${dir==='out'?' <span class="tick">✓✓</span>':''}</div>`;
+  m.appendChild(el);m.scrollTop=m.scrollHeight;
+}
+
+function addRetry2(originalText){
+  const m=document.getElementById('wa2bd');
+  const el=document.createElement('div');el.className='retry-msg';
+  el.innerHTML='⚠️ Connection issue — <u>tap to retry</u>';
+  el.onclick=()=>{el.remove();document.getElementById('wa2i').value=originalText;sendMsg2()};
+  m.appendChild(el);m.scrollTop=m.scrollHeight;
+}
+
+let ty2=null;
+function showTyping2(){const m=document.getElementById('wa2bd');ty2=document.createElement('div');ty2.className='wm out';ty2.innerHTML='<div class="tyw"><div class="td"></div><div class="td"></div><div class="td"></div></div>';m.appendChild(ty2);m.scrollTop=m.scrollHeight}
+function hideTyping2(){if(ty2){ty2.remove();ty2=null}}
+
+// CALL DEMO
+const SCRIPT=[
+  {r:'s',t:'Namaskar! Mi SARTHI boltoy — Nirmala Associates cha AI Assistant. Sahaj Sir aata site var ahet. Mi tumchi madad karu shakto ka?'},
+  {r:'c',t:'Haan, majha Patil Residency site update hava hota. Kiti kaam zaale?'},
+  {r:'s',t:'Patil Residency aata 72% complete aahe. Foundation, structure ani plastering poorna zaali aahe. Tile work April 8 la suru honar. Estimated completion April 15.'},
+  {r:'c',t:'Tile kaam keval baaki aahe ka?'},
+  {r:'s',t:'Haan — tumhi select kelele tiles March 28 la deliver hote. Sahaj Sir tumhala aaj sandhyakali 6 la callback karnar ahet. Kaahi prashna aslyaas punha call kara.'},
+  {r:'c',t:'Theek aahe, dhanyawad!'},
+  {r:'s',t:'Tumcha swagat aahe! Kahi prashna aslyaas SARTHI 24 taas available aahe. Sahaj Sir la call summary pathavtoy. Good day! 🙏'},
+];
+let calling=false;let sidx=0;
+
+function ansCall(){
+  if(calling)return;calling=true;
+  document.getElementById('pring').textContent='🔴';
+  document.getElementById('callst').textContent='Connected — SARTHI speaking in Marathi...';
+  const tr=document.getElementById('trl');tr.innerHTML='';sidx=0;
+  playNext(tr);
+}
+function playNext(tr){
+  if(sidx>=SCRIPT.length){
+    document.getElementById('callst').textContent='Call ended — Summary sent to your WhatsApp ✅';
+    showToast('📲 SARTHI sent call summary to your WhatsApp!');
+    calling=false;return;
+  }
+  const s=SCRIPT[sidx];
+  const el=document.createElement('div');
+  el.className=`tri ${s.r}`;
+  el.innerHTML=`<div class="trsp">${s.r==='s'?'🤖 SARTHI':'👤 Client'}</div>${s.t}`;
+  tr.appendChild(el);tr.scrollTop=tr.scrollHeight;
+  sidx++;
+  setTimeout(()=>playNext(tr),s.t.length*22+700);
+}
+function decCall(){showToast('📵 SARTHI will auto-callback this number in 5 minutes')}
+
+function sendRem(name,amt,days,id){
+  const msg=`Namaskar ${name} ji! 🙏\n\nNirmala Associates boltoy.\n\nTumchya account var ₹${amt} payment pending aahe${days>0?' ('+days+' diwasapasun)':''}.\n\n💳 Pay here: pay.nirmala.in\n\nKahi problem aslyaas reply kara. Sahaj Sir available ahet.\n\nDhanyawad! 🙏`;
+  document.getElementById('mpbody').innerHTML=msg.replace(/\n/g,'<br>');
+  const mpEl=document.getElementById('mprev');
+  mpEl.style.display='block';
+  // Scroll payment preview into view on mobile
+  setTimeout(()=>mpEl.scrollIntoView({behavior:'smooth',block:'nearest'}),100);
+  const b=document.getElementById('pb'+id);
+  b.textContent='✅ Sent!';b.className='sndbtn done';
+  showToast('✅ WhatsApp reminder sent to '+name+'!');
+}
+
+function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('on');setTimeout(()=>t.classList.remove('on'),3500)}
+</script>
+</body>
+</html>
