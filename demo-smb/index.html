@@ -4,13 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ads4You — Small Business AI Bot Demo | Live WhatsApp Automation</title>
-<meta name="description" content="See your WhatsApp bot working live. AI automation for tiffin, clinic, coaching, CA office, school and more. Try free demo now.">
+<meta name="description" content="See your WhatsApp bot working live. AI automation for tiffin, clinic, coaching, CA office, school and more.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{--or:#FF6B35;--or2:#FF8C5A;--og:rgba(255,107,53,0.13);--oglow:rgba(255,107,53,0.28);--cy:#00D4FF;--green:#25D366;--gold:#EAA220;--red:#ef4444;--tr:.38s cubic-bezier(.4,0,.2,1)}
-[data-theme="dark"]{--bg:#030407;--sf:#0c0c18;--sf2:#111120;--bd:#1c1c2e;--bd2:#262640;--tx:#F0F0EC;--t2:#8888AA;--t3:#48485E;--ni:.044;--a1:rgba(255,107,53,.07);--a2:rgba(0,212,255,.04)}
-[data-theme="light"]{--bg:#F8F6F2;--sf:#FFFFFF;--sf2:#FAF8F4;--bd:#E6E2D8;--bd2:#D4CFC2;--tx:#17130B;--t2:#5A5240;--t3:#9A9080;--ni:.026;--a1:rgba(255,107,53,.05);--a2:rgba(255,180,80,.04)}
+[data-theme="dark"]{--bg:#030407;--sf:#0c0c18;--sf2:#111120;--bd:#1c1c2e;--bd2:#262640;--tx:#F0F0EC;--t2:#8888AA;--t3:#48485E;--ni:.044;--a1:rgba(255,107,53,.07);--a2:rgba(0,212,255,.04);--wa-in:#1e2b30;--wa-out:#005c4b;--wa-bg:#0a1014;--wa-head:#1f2c34;--wa-txt:#e9edef}
+[data-theme="light"]{--bg:#F8F6F2;--sf:#FFFFFF;--sf2:#FAF8F4;--bd:#E6E2D8;--bd2:#D4CFC2;--tx:#17130B;--t2:#5A5240;--t3:#9A9080;--ni:.026;--a1:rgba(255,107,53,.05);--a2:rgba(255,180,80,.04);--wa-in:#FFFFFF;--wa-out:#DCF8C6;--wa-bg:#EAE8E0;--wa-head:#075E54;--wa-txt:#111}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--tx);font-family:'Instrument Sans',sans-serif;min-height:100vh;overflow-x:hidden;transition:background var(--tr),color var(--tr)}
@@ -30,14 +30,10 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;back
 .h1{font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(38px,8vw,78px);font-weight:800;line-height:.92;letter-spacing:-2.5px;margin-bottom:16px}
 .h1 .gr{display:block;background:linear-gradient(110deg,var(--or) 0%,var(--or2) 40%,var(--gold) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
 .tagline{font-size:16px;color:var(--t2);margin-bottom:6px;font-style:italic;transition:color var(--tr)}
-.mar{font-size:12px;color:var(--t3);letter-spacing:1px;margin-bottom:32px;transition:color var(--tr)}
-
-/* DISCLAIMER */
+.mar{font-size:12px;color:var(--t3);letter-spacing:1px;margin-bottom:28px;transition:color var(--tr)}
 .disc{max-width:720px;margin:0 auto 28px;background:rgba(255,107,53,.07);border:1.5px solid rgba(255,107,53,.2);border-radius:10px;padding:12px 18px;font-size:13px;color:var(--t2);text-align:center;line-height:1.6}
 .disc strong{color:var(--or)}
-
-/* PAIN CLOCK */
-.pc{max-width:740px;margin:0 auto 36px;background:var(--sf);border:1.5px solid var(--bd2);border-radius:16px;overflow:hidden;position:relative;box-shadow:0 4px 20px rgba(0,0,0,.15);transition:all var(--tr)}
+.pc{max-width:740px;margin:0 auto 32px;background:var(--sf);border:1.5px solid var(--bd2);border-radius:16px;overflow:hidden;position:relative;box-shadow:0 4px 20px rgba(0,0,0,.15);transition:all var(--tr)}
 .pc::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--or),transparent)}
 .pc-top{padding:13px 20px 0;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--t3);font-weight:700}
 .pc-grid{display:grid;grid-template-columns:repeat(4,1fr);padding:6px 0 16px}
@@ -46,19 +42,13 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;back
 .pcn{font-family:'Bricolage Grotesque',sans-serif;font-size:26px;font-weight:800;color:var(--or);margin-bottom:4px;min-height:34px}
 .pcl{font-size:11px;color:var(--t3);line-height:1.4}
 @media(max-width:460px){.pc-grid{grid-template-columns:1fr 1fr}.pci{border-bottom:1.5px solid var(--bd)}.pci:nth-child(2n){border-right:none}.pci:nth-last-child(-n+2){border-bottom:none}}
-
-/* BIZ SELECTOR */
 .bsl{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--t3);font-weight:700;text-align:center;margin-bottom:12px}
-.bg{display:flex;flex-wrap:wrap;justify-content:center;gap:7px;max-width:760px;margin:0 auto 44px}
+.bg{display:flex;flex-wrap:wrap;justify-content:center;gap:7px;max-width:760px;margin:0 auto 40px}
 .bb{padding:9px 16px;border-radius:9px;border:1.5px solid var(--bd2);background:var(--sf);color:var(--t2);font-family:'Instrument Sans',sans-serif;font-size:12px;font-weight:600;cursor:pointer;transition:all .22s;display:flex;align-items:center;gap:6px}
 .bb:hover{border-color:var(--or);color:var(--tx);transform:translateY(-2px)}
 .bb.on{background:var(--or);border-color:var(--or);color:#fff;box-shadow:0 5px 20px var(--oglow);transform:translateY(-2px)}
-
-/* DEMO LAYOUT */
 .dw{max-width:1060px;margin:0 auto;padding:0 20px 52px;display:grid;grid-template-columns:1fr 390px;gap:22px;align-items:start}
 @media(max-width:860px){.dw{grid-template-columns:1fr}}
-
-/* FEAT CARDS */
 .fs{display:flex;flex-direction:column;gap:11px}
 .fc{background:var(--sf);border:1.5px solid var(--bd);border-radius:14px;overflow:hidden;cursor:pointer;transition:all .25s;position:relative}
 .fc::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--or);box-shadow:0 0 10px var(--or);opacity:0;transition:opacity .25s;border-radius:3px 0 0 3px}
@@ -79,51 +69,44 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;back
 [data-theme="light"] .bc.aft{color:#166534;background:rgba(34,197,94,.06)}
 .bl{font-size:9px;letter-spacing:2px;text-transform:uppercase;font-weight:700;margin-bottom:4px;opacity:.7}
 .ftry{font-size:12px;color:var(--or);font-weight:700;margin-top:8px;letter-spacing:.3px}
-
-/* PHONE */
 .pw{position:sticky;top:24px}
 .ps{background:#1c1c1c;border-radius:42px;padding:10px;box-shadow:0 0 0 1px rgba(255,255,255,.06),0 20px 70px rgba(0,0,0,.5),inset 0 0 0 1px rgba(255,255,255,.03)}
 [data-theme="light"] .ps{background:#2a2a2a;box-shadow:0 0 0 1px rgba(0,0,0,.15),0 14px 50px rgba(0,0,0,.2)}
 .pn{width:72px;height:5px;border-radius:3px;background:#111;margin:0 auto 9px}
-.wa{background:#0e1a1f;border-radius:34px;overflow:hidden}
-.wah{background:#1f2c34;padding:12px 14px;display:flex;align-items:center;gap:10px}
+.wa{background:var(--wa-bg);border-radius:34px;overflow:hidden;transition:background var(--tr)}
+.wah{background:var(--wa-head);padding:12px 14px;display:flex;align-items:center;gap:10px;transition:background var(--tr)}
 .wav{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--or),var(--gold));display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0;transition:background .3s}
 .wan{font-size:13px;font-weight:600;color:#fff}
-.was{font-size:11px;color:rgba(255,255,255,.5)}
+.was{font-size:11px;color:rgba(255,255,255,.55)}
 .was span{color:var(--green)}
-.wab{height:370px;overflow-y:auto;padding:11px;background:#0a1014;display:flex;flex-direction:column;gap:7px}
+.wab{height:370px;overflow-y:auto;padding:11px;background:var(--wa-bg);display:flex;flex-direction:column;gap:7px;transition:background var(--tr)}
 .wab::-webkit-scrollbar{width:0}
 .wdv{text-align:center;margin:3px 0}
-.wdv span{background:rgba(0,0,0,.2);color:rgba(255,255,255,.38);font-size:11px;padding:3px 10px;border-radius:6px}
-[data-theme="light"] .wdv span{background:rgba(0,0,0,.07);color:rgba(0,0,0,.35)}
+.wdv span{background:rgba(0,0,0,.15);color:rgba(255,255,255,.38);font-size:11px;padding:3px 10px;border-radius:6px}
+[data-theme="light"] .wdv span{background:rgba(0,0,0,.08);color:rgba(0,0,0,.35)}
 .wm{display:flex;flex-direction:column;max-width:84%}
 .wm.in{align-self:flex-start}
 .wm.out{align-self:flex-end}
-.wm-b{padding:8px 11px;font-size:13px;line-height:1.55}
-.wm.in .wm-b{background:#1e2b30;color:#e9edef;border-radius:0 10px 10px 10px}
-.wm.out .wm-b{background:#005c4b;color:#e9edef;border-radius:10px 10px 0 10px}
+.wm-b{padding:8px 11px;font-size:13px;line-height:1.55;color:var(--wa-txt)}
+.wm.in .wm-b{background:var(--wa-in);border-radius:0 10px 10px 10px;box-shadow:0 1px 3px rgba(0,0,0,.12)}
+.wm.out .wm-b{background:var(--wa-out);border-radius:10px 10px 0 10px;box-shadow:0 1px 3px rgba(0,0,0,.12)}
+[data-theme="dark"] .wm.out .wm-b{color:#e9edef}
+[data-theme="dark"] .wm.in .wm-b{color:#e9edef}
 .wm-m{font-size:10px;color:#8696a0;margin-top:3px;display:flex;align-items:center;gap:3px}
 .wm.out .wm-m{justify-content:flex-end}
 .tick{color:#53bdeb}
-.tyw{align-self:flex-start;background:#1e2b30;border-radius:0 10px 10px 10px;padding:9px 13px;display:flex;gap:4px;width:fit-content}
+.tyw{align-self:flex-start;background:var(--wa-in);border-radius:0 10px 10px 10px;padding:9px 13px;display:flex;gap:4px;width:fit-content}
 .td{width:6px;height:6px;border-radius:50%;background:#8696a0;animation:tda 1.2s ease-in-out infinite}
 .td:nth-child(2){animation-delay:.2s}.td:nth-child(3){animation-delay:.4s}
 @keyframes tda{0%,60%,100%{transform:translateY(0)}30%{transform:translateY(-5px)}}
-.qrr{background:#0a1014;padding:7px 11px;display:flex;flex-wrap:wrap;gap:5px;border-top:1px solid rgba(255,255,255,.05)}
+.qrr{background:var(--wa-bg);padding:7px 11px;display:flex;flex-wrap:wrap;gap:5px;border-top:1px solid rgba(0,0,0,.08);transition:background var(--tr)}
 .qrc{padding:5px 11px;border-radius:13px;font-size:12px;font-weight:500;border:1px solid rgba(37,211,102,.3);color:var(--green);background:rgba(37,211,102,.07);cursor:pointer;transition:all .2s;white-space:nowrap}
 .qrc:hover{background:rgba(37,211,102,.18)}
 .wair{background:#1f2c34;padding:9px 11px;display:flex;align-items:center;gap:9px}
 .wai{flex:1;background:#2a3942;border:none;outline:none;border-radius:20px;padding:9px 13px;color:#e9edef;font-family:'Instrument Sans',sans-serif;font-size:13px}
 .wai::placeholder{color:#8696a0}
-/* SEND + LOADING */
 .wsnd{width:40px;height:40px;border-radius:50%;background:var(--green);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;flex-shrink:0}
-.wsnd:hover:not(:disabled){transform:scale(1.1)}
-.wsnd:disabled{opacity:.5;cursor:not-allowed}
-/* RETRY MSG */
-.retry-msg{align-self:flex-start;display:flex;align-items:center;gap:8px;background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.2);border-radius:0 10px 10px 10px;padding:9px 13px;font-size:13px;color:#fca5a5;max-width:84%;cursor:pointer}
-.retry-msg:hover{background:rgba(239,68,68,.18)}
-
-/* CTA */
+.wsnd:hover{transform:scale(1.1)}
 .cta-s{max-width:1060px;margin:0 auto;padding:0 20px 100px;text-align:center}
 .ctab{background:var(--sf);border:1.5px solid var(--bd2);border-radius:20px;padding:48px 32px;position:relative;overflow:hidden;transition:all var(--tr);box-shadow:0 6px 32px rgba(0,0,0,.15)}
 .ctab::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:52%;height:2px;background:linear-gradient(90deg,transparent,var(--or),transparent)}
@@ -147,10 +130,10 @@ footer .a4{color:var(--cy)}
 <body>
 <div class="toast z1" id="toast"></div>
 <div class="top-btns z1">
-  <button class="icon-btn" onclick="sharePage()">🔗</button>
-  <button class="icon-btn" id="thm" onclick="toggleTheme()">☀️</button>
+  <button class="icon-btn" onclick="sharePage()" title="Share">🔗</button>
+  <button class="icon-btn" id="thm" onclick="toggleTheme()" title="Toggle theme">☀️</button>
 </div>
-<a href="https://wa.me/919767066941?text=Small%20business%20demo%20dekha!%20Mere%20business%20ke%20liye%20bot%20chahiye." class="wa-float z1">
+<a href="https://wa.me/919767066941?text=Small%20business%20demo%20dekha!%20Bot%20chahiye%20mere%20business%20ke%20liye." class="wa-float z1">
   <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.553 4.116 1.522 5.85L.073 23.927a.5.5 0 0 0 .612.612l6.077-1.449A11.94 11.94 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.891 0-3.667-.497-5.2-1.366l-.373-.217-3.87.924.924-3.87-.217-.373A9.944 9.944 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
   Get This For My Business
 </a>
@@ -159,14 +142,10 @@ footer .a4{color:var(--cy)}
   <div class="fade"><div class="pill"><div class="ld"></div><strong>Ads4You</strong> &nbsp;·&nbsp; Live AI Demo &nbsp;·&nbsp; Wakad, Pune</div></div>
   <h1 class="h1 fade">Your Business<br><span class="gr">Runs Itself.</span></h1>
   <p class="tagline fade">"Every order answered. Every lead followed. Every bill sent. Automatically."</p>
-  <p class="mar fade">✦ Manual kaam band. AI chalu. Har chaukasat instant reply. ✦</p>
-
-  <div class="disc fade">
-    🤖 <strong>This is a live working AI bot.</strong> Everything you see is real — powered by actual AI. Your bot will be customized exactly for your business: your products, your prices, your language.
-  </div>
-
+  <p class="mar fade">✦ Manual kaam band. AI chalu. Har enquiry ka instant reply. ✦</p>
+  <div class="disc fade">🤖 <strong>This is a live working AI demo.</strong> Type any message in the WhatsApp bot below. Your real bot will be customized to your business — your products, your prices, your language.</div>
   <div class="pc fade">
-    <div class="pc-top">📉 What your business loses every single day — without automation</div>
+    <div class="pc-top">📉 What your business loses every day — without automation</div>
     <div class="pc-grid">
       <div class="pci"><div class="pcn" id="pc1">0</div><div class="pcl">Enquiries answered manually</div></div>
       <div class="pci"><div class="pcn" id="pc2">0h</div><div class="pcl">Hours wasted on WhatsApp</div></div>
@@ -174,8 +153,7 @@ footer .a4{color:var(--cy)}
       <div class="pci"><div class="pcn">0 sec</div><div class="pcl">AI bot response time vs your 20 min</div></div>
     </div>
   </div>
-
-  <div class="bsl fade">👆 Select your business to see your exact pain solved</div>
+  <div class="bsl fade">👆 Select your business — see your exact pain solved</div>
   <div class="bg fade">
     <button class="bb on" onclick="setBiz('tiffin',this)">🍱 Tiffin Service</button>
     <button class="bb" onclick="setBiz('clinic',this)">🏥 Clinic</button>
@@ -194,26 +172,26 @@ footer .a4{color:var(--cy)}
   <div class="fs" id="fstack">
     <div class="fc on" onclick="setFeat(0)">
       <div class="fi"><div class="ft"><div class="fic">📦</div><div class="ftl" id="f0t">Order Management Bot</div></div>
-      <div class="fd" id="f0d">Customer sends "1 tiffin aaj chahiye" at 7 AM — bot confirms instantly, logs order, sends menu. You wake up to a full order book. Zero effort.</div>
-      <div class="ba"><div class="bc bef"><div class="bl">❌ Before</div>40 messages every morning. Miss 3-4 orders. Customer calls angrily.</div><div class="bc aft"><div class="bl">✅ After</div>Bot handles all orders 24/7. Zero missed. Zero manual work.</div></div>
+      <div class="fd" id="f0d">Customer sends "1 tiffin aaj chahiye" — bot confirms instantly, logs order, sends menu. Zero manual work. Zero missed orders.</div>
+      <div class="ba"><div class="bc bef"><div class="bl">❌ Before</div>40 messages every morning. Miss orders. Customer calls angrily.</div><div class="bc aft"><div class="bl">✅ After</div>Bot handles 24/7. Zero missed. Zero effort.</div></div>
       <div class="ftry">▶ Type anything below to try live</div></div>
     </div>
     <div class="fc" onclick="setFeat(1)">
       <div class="fi"><div class="ft"><div class="fic">🔄</div><div class="ftl" id="f1t">30-Day Follow-Up Automation</div></div>
-      <div class="fd" id="f1d">Lead asks once and goes silent? Bot follows up Day 1, 3, 7, 14 automatically. Converts cold leads while you sleep.</div>
-      <div class="ba"><div class="bc bef"><div class="bl">❌ Before</div>You forget to follow up. Lead goes cold. Revenue lost every week.</div><div class="bc aft"><div class="bl">✅ After</div>100% leads followed up for 30 days. Conversion doubles.</div></div>
+      <div class="fd" id="f1d">Lead goes quiet? Bot follows up Day 1, 3, 7, 14 automatically. Converts cold leads while you sleep.</div>
+      <div class="ba"><div class="bc bef"><div class="bl">❌ Before</div>Forget to follow up. Lead goes cold. Revenue lost.</div><div class="bc aft"><div class="bl">✅ After</div>100% leads followed up 30 days. Conversion doubles.</div></div>
       <div class="ftry">▶ Try: "Monthly subscription lena hai"</div></div>
     </div>
     <div class="fc" onclick="setFeat(2)">
       <div class="fi"><div class="ft"><div class="fic">🧾</div><div class="ftl" id="f2t">Instant Invoice on WhatsApp</div></div>
-      <div class="fd" id="f2d">Customer asks for bill — bot generates and sends a professional GST-ready invoice in 3 seconds. No manual typing, no errors.</div>
-      <div class="ba"><div class="bc bef"><div class="bl">❌ Before</div>2 hours/month on manual billing. Errors cause disputes.</div><div class="bc aft"><div class="bl">✅ After</div>Invoice auto-generated in 3 seconds. Professional. Error-free.</div></div>
+      <div class="fd" id="f2d">Customer asks for bill — GST-ready invoice generated and sent in 3 seconds. No manual typing ever again.</div>
+      <div class="ba"><div class="bc bef"><div class="bl">❌ Before</div>2 hours/month on manual billing. Errors cause disputes.</div><div class="bc aft"><div class="bl">✅ After</div>Invoice in 3 seconds. Professional. Error-free.</div></div>
       <div class="ftry">▶ Try: "Bill chahiye"</div></div>
     </div>
     <div class="fc" onclick="setFeat(3)">
       <div class="fi"><div class="ft"><div class="fic">💬</div><div class="ftl" id="f3t">New Enquiry Handler</div></div>
-      <div class="fd" id="f3d">New customer asks pricing or wants to book — bot handles complete conversation, collects details, books slot. 30 seconds. Every time.</div>
-      <div class="ba"><div class="bc bef"><div class="bl">❌ Before</div>Enquiry comes when busy. Reply late. Customer went elsewhere.</div><div class="bc aft"><div class="bl">✅ After</div>Every enquiry handled in 30 sec. Slot booked. You just show up.</div></div>
+      <div class="fd" id="f3d">New customer asks pricing or wants to book — bot handles everything in 30 seconds. Every single time.</div>
+      <div class="ba"><div class="bc bef"><div class="bl">❌ Before</div>Enquiry comes when busy. Reply late. Customer gone.</div><div class="bc aft"><div class="bl">✅ After</div>30-second response. Slot booked. You just show up.</div></div>
       <div class="ftry">▶ Try: "Price kya hai?"</div></div>
     </div>
   </div>
@@ -238,10 +216,8 @@ footer .a4{color:var(--cy)}
           <span class="qrc" onclick="sendQ('Bill chahiye')">Bill</span>
         </div>
         <div class="wair">
-          <input class="wai" id="wai" placeholder="Type a message..." onkeydown="if(event.key==='Enter'&&!event.shiftKey)sendMsg()">
-          <button class="wsnd" id="wsnd" onclick="sendMsg()">
-            <svg width="17" height="17" viewBox="0 0 24 24" fill="white"><path d="M2 21l21-9L2 3v7l15 2-15 2z"/></svg>
-          </button>
+          <input class="wai" id="wai" placeholder="Type a message..." onkeydown="if(event.key==='Enter')sendMsg()">
+          <button class="wsnd" onclick="sendMsg()"><svg width="17" height="17" viewBox="0 0 24 24" fill="white"><path d="M2 21l21-9L2 3v7l15 2-15 2z"/></svg></button>
         </div>
       </div>
     </div>
@@ -251,199 +227,299 @@ footer .a4{color:var(--cy)}
 <section class="cta-s z1">
   <div class="ctab">
     <h2>Your business deserves to be on <em>autopilot.</em></h2>
-    <p>This bot is working live. For your business — customized to your products, prices, and language. Ready in 7 days.</p>
+    <p>This bot works live. For your business — your products, prices, language. Ready in 7 days. Starting ₹10,000.</p>
     <div class="cta-row">
       <a href="https://wa.me/919767066941?text=Demo%20dekha!%20Mere%20business%20ke%20liye%20bot%20chahiye." class="btn-p">🚀 Get This For My Business →</a>
       <button class="btn-s" onclick="sharePage()">🔗 Share This Demo</button>
     </div>
   </div>
 </section>
+<footer class="z1">Ads<span class="a4">4</span>You AI Automation Studio &nbsp;·&nbsp; UDYAM-MH-26-1092780 &nbsp;·&nbsp; Wakad, Pune &nbsp;·&nbsp; ads4you@zohomail.com</footer>
 
-<footer class="z1">Ads<span class="a4">4</span>You AI Automation Studio &nbsp;·&nbsp; UDYAM-MH-26-1092780 &nbsp;·&nbsp; Wakad, Pune &nbsp;·&nbsp; <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="39585d4a0d40564c794356515654585055175a5654">[email&#160;protected]</a></footer>
+<script>
+// ── THEME TOGGLE (FIXED) ──
+function toggleTheme(){
+  var h=document.documentElement;
+  var isDark=h.getAttribute('data-theme')==='dark';
+  h.setAttribute('data-theme', isDark ? 'light' : 'dark');
+  document.getElementById('thm').textContent = isDark ? '🌙' : '☀️';
+}
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-const BIZ={
-  tiffin:{icon:'🍱',nm:'Sharma Tiffin Service',p1:47,p2:3,p3:8000,
-    f0t:'Order Management Bot',f0d:'Customer sends "1 tiffin aaj chahiye" at 7 AM — bot confirms instantly, logs order, sends menu. You wake up to a full order book. Zero effort.',
-    f1t:'30-Day Follow-Up Automation',f1d:'Customer asks about monthly subscription and goes quiet? Bot follows up Day 1, 3, 7 automatically. Converts cold leads while you sleep.',
-    f2t:'Instant Invoice on WhatsApp',f2d:'Customer asks for monthly bill — bot generates GST-ready invoice and sends it in 3 seconds. Zero manual work.',
-    f3t:'Enquiry & Menu Bot',f3d:'New customer asks about menu, price, delivery area — bot answers everything instantly and takes order.',
+// ── SHARE ──
+function sharePage(){
+  if(navigator.share){navigator.share({title:'Ads4You — Small Business AI Demo',url:window.location.href})}
+  else{navigator.clipboard.writeText(window.location.href).then(function(){showToast('🔗 Link copied! Share with anyone.')})}
+}
+
+// ── PAIN COUNTER ──
+function cu(id,target,pre,suf,dur){
+  var el=document.getElementById(id);if(!el)return;
+  var v=0;var step=target/60;
+  var t=setInterval(function(){v=Math.min(v+step,target);el.textContent=pre+Math.floor(v)+suf;if(v>=target)clearInterval(t)},dur/60);
+}
+setTimeout(function(){cu('pc1',47,'','',1100);cu('pc2',3,'','h',1000);cu('pc3',8000,'₹','',1300)},500);
+
+// ── PRE-SCRIPTED SMART RESPONSES ──
+var RESP = {
+  tiffin:{
+    nm:'Sharma Tiffin Service',icon:'🍱',p1:47,p2:3,p3:8000,
+    f0t:'Order Management Bot',f0d:'Customer sends "1 tiffin aaj chahiye" — bot confirms instantly, logs order, sends menu. Zero manual work. Zero missed orders.',
+    f1t:'30-Day Follow-Up',f1d:'Customer goes quiet after enquiry? Bot follows up automatically Day 1, 3, 7. Converts cold leads while you sleep.',
+    f2t:'Instant Invoice',f2d:'Customer asks for bill — GST invoice generated and sent in 3 seconds. No manual work ever.',
+    f3t:'Enquiry Handler',f3d:'New customer asks pricing — bot answers, collects details, confirms order. 30 seconds, every time.',
     qr:['ORDER','Aaj ka menu?','Monthly lena hai','Bill chahiye'],
     welcome:'Namaskar! 🙏 Sharma Tiffin Service mein swagat hai!\n\n✅ Aaj ka menu ready hai\n🕘 Delivery: 12:30 – 1:30 PM\n💰 Monthly: ₹2,800 | Daily: ₹130\n\nOrder ke liye "ORDER" type karein 👇',
-    sys:'You are a WhatsApp AI bot for "Sharma Tiffin Service" Pune. Reply in Hinglish (Hindi+English), warm tone, max 80 words, use emojis. Menu: Dal Tadka, Sabzi, 2 Roti, Rice, Salad. Monthly ₹2,800, Daily ₹130, Delivery 12:30-1:30 PM. If order: confirm enthusiastically, ask address. If bill: generate a clean text invoice. If menu query: list with emojis. Always end with one clear next step.'
+    replies:{
+      'order':'✅ Order confirm ho gaya!\n\nAaj ki delivery: 12:30 – 1:30 PM\n🍛 Dal Tadka, Sabzi, 2 Roti, Rice, Salad\n\nGhar ka address share karein please? 📍\nPayment: Cash on delivery ya UPI accepted! 🙏',
+      'menu':'Aaj ka menu 🍛\n\n• Dal Tadka\n• Mix Sabzi (seasonal)\n• 2 Fresh Roti\n• Steamed Rice\n• Kachumber Salad\n\n💰 Daily: ₹130 | Monthly: ₹2,800\n\nOrder karna hai? "ORDER" type karein! 😊',
+      'monthly':'Monthly subscription — perfect choice! 🎉\n\n✅ ₹2,800/month (save ₹1,300 vs daily)\n✅ Daily fresh delivery 12:30-1:30 PM\n✅ Skip day option available\n✅ Auto-reminder before billing\n\nNaam aur address share karein — kal se shuru! 🙏',
+      'bill':'📋 Invoice — Sharma Tiffin Service\n\nClient: Valued Customer\nPlan: Monthly Subscription\nMonth: March 2026\nAmount: ₹2,800\nStatus: Generated ✅\n\nPayment UPI: 9767066941\nRef No: STS-MAR-2026\n\nDhanyawad! 🙏 Agle mahine bhi seva karte rahenge.',
+      'default':'Namaskar! 🙏 Sharma Tiffin Service.\n\nAapki baat samajh aayi. Kya main madad kar sakta hoon?\n\n🍱 Order lena hai\n📋 Menu dekhna hai\n💰 Monthly plan lena hai\n🧾 Bill chahiye\n\nBataiye kya chahiye? 😊'
+    }
   },
-  clinic:{icon:'🏥',nm:'Dr. Patil Clinic',p1:35,p2:2,p3:12000,
-    f0t:'Appointment Booking Bot',f0d:"Patient texts 'appointment chahiye' — bot checks slots, books instantly, sends confirmation with doctor name, timing, and address. No receptionist needed.",
-    f1t:'No-Show Reminder System',f1d:'24 hours before appointment, bot sends auto-reminder. Reduces no-shows by 60%. Doctor time never wasted.',
-    f2t:'Lab Report Delivery',f2d:'Reports ready? Bot notifies patient, sends PDF, explains next steps on WhatsApp. Zero phone calls.',
-    f3t:'Prescription Follow-up',f3d:'Medicine course complete? Bot follows up after 7 days asking about renewal or revisit booking.',
+  clinic:{
+    nm:'Dr. Patil Clinic',icon:'🏥',p1:35,p2:2,p3:12000,
+    f0t:'Appointment Booking Bot',f0d:'Patient texts "appointment chahiye" — bot checks slots, books instantly, sends confirmation. No receptionist needed.',
+    f1t:'No-Show Reminder',f1d:'24 hours before appointment, bot sends auto-reminder. Reduces no-shows by 60%.',
+    f2t:'Report Delivery',f2d:'Reports ready? Bot notifies patient on WhatsApp with PDF and next steps. Zero calls.',
+    f3t:'Prescription Follow-up',f3d:'Medicine course done? Bot auto-follows up asking about renewal or revisit.',
     qr:['Appointment book karo','Aaj slots?','Fees kitni?','Report ready?'],
-    welcome:'Namaskar! 🏥 Dr. Patil Clinic — AI Receptionist.\n\nAaj available slots:\n⏰ 10:00 AM ✅\n⏰ 11:30 AM ✅\n⏰ 04:00 PM ✅\n\nConsultation: ₹400\n\nSlot choose karein 👆',
-    sys:'You are a WhatsApp AI receptionist for "Dr. Patil Clinic" Pune. Hinglish, professional, warm, max 80 words. Slots: 10AM, 11:30AM, 4PM. Fees ₹400. Dr. Patil: General Medicine, 15+ years. If appointment: confirm slot, ask name+phone. End with one clear next step.'
+    welcome:'Namaskar! 🏥 Dr. Patil Clinic — AI Receptionist.\n\nAaj available slots:\n⏰ 10:00 AM ✅\n⏰ 11:30 AM ✅\n⏰ 04:00 PM ✅\n\nConsultation: ₹400\n\nAppointment book karein? 😊',
+    replies:{
+      'appointment':'✅ Appointment Confirmed!\n\nDoctor: Dr. Patil (General Medicine)\nTime: 11:30 AM — Aaj\nFees: ₹400 (cash/UPI)\n📍 Wakad, Pune\n\nApna naam please? Reminder bhejenge 30 min pehle! 🙏',
+      'slot':'Aaj ke slots 📅\n\n⏰ 10:00 AM ✅ Available\n⏰ 11:30 AM ✅ Available\n⏰ 04:00 PM ✅ Available\n\nKal ke slots bhi available hain.\n\nKaunsa time suit karta hai? 😊',
+      'fees':'Dr. Patil Clinic — Fees 💰\n\n🔵 Consultation: ₹400\n🔵 Follow-up (7 days): ₹200\n🔵 Lab tests: Separate\n\nInsurance: We accept major health cards.\n\nAppointment book karein? 😊',
+      'report':'📋 Lab Report Update\n\nAapki report ready ho gayi hai!\n\nHam aaj shaam 6 PM tak WhatsApp par PDF bhejenge.\n\nKoi specific test result jaanna hai? Doctor se seedha baat karni hai? 🙏',
+      'default':'Namaskar! 🏥 Dr. Patil Clinic.\n\nAapki madad kaise karein?\n\n📅 Appointment book karna\n⏰ Available slots dekhna\n💰 Fees jaanna\n📋 Report status\n\nBataiye! 😊'
+    }
   },
-  coaching:{icon:'📚',nm:'Apex Coaching Institute',p1:52,p2:4,p3:15000,
-    f0t:'Batch Enquiry & Admission Bot',f0d:"Parent asks about JEE batch at midnight — bot shares schedule, fees, faculty details, available seats instantly. Enquiry captured 24/7.",
-    f1t:'Fee Reminder Automation',f1d:'Monthly fee due? Bot sends polite reminder to all students automatically. No awkward teacher calls. Fee collection improves.',
-    f2t:'Study Material Delivery',f2d:"Student types 'Chapter 5 notes chahiye' — bot instantly sends the PDF. Reduces teacher interruption by 2+ hours/day.",
-    f3t:'Admission Follow-Up',f3d:"Enquiry but parent didn't reply? Bot follows up Day 2, 5, 10 with batch details and scholarship information.",
+  coaching:{
+    nm:'Apex Coaching Institute',icon:'📚',p1:52,p2:4,p3:15000,
+    f0t:'Batch Enquiry Bot',f0d:'Parent asks about JEE batch at midnight — bot shares schedule, fees, faculty details instantly. Never lose an admission lead.',
+    f1t:'Fee Reminder',f1d:'Monthly fee due? Bot sends polite reminder to all students automatically. No awkward calls.',
+    f2t:'Study Material Delivery',f2d:'Student asks for notes — bot sends PDF instantly. Saves teacher 2+ hours daily.',
+    f3t:'Admission Follow-Up',f3d:'Enquiry but no reply? Bot follows up Day 2, 5, 10 with details and offer.',
     qr:['Batch details','Fees kitni?','Admission kaise?','Demo class?'],
-    welcome:'Namaskar! 📚 Apex Coaching Institute AI Assistant.\n\nUpcoming batches:\n🔵 JEE Main: March 10 | ₹45,000\n🔴 NEET: March 12 | ₹48,000\n🟢 Foundation: March 15 | ₹28,000\n\nFree demo class: Saturday 10 AM 🎯\n\nKaunsa batch interested hai? 👇',
-    sys:'You are a WhatsApp AI for "Apex Coaching Institute" Pune. Hinglish, enthusiastic, max 80 words. JEE Main ₹45,000 March 10, NEET ₹48,000 March 12, Foundation ₹28,000 March 15. Free demo Saturday 10AM. 10% early bird discount. End with one clear next step.'
+    welcome:'Namaskar! 📚 Apex Coaching Institute.\n\nUpcoming batches:\n🔵 JEE Main: March 10 | ₹45,000\n🔴 NEET: March 12 | ₹48,000\n🟢 Foundation: March 15 | ₹28,000\n\nFREE demo class: Saturday 10 AM 🎯\n\nKaunsa batch? 😊',
+    replies:{
+      'batch':'📚 Batch Details\n\n🔵 JEE Main Batch\nStart: March 10 | ₹45,000/year\nFaculty: IIT alumni | Batch size: 30\n\n🔴 NEET Batch\nStart: March 12 | ₹48,000/year\nFaculty: MBBS doctors | Batch size: 25\n\n🟢 Foundation (8-10th)\nStart: March 15 | ₹28,000/year\n\n10% early bird discount — valid this week! 🎉',
+      'fees':'💰 Complete Fee Structure\n\nJEE Main: ₹45,000/year\nNEET: ₹48,000/year\nFoundation: ₹28,000/year\n\n✅ EMI option available\n✅ Study material included\n✅ 10% early bird discount\n✅ Sibling discount: 5%\n\nAdmission kab lena hai? 😊',
+      'admission':'📋 Admission Process\n\n1️⃣ Free demo class attend karein\n2️⃣ Enrollment form fill karein\n3️⃣ 50% fees jama karein\n4️⃣ Classes start!\n\nDemo class: Saturday 10 AM — FREE 🎯\n\nStudent ka naam aur class share karein! 😊',
+      'demo':'🎯 FREE Demo Class!\n\nDate: This Saturday\nTime: 10:00 AM sharp\nVenue: Wakad, Pune\n📍 Address WhatsApp par bhejenge\n\nKoi commitment nahi — sirf padhai ka experience!\n\nApna naam register karein? ✅',
+      'default':'Namaskar! 📚 Apex Coaching Institute.\n\nHam guide kar sakte hain:\n📘 JEE / NEET / Foundation batches\n💰 Fee structure\n📋 Admission process\n🎯 Free demo class\n\nKya jaanna chahte hain? 😊'
+    }
   },
-  ca:{icon:'📊',nm:'Mehta & Associates CA',p1:40,p2:3,p3:10000,
-    f0t:'Document Collection Bot',f0d:"'ITR filing karna hai' — bot sends complete document checklist, collects them via WhatsApp, organizes automatically. Zero meetings needed.",
-    f1t:'GST & ITR Deadline Reminders',f1d:'20th of every month — bot auto-reminds all clients about GST filing. Zero follow-up calls from your side.',
-    f2t:'Status Update Bot',f2d:"Client asks 'mera ITR kahan tak hua?' — bot replies instantly. No disruption to your work.",
-    f3t:'Client Onboarding',f3d:'Bot collects PAN, Aadhaar, business details via WhatsApp systematically. You get a complete dossier automatically.',
+  ca:{
+    nm:'Mehta & Associates CA',icon:'📊',p1:40,p2:3,p3:10000,
+    f0t:'Document Collection Bot',f0d:'"ITR filing karna hai" — bot sends checklist, collects documents via WhatsApp, organizes in Drive. Zero meetings.',
+    f1t:'Deadline Reminders',f1d:'20th of every month — bot auto-reminds all clients about GST filing. Zero calls from your side.',
+    f2t:'Status Updates',f2d:'Client asks "ITR kahan tak hua?" — bot replies instantly. No disruption to your work.',
+    f3t:'Client Onboarding',f3d:'Bot collects PAN, Aadhaar, business details systematically. Complete dossier delivered automatically.',
     qr:['ITR filing','GST return','Documents list','Status check'],
-    welcome:'Namaskar! 📊 Mehta & Associates — CA Office AI.\n\nHamari services:\n📋 ITR Filing — ₹1,500 onwards\n💼 GST Returns — ₹2,000/month\n🏢 Company Registration — ₹8,000\n\nCA Mehta — 15+ years experience ✅\n\nKya seva chahiye? 👇',
-    sys:'You are a WhatsApp AI for "Mehta & Associates CA" Pune. Hinglish, professional, max 80 words. ITR ₹1,500-5,000, GST ₹2,000/month, Company Reg ₹8,000. CA Mehta 15+ years. If ITR: ask PAN+Form16, filed in 3 working days. End with one clear next step.'
+    welcome:'Namaskar! 📊 Mehta & Associates — CA Office AI.\n\nHamari services:\n📋 ITR Filing — ₹1,500 onwards\n💼 GST Returns — ₹2,000/month\n🏢 Company Registration — ₹8,000\n\nCA Mehta — 15+ years ✅\n\nKya seva chahiye? 🙏',
+    replies:{
+      'itr':'📋 ITR Filing — Document Checklist\n\nPlease share on WhatsApp:\n✅ PAN Card (both sides)\n✅ Form 16 (from employer)\n✅ Bank statements (Apr 2024 – Mar 2025)\n✅ Investment proofs (80C, 80D etc)\n✅ Aadhaar Card\n\nSab bhejein — 3 working days mein file! ⚡\nFees: ₹1,500 onwards',
+      'gst':'💼 GST Services\n\n✅ New Registration: ₹2,500\n✅ Monthly GSTR-1 & 3B: ₹2,000/month\n✅ Quarterly filing: ₹4,000/quarter\n✅ Annual Return (GSTR-9): ₹5,000\n\nKya GST number hai ya naya chahiye? 🙏',
+      'documents':'📁 Documents by Service\n\nITR Filing:\n• PAN, Aadhaar, Form 16, Bank statement\n\nGST Registration:\n• Business proof, Address proof, Bank details\n\nCompany Registration:\n• ID proofs of directors, Address proof\n\nWhatsApp par bhejein! 😊',
+      'status':'📊 Status Update\n\nAapki filing process mein hai.\nEstimated completion: 2 working days.\n\nKoi document pending hoga toh separate message aayega.\n\nUrgent query? Call karein: 9767066941 ✅',
+      'default':'Namaskar! 📊 Mehta & Associates CA.\n\nKya help chahiye?\n📋 ITR Filing\n💼 GST Returns\n🏢 Company Registration\n📑 Other compliance\n\nCA Mehta — 15+ years experience. Bataiye! 🙏'
+    }
   },
-  school:{icon:'🎓',nm:'Sunrise Public School',p1:65,p2:4,p3:20000,
-    f0t:'Admission Enquiry Bot',f0d:"Parent asks 'Class 6 admission open hai?' at 11 PM — bot shares complete process, fees, dates instantly. Handles 200 enquiries simultaneously.",
-    f1t:'Fee Collection Reminder',f1d:'Monthly fee due? Bot reminds all parents on WhatsApp. Reduces late payments by 70%.',
-    f2t:'Circular & Notice Delivery',f2d:'New circular? Bot delivers to all parents on WhatsApp instantly. 100% delivery rate.',
-    f3t:'PTM Slot Booking',f3d:'Parent-Teacher Meeting? Bot handles all bookings, confirmations, reminders. No manual calling of 300+ parents.',
+  school:{
+    nm:'Sunrise Public School',icon:'🎓',p1:65,p2:4,p3:20000,
+    f0t:'Admission Enquiry Bot',f0d:'Parent asks "Class 6 admission?" at 11 PM — bot shares complete process instantly. 200 simultaneous enquiries handled.',
+    f1t:'Fee Reminder',f1d:'Monthly fee due? Bot reminds all parents on WhatsApp. Late payments reduced 70%.',
+    f2t:'Circular Delivery',f2d:'New circular? Bot delivers to all parents in seconds. 100% delivery rate.',
+    f3t:'PTM Booking',f3d:'PTM scheduled? Bot handles all bookings and reminders. No calling 300+ parents.',
     qr:['Admission open?','Fee structure','PTM booking','School timings'],
-    welcome:'Namaskar! 🎓 Sunrise Public School AI.\n\n📢 Admissions OPEN 2025-26!\n✅ Nursery to Class 12 | CBSE\n✅ AC Classrooms + Smart Boards\n💰 Annual Fees: ₹45,000–65,000\n\nAdmission form chahiye? 👇',
-    sys:'You are a WhatsApp AI for "Sunrise Public School" Pune. Hinglish, warm, max 80 words. Admissions open Nursery-12, CBSE, fees ₹45,000-65,000/year. Process: form→documents→test→interview. Next PTM March 29, 9AM-1PM. End with one clear next step.'
+    welcome:'Namaskar! 🎓 Sunrise Public School AI.\n\n📢 Admissions OPEN 2025-26!\n✅ Nursery to Class 12 | CBSE\n✅ AC Classrooms + Smart Boards\n💰 Fees: ₹45,000–65,000/year\n\nAdmission form chahiye? 😊',
+    replies:{
+      'admission':'📋 Admission 2025-26\n\n✅ Classes: Nursery to 12\n✅ Board: CBSE\n✅ Annual Fees: ₹45,000-65,000\n✅ Bus facility available\n\nProcess:\n1️⃣ Form fill karein (link bhejte hain)\n2️⃣ Documents submit\n3️⃣ Entrance test (Class 5+)\n4️⃣ Interview + admission!\n\nKaunsi class ke liye? 😊',
+      'fees':'💰 Fee Structure 2025-26\n\nNursery-KG: ₹45,000/year\nClass 1-5: ₹52,000/year\nClass 6-10: ₹58,000/year\nClass 11-12: ₹65,000/year\n\n✅ Quarterly installments available\n✅ Sibling discount: 10%\n✅ Bus facility: ₹18,000/year\n\nAdmission lena hai? 🎓',
+      'ptm':'📅 Parent Teacher Meeting\n\nDate: March 29, 2026\nTime: 9:00 AM – 1:00 PM\nVenue: School Auditorium\n\nAvailable slots:\n⏰ 9:00 AM ✅\n⏰ 10:30 AM ✅\n⏰ 12:00 PM ✅\n\nBacche ka naam aur class batayein — slot book karte hain! 😊',
+      'timings':'🕐 School Timings\n\nJunior (Nursery-5): 8:00 AM – 12:30 PM\nSenior (6-12): 7:30 AM – 2:00 PM\n\nSaturday: Activity classes (9 AM – 12 PM)\nSunday: Holiday\n\nBus pickup: 30 min before school time 🚌',
+      'default':'Namaskar! 🎓 Sunrise Public School.\n\nKya jaanna chahte hain?\n📋 Admission process\n💰 Fee structure\n📅 PTM booking\n🕐 School timings\n\nBataiye! 😊'
+    }
   },
-  lawyer:{icon:'⚖️',nm:'Advocate Sharma & Associates',p1:30,p2:2,p3:18000,
-    f0t:'Consultation Booking Bot',f0d:'Client needs legal advice at 9 PM — SARTHI collects case brief, explains services, books appointment. Professional and 100% confidential.',
-    f1t:'Case Status Update Bot',f1d:"Client texts 'mera case kahan tak hua?' — bot provides latest hearing date and next steps. Client stays informed without disturbing the advocate.",
-    f2t:'Document Checklist Delivery',f2d:'Client asks what to bring — bot sends complete checklist for their specific case type instantly.',
-    f3t:'Court Hearing Reminder',f3d:'Court date in 3 days? Bot sends auto-reminder with court number and what to bring. Zero missed appearances.',
+  lawyer:{
+    nm:'Advocate Sharma & Associates',icon:'⚖️',p1:30,p2:2,p3:18000,
+    f0t:'Consultation Booking',f0d:'Client needs legal advice at 9 PM — bot collects case brief, books appointment. 100% confidential.',
+    f1t:'Case Status Updates',f1d:'Client asks "mera case kahan tak?" — bot replies instantly. No disruption to advocate\'s work.',
+    f2t:'Document Checklist',f2d:'Client asks what to bring — bot sends complete formatted checklist for their case type.',
+    f3t:'Court Date Reminder',f3d:'Hearing in 3 days? Bot auto-reminds client with court details. Zero missed appearances.',
     qr:['Consultation book karo','Case status?','Documents list','Fees kitni?'],
-    welcome:'Namaskar! ⚖️ Advocate Sharma — AI Assistant.\n\nHamari expertise:\n🏠 Property & Real Estate Law\n💼 Business & Corporate Law\n👨‍👩‍👧 Family & Civil Disputes\n\n🔒 100% Confidential\n⏰ Mon–Sat: 10 AM – 7 PM\n\nKya legal help chahiye? 👇',
-    sys:'You are a WhatsApp AI for "Advocate Sharma" law firm Pune. Hinglish, professional, reassuring, max 80 words. Services: Property, Corporate, Family, Criminal law. Consultation ₹1,500. Mon-Sat 10AM-7PM. ALWAYS emphasize 100% confidentiality. End with one clear next step.'
+    welcome:'Namaskar! ⚖️ Advocate Sharma — AI Assistant.\n\n• Property & Real Estate Law\n• Business & Corporate Law\n• Family & Civil Disputes\n• Criminal Defense\n\n🔒 100% Confidential\n⏰ Mon–Sat: 10 AM – 7 PM\n\nKya legal help chahiye? 🙏',
+    replies:{
+      'consultation':'⚖️ Consultation Booking\n\n✅ Fees: ₹1,500 (first consultation)\n✅ Duration: 45-60 minutes\n✅ 100% Confidential\n🔒 NDA available on request\n\nAvailable slots:\n📅 Kal 11:00 AM ✅\n📅 Kal 3:00 PM ✅\n📅 Parso 10:00 AM ✅\n\nApna naam aur matter type share karein? 🙏',
+      'status':'📋 Case Status\n\nAapka case Advocate Sharma ke active docket mein hai.\n\nNext step: Advocate sahab aaj ya kal update karenge.\n\nUrgent matter hai? Direct call karein: 9767066941\n\n🔒 Yeh conversation 100% confidential hai. 🙏',
+      'documents':'📁 Documents — Property Case\n\n✅ Title deed / Sale deed\n✅ Property tax receipts (3 years)\n✅ Aadhaar + PAN Card\n✅ Previous agreements (if any)\n✅ Survey / site map\n✅ NOC from society (if applicable)\n\nSab collect karke consultation mein laayein! ⚖️',
+      'fees':'💼 Fee Structure\n\nConsultation: ₹1,500\nProperty cases: ₹15,000 onwards\nCorporate matters: ₹20,000 onwards\nFamily disputes: ₹10,000 onwards\nCriminal defense: ₹25,000 onwards\n\n🔒 100% Confidential\n✅ Written fee agreement provided\n\nCase discuss karein? 🙏',
+      'default':'Namaskar! ⚖️ Advocate Sharma & Associates.\n\nKya madad chahiye?\n⚖️ Consultation book karna\n📋 Case status\n📁 Documents list\n💼 Fee jaanna\n\n🔒 100% Confidential. Bataiye! 🙏'
+    }
   },
-  pharmacy:{icon:'💊',nm:'Shree Medical Store',p1:30,p2:2,p3:7000,
-    f0t:'Medicine Enquiry Bot',f0d:"Customer asks 'Paracetamol available hai?' — bot confirms stock instantly. Prescription medicines require upload before confirming.",
-    f1t:'Refill Reminder System',f1d:"Patient's monthly medicine course ending? Bot sends refill reminder 5 days before. Customer reorders proactively. Sales increase automatically.",
-    f2t:'Home Delivery Booking',f2d:'Customer wants home delivery — bot takes address, confirms slot, sends delivery confirmation. Zero manual coordination.',
-    f3t:'New Offer Alerts',f3d:'New stock or discount? Bot broadcasts to all customers with offer details. Far more effective than notice boards.',
+  pharmacy:{
+    nm:'Shree Medical Store',icon:'💊',p1:30,p2:2,p3:7000,
+    f0t:'Medicine Enquiry Bot',f0d:'Customer asks "Paracetamol hai?" — bot confirms stock instantly. Prescription medicines require upload.',
+    f1t:'Refill Reminders',f1d:'Monthly medicines ending? Bot sends refill reminder 5 days before. Sales increase automatically.',
+    f2t:'Home Delivery Booking',f2d:'Bot takes address, confirms slot, sends delivery confirmation. Zero manual coordination.',
+    f3t:'Offer Alerts',f3d:'New stock or discount? Bot broadcasts to customers. 10x more effective than notice boards.',
     qr:['Medicine available?','Home delivery?','Prescription upload','Offers today?'],
-    welcome:'Namaskar! 💊 Shree Medical Store AI.\n\n✅ 5,000+ medicines in stock\n🏠 Free home delivery above ₹500\n⏰ Open 7 AM – 10 PM\n📦 Same-day delivery available\n\nKya chahiye? Medicine name bataiye 👇',
-    sys:'You are a WhatsApp AI for "Shree Medical Store" Pune. Hinglish, helpful, max 80 words. 5000+ medicines, home delivery free above ₹500, open 7AM-10PM. If medicine: confirm availability, ask prescription for Rx drugs. If delivery: take address, confirm 2hr slot. End with one clear next step.'
+    welcome:'Namaskar! 💊 Shree Medical Store AI.\n\n✅ 5,000+ medicines in stock\n🏠 Free home delivery above ₹500\n⏰ Open 7 AM – 10 PM daily\n📦 Same-day delivery available\n\nKya chahiye? Medicine name bataiye 😊',
+    replies:{
+      'medicine':'✅ Ji haan, ye medicine stock mein available hai!\n\n💊 Generic version bhi available hai (30% cheaper)\n📋 Prescription required for scheduled drugs\n🏠 Home delivery free above ₹500\n\nOrder confirm karein? Quantity batayein! 📦',
+      'delivery':'🏠 Home Delivery Details\n\n✅ Free delivery above ₹500\n✅ Same day (order before 6 PM)\n✅ Next morning option available\n✅ Delivery time: 2-3 hours\n\nAddress share karein aur order confirm karein!\n\nPayment: Cash on delivery / UPI both accepted 📦',
+      'prescription':'📸 Prescription Upload\n\nApni prescription ki clear photo lo aur yahan WhatsApp par send karo.\n\nHam:\n✅ Availability verify karenge\n✅ Price confirm karenge\n✅ Delivery time batayenge\n\n5 minute mein reply! 💊',
+      'offers':'🎉 Today\'s Special Offers!\n\n💊 Vitamin D3 — 20% off\n💊 Calcium supplements — 15% off\n💊 Baby care range — 10% off\n💊 Protein powder — 12% off\n\nMember card holders — extra 5% discount!\n\nKoi specific medicine? 😊',
+      'default':'Namaskar! 💊 Shree Medical Store.\n\nKya chahiye?\n💊 Medicine availability\n🏠 Home delivery\n📸 Prescription upload\n🎉 Today\'s offers\n\nBataiye! Open 7 AM – 10 PM 😊'
+    }
   },
-  restaurant:{icon:'🍽️',nm:'Spice Garden Restaurant',p1:55,p2:3,p3:10000,
-    f0t:'Table Booking Bot',f0d:'Customer wants to book table for anniversary dinner — bot checks availability, books instantly, sends confirmation with timing.',
-    f1t:'Menu & Daily Special Bot',f1d:"Customer asks 'Aaj kya special hai?' — bot shares today's menu with prices and chef specials. Increases average order value.",
-    f2t:'Takeaway Order Bot',f2d:'Customer wants takeaway — bot takes complete order, calculates total, confirms, sends to kitchen. Zero phone call errors.',
-    f3t:'Loyalty & Repeat Customer Bot',f3d:'Regular customer? Bot sends birthday discount and brings them back automatically. Loyalty built on autopilot.',
+  restaurant:{
+    nm:'Spice Garden Restaurant',icon:'🍽️',p1:55,p2:3,p3:10000,
+    f0t:'Table Booking Bot',f0d:'Customer wants table for anniversary — bot checks, books, sends confirmation with special arrangement notes.',
+    f1t:'Menu & Specials Bot',f1d:'Customer asks "Aaj kya special?" — bot shares menu with prices. Increases average order.',
+    f2t:'Takeaway Order Bot',f2d:'Customer orders takeaway — bot takes order, calculates total, sends to kitchen. Zero errors.',
+    f3t:'Loyalty Bot',f3d:'Regular customer? Bot sends birthday discount, brings them back automatically.',
     qr:['Table book karo','Aaj ka special?','Takeaway order','Delivery time?'],
-    welcome:'Namaskar! 🍽️ Spice Garden Restaurant AI.\n\n⭐ Fine Dining | North & South Indian\n🕐 12 PM – 11 PM (Mon–Sun)\n📍 Wakad, Pune\n\n🔥 Aaj ka special: Butter Chicken Thali ₹299\n\nTable booking ya order? 👇',
-    sys:'You are a WhatsApp AI for "Spice Garden Restaurant" Pune. Hinglish, friendly, max 80 words. Fine dining, North & South Indian, open 12PM-11PM. Today special: Butter Chicken Thali ₹299. If booking: ask date, time, people count. If order: take complete order, calculate total. End with one clear next step.'
+    welcome:'Namaskar! 🍽️ Spice Garden Restaurant AI.\n\n⭐ Fine Dining | North & South Indian\n🕐 12 PM – 11 PM daily\n📍 Wakad, Pune\n\n🔥 Aaj ka special: Butter Chicken Thali ₹299!\n\nTable booking ya order? 😊',
+    replies:{
+      'booking':'✅ Table Booking!\n\nRestaurant: Spice Garden, Wakad\nDate: Aaj / Aapki choice\n\nKitne log honge? Aur kaunsa time?\n\n🎂 Special occasion? (Birthday/Anniversary)\nDecoration arrange kar sakte hain!\n\nConfirm karein — table ready rakhi jaayegi! 😊',
+      'menu':'🍛 Aaj ka Special Menu\n\n🌟 Chef\'s Specials:\n• Butter Chicken Thali — ₹299 🔥\n• Dal Makhani + Naan — ₹199\n• Paneer Tikka Masala — ₹249\n\n🌶️ South Indian Corner:\n• Masala Dosa — ₹149\n• Idli Sambhar (4 pcs) — ₹129\n\nFull menu? Order karna hai? 😊',
+      'order':'📦 Takeaway Order Noted!\n\nOrder: As discussed\nPickup time: 30-45 minutes\nPayment: Cash/UPI at counter\n\nKoi item add karna hai?\n\nPickup pe naam batana: Spice Garden, Wakad! 🍽️',
+      'delivery':'🛵 Home Delivery\n\n✅ Available: 12 PM – 10 PM\n✅ Delivery time: 35-45 min\n✅ Min order: ₹300\n✅ Free delivery above ₹599\n\nAddress aur order share karein!\n\nPayment: UPI / Cash on delivery 😊',
+      'default':'Namaskar! 🍽️ Spice Garden Restaurant.\n\nKya help chahiye?\n🪑 Table booking\n🍛 Menu dekhna\n📦 Takeaway order\n🛵 Home delivery\n\nAaj ka special: Butter Chicken Thali ₹299! 😊'
+    }
   },
-  gym:{icon:'🏋️',nm:'FitZone Gym & Fitness',p1:38,p2:2,p3:7000,
-    f0t:'Membership Enquiry Bot',f0d:'Person enquires about gym membership at 11 PM — bot shares all plans, facilities, trial class offer instantly. Converts visitors to paying members.',
-    f1t:'Renewal Reminder System',f1d:'Membership expiring in 7 days? Bot sends personalized reminder with offer. Churn drops dramatically.',
-    f2t:'Class Booking Bot',f2d:'Member wants to book Zumba class — bot checks slots, books instantly, sends confirmation with trainer and timing.',
-    f3t:'Re-engagement Bot',f3d:"Member hasn't visited in 2 weeks? Bot sends motivational message and special come-back offer. Retention improves 40%.",
+  gym:{
+    nm:'FitZone Gym & Fitness',icon:'🏋️',p1:38,p2:2,p3:7000,
+    f0t:'Membership Enquiry Bot',f0d:'Person enquires at 11 PM — bot shares plans, facilities, trial class offer. Converts visitors to members.',
+    f1t:'Renewal Reminder',f1d:'Membership expiring in 7 days? Bot sends personalized reminder with offer. Churn drops dramatically.',
+    f2t:'Class Booking Bot',f2d:'Member books Zumba class — bot checks slots, books, sends confirmation with trainer.',
+    f3t:'Re-engagement Bot',f3d:'Member absent 2 weeks? Bot sends motivation + comeback offer. Retention up 40%.',
     qr:['Membership plans?','Trial class?','Class booking','Renewal offer?'],
-    welcome:'💪 FitZone Gym & Fitness — AI Assistant!\n\nMembership plans:\n🔵 Monthly: ₹1,500\n🟢 Quarterly: ₹3,800\n🏆 Annual: ₹12,000\n\n✨ Free trial class this week!\n🕐 5 AM – 10 PM daily\n\nKya jaanna chahte ho? 👇',
-    sys:'You are a WhatsApp AI for "FitZone Gym" Pune. Hinglish, energetic, motivational, max 80 words. Monthly ₹1,500, Quarterly ₹3,800, Annual ₹12,000. Free trial available. Classes: Zumba, Yoga, CrossFit, Cardio. Open 5AM-10PM. End with one clear next step.'
+    welcome:'💪 FitZone Gym & Fitness — AI Assistant!\n\nMembership plans:\n🔵 Monthly: ₹1,500\n🟢 Quarterly: ₹3,800\n🏆 Annual: ₹12,000\n\n✨ FREE trial class this week!\n🕐 5 AM – 10 PM daily\n\nKya jaanna chahte ho? 😊',
+    replies:{
+      'membership':'🏋️ Membership Plans\n\n🔵 Monthly: ₹1,500\n🟢 Quarterly: ₹3,800 (save ₹700)\n🏆 Annual: ₹12,000 (save ₹6,000!)\n\n✅ All equipment included\n✅ Locker + shower facility\n✅ Trainer consultation FREE\n✅ Diet chart FREE\n\nFree trial before joining? ✨',
+      'trial':'🎯 FREE Trial Class!\n\nKisi bhi din aao this week!\n\nClasses:\n⏰ Morning: 6, 7, 8 AM\n⏰ Evening: 6, 7, 8 PM\n\n💪 Zumba / Yoga / CrossFit / Cardio\n\nNaam register karein — trainer ready rahenge! ✅',
+      'class':'📅 Class Schedule\n\nZumba: Mon/Wed/Fri — 7 AM & 7 PM\nYoga: Tue/Thu/Sat — 6 AM & 6 PM\nCrossFit: Mon-Sat — 6 PM\nCardio/Spinning: Daily all batches\n\nMembership number share karein — slot book karte hain! 💪',
+      'renewal':'🎉 Renew Now — Special Offer!\n\n✅ Renew this week — 1 month FREE\n✅ Lock in current price\n✅ Priority class booking\n\nMonthly: ₹1,500\nAnnual: ₹12,000 + 1 month free = ₹13 months!\n\nKab renew karna hai? 💪',
+      'default':'💪 FitZone Gym!\n\nKya jaanna chahte ho?\n🏋️ Membership plans & pricing\n🎯 Free trial class\n📅 Class schedule & booking\n🎉 Renewal offers\n\nOpen 5 AM – 10 PM daily. Bataiye! 😊'
+    }
   },
-  hotel:{icon:'🏨',nm:'Park View Guest House',p1:40,p2:3,p3:9000,
-    f0t:'Room Booking Bot',f0d:'Guest asks about room availability for next weekend — bot checks, shares options with prices and amenities, books instantly, sends confirmation.',
-    f1t:'Check-in Reminder System',f1d:'Guest arriving tomorrow? Bot sends check-in instructions, parking details, contact number automatically.',
-    f2t:'Service Request Handler',f2d:"'Extra towels chahiye' — guest texts, bot alerts housekeeping, confirms with guest. Service resolved in minutes.",
-    f3t:'Review Collection System',f3d:'Guest checks out? Bot sends thank-you with Google review link 2 hours later. Review rate goes from 5% to 40%.',
+  hotel:{
+    nm:'Park View Guest House',icon:'🏨',p1:40,p2:3,p3:9000,
+    f0t:'Room Booking Bot',f0d:'Guest asks availability — bot checks, shares options, books instantly, sends confirmation. Zero missed bookings.',
+    f1t:'Check-in Reminder',f1d:'Guest arriving tomorrow? Bot sends instructions, parking details, contact automatically.',
+    f2t:'Service Request Handler',f2d:'"Extra towels chahiye" — bot alerts housekeeping, confirms with guest. Done in minutes.',
+    f3t:'Review Collection',f3d:'Guest checks out? Bot sends thank-you + Google review link 2 hours later. Review rate: 5% → 40%.',
     qr:['Room availability?','Check-in time?','Service request','Checkout time?'],
-    welcome:'Namaskar! 🏨 Park View Guest House AI Concierge.\n\nRooms available:\n🛏️ Standard: ₹1,200/night\n🛏️ Deluxe: ₹1,800/night\n🏢 Suite: ₹2,800/night\n\n✅ Free WiFi | ✅ Breakfast included\n📍 Wakad, Pune\n\nKab aana chahte ho? 👇',
-    sys:'You are a WhatsApp AI concierge for "Park View Guest House" Pune. Hinglish, warm, hospitable, max 80 words. Standard ₹1,200, Deluxe ₹1,800, Suite ₹2,800/night. Free WiFi, breakfast. If booking: ask dates+people+room type. If service: note request, confirm action. End with one clear next step.'
+    welcome:'Namaskar! 🏨 Park View Guest House AI Concierge.\n\nRooms available:\n🛏️ Standard: ₹1,200/night\n🛏️ Deluxe: ₹1,800/night\n🏢 Suite: ₹2,800/night\n\n✅ Free WiFi | ✅ Breakfast included\n📍 Wakad, Pune\n\nKab aana chahte ho? 😊',
+    replies:{
+      'availability':'🏨 Room Availability\n\nAaj/Kal available:\n🛏️ Standard (₹1,200/night) — 3 rooms ✅\n🛏️ Deluxe (₹1,800/night) — 2 rooms ✅\n🏢 Suite (₹2,800/night) — 1 room ✅\n\n✅ Free WiFi + Breakfast included\n✅ AC rooms\n✅ 24/7 reception\n\nKitne din ke liye? 😊',
+      'checkin':'✅ Check-in Information\n\nCheck-in time: 12:00 PM\nCheck-out time: 11:00 AM\n\nEarly check-in (10 AM): ₹200 extra\nLate check-out (2 PM): ₹300 extra\n\n📍 Park View Guest House, Wakad\n📞 Reception: 9767066941\n\nKoi special request hai? 😊',
+      'service':'🛎️ Service Request Received!\n\nNote kar liya hai. Housekeeping 10-15 min mein aayegi. ✅\n\nAur kuch chahiye?\n• Room service (menu available)\n• Extra bedding/towels\n• AC/TV support\n• Laundry service\n\n24/7 available hain! 🙏',
+      'checkout':'📋 Checkout Details\n\nCheckout time: 11:00 AM\n\nBill ready hoga reception par.\nPayment: Cash / UPI / Debit-Credit card\n\nLate checkout chahiye? (subject to availability)\n\nAapka stay kaisa raha? ⭐ Feedback jaroor dein! 🙏',
+      'default':'Namaskar! 🏨 Park View Guest House.\n\nKya help chahiye?\n🛏️ Room availability & booking\n⏰ Check-in/out timings\n🛎️ Service request\n💰 Pricing\n\nBataiye! 24/7 available hain 😊'
+    }
   }
 };
 
-let curBiz='tiffin';let busy=false;let lastReq=0;
+var curBiz='tiffin';
 
-function toggleTheme(){const h=document.documentElement,d=h.getAttribute('data-theme')==='dark';h.setAttribute('data-theme',d?'light':'dark');document.getElementById('thm').textContent=d?'🌙':'☀️'}
-
-function sharePage(){
-  if(navigator.share){navigator.share({title:'Ads4You — Small Business AI Demo',url:window.location.href})}
-  else{navigator.clipboard.writeText(window.location.href).then(()=>showToast('🔗 Demo link copied! Share with anyone.'))}
-}
-
-function cu(id,target,pre,suf,dur){
-  const el=document.getElementById(id);if(!el)return;
-  let v=0;const step=target/60;
-  const t=setInterval(()=>{v=Math.min(v+step,target);
-    const disp=pre+(typeof target==='number'?Math.floor(v).toLocaleString('en-IN'):Math.floor(v))+suf;
-    el.textContent=disp;if(v>=target)clearInterval(t)},dur/60);
-}
-setTimeout(()=>{cu('pc1',47,'','',1100);cu('pc2',3,'','h',1000);cu('pc3',8000,'₹','',1300)},500);
-
+// ── BUSINESS SWITCH ──
 function setBiz(biz,btn){
   curBiz=biz;
-  document.querySelectorAll('.bb').forEach(b=>b.classList.remove('on'));
+  document.querySelectorAll('.bb').forEach(function(b){b.classList.remove('on')});
   btn.classList.add('on');
-  const b=BIZ[biz];
+  var b=RESP[biz];
   document.getElementById('wav').textContent=b.icon;
   document.getElementById('wan').textContent=b.nm;
   cu('pc1',b.p1,'','',700);cu('pc2',b.p2,'','h',700);cu('pc3',b.p3,'₹','',900);
-  ['f0t','f0d','f1t','f1d','f2t','f2d','f3t','f3d'].forEach(id=>document.getElementById(id).textContent=b[id]);
-  document.getElementById('qrr').innerHTML=b.qr.map(q=>`<span class="qrc" onclick="sendQ('${q.replace(/'/g,"&#39;")}')">${q}</span>`).join('');
+  ['f0t','f0d','f1t','f1d','f2t','f2d','f3t','f3d'].forEach(function(id){document.getElementById(id).textContent=b[id]});
+  document.getElementById('qrr').innerHTML=b.qr.map(function(q){return '<span class="qrc" onclick="sendQ(\''+q.replace(/'/g,"\\'")+'\'">'+q+'</span>'}).join('');
   resetChat(b);
 }
 
 function resetChat(b){
-  const m=document.getElementById('wab');
-  m.innerHTML=`<div class="wdv"><span>Today</span></div><div class="wm in"><div class="wm-b">Hello, help chahiye</div><div class="wm-m">Just now</div></div><div class="wm out"><div class="wm-b">${b.welcome.replace(/\n/g,'<br>')}</div><div class="wm-m">Just now <span class="tick">✓✓</span></div></div>`;
+  var m=document.getElementById('wab');
+  m.innerHTML='<div class="wdv"><span>Today</span></div><div class="wm in"><div class="wm-b">Hello, help chahiye</div><div class="wm-m">Just now</div></div><div class="wm out"><div class="wm-b">'+b.welcome.replace(/\n/g,'<br>')+'</div><div class="wm-m">Just now <span class="tick">✓✓</span></div></div>';
   m.scrollTop=m.scrollHeight;
 }
 
 function setFeat(idx){
-  document.querySelectorAll('.fc').forEach((f,i)=>f.classList.toggle('on',i===idx));
-  const demos=['ORDER karna hai aaj ke liye','Monthly subscription lena hai','Bill chahiye is mahine ka','Price kya hai? Kaise start karein?'];
-  const inp=document.getElementById('wai');inp.value=demos[idx];inp.focus();
+  document.querySelectorAll('.fc').forEach(function(f,i){f.classList.toggle('on',i===idx)});
+  var demos=['ORDER karna hai aaj ke liye','Monthly subscription lena hai','Bill chahiye is mahine ka','Price kya hai?'];
+  var inp=document.getElementById('wai');inp.value=demos[idx];inp.focus();
 }
 
 function sendQ(t){document.getElementById('wai').value=t;sendMsg()}
 
-async function sendMsg(){
-  const now=Date.now();
-  if(busy||now-lastReq<1200)return; // debounce 1.2s
-  const inp=document.getElementById('wai');
-  const text=inp.value.trim();if(!text)return;
-  lastReq=now;inp.value='';
+// ── SMART RESPONSE ENGINE (no API needed) ──
+function getReply(text){
+  var b=RESP[curBiz];
+  var t=text.toLowerCase();
+  var replies=b.replies;
+  // keyword matching
+  if(t.match(/order|aaj|tiffin order|book karo|lena hai.*order/))return replies['order']||replies['default'];
+  if(t.match(/menu|kya hai|special|aaj ka|what.*food/))return replies['menu']||replies['default'];
+  if(t.match(/monthly|subscription|plan.*lena|lena.*plan/))return replies['monthly']||replies['membership']||replies['batch']||replies['default'];
+  if(t.match(/bill|invoice|receipt|paisa|payment proof/))return replies['bill']||replies['default'];
+  if(t.match(/appointment|book.*appoint|slot.*chahiye|doctor.*chahiye/))return replies['appointment']||replies['consultation']||replies['default'];
+  if(t.match(/slot|time.*available|kab.*available|appointment.*time/))return replies['slot']||replies['default'];
+  if(t.match(/fees|price|kitni|cost|charges|rate|kitna/))return replies['fees']||replies['default'];
+  if(t.match(/report|result|lab|test result/))return replies['report']||replies['default'];
+  if(t.match(/batch|class.*detail|course|jee|neet|coaching/))return replies['batch']||replies['default'];
+  if(t.match(/admission|join.*kaise|enroll/))return replies['admission']||replies['default'];
+  if(t.match(/demo|free.*class|trial.*class/))return replies['demo']||replies['trial']||replies['default'];
+  if(t.match(/itr|income tax|tax.*filing|file.*tax/))return replies['itr']||replies['default'];
+  if(t.match(/gst|goods.*service|return.*file/))return replies['gst']||replies['default'];
+  if(t.match(/status|kahan.*tak|progress|update/))return replies['status']||replies['default'];
+  if(t.match(/document|kagaz|required.*doc|kya.*laana/))return replies['documents']||replies['default'];
+  if(t.match(/deliver|ghar.*lao|home.*delivery|delivery.*chahiye/))return replies['delivery']||replies['default'];
+  if(t.match(/medicine|tablet|syrup|capsule|dawa|paracetamol|available.*hai/))return replies['medicine']||replies['default'];
+  if(t.match(/prescription|doctor.*parchi|rx/))return replies['prescription']||replies['default'];
+  if(t.match(/offer|discount|sale|today.*offer/))return replies['offers']||replies['renewal']||replies['default'];
+  if(t.match(/table.*book|reservation|seat|dining/))return replies['booking']||replies['default'];
+  if(t.match(/takeaway|parcel|pickup|order.*food/))return replies['order']||replies['default'];
+  if(t.match(/membership|join.*gym|gym.*plan/))return replies['membership']||replies['default'];
+  if(t.match(/trial|free.*class|try.*gym/))return replies['trial']||replies['default'];
+  if(t.match(/class.*book|zumba|yoga|crossfit|cardio/))return replies['class']||replies['default'];
+  if(t.match(/renew|renewal|extend.*membership/))return replies['renewal']||replies['default'];
+  if(t.match(/room|availability|book.*room|stay/))return replies['availability']||replies['default'];
+  if(t.match(/check.*in|checkin|arrival/))return replies['checkin']||replies['default'];
+  if(t.match(/check.*out|checkout|leaving/))return replies['checkout']||replies['default'];
+  if(t.match(/service|housekeeping|towel|cleaning|request/))return replies['service']||replies['default'];
+  if(t.match(/consult|lawyer|advocate|legal.*help|case/))return replies['consultation']||replies['default'];
+  if(t.match(/ptm|parent.*teacher|meeting/))return replies['ptm']||replies['default'];
+  if(t.match(/timing|time.*open|hours|school.*time/))return replies['timings']||replies['default'];
+  return replies['default'];
+}
+
+function sendMsg(){
+  var inp=document.getElementById('wai');
+  var text=inp.value.trim();if(!text)return;
+  inp.value='';
   addMsg(text,'in');
-  busy=true;
-  const btn=document.getElementById('wsnd');
-  btn.disabled=true;
   showTyping();
-  try{
-    const b=BIZ[curBiz];
-    const r=await fetch('https://api.anthropic.com/v1/messages',{
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:200,system:b.sys,messages:[{role:'user',content:text}]})
-    });
-    if(!r.ok)throw new Error('API error '+r.status);
-    const d=await r.json();
+  var delay=900+Math.random()*600; // realistic typing delay
+  setTimeout(function(){
     hideTyping();
-    addMsg(d.content?.[0]?.text||'Ek second... dobara try karein 🙏','out');
-  }catch(e){
-    hideTyping();
-    addRetryMsg(text);
-  }
-  busy=false;btn.disabled=false;
+    var reply=getReply(text);
+    addMsg(reply,'out');
+  },delay);
 }
 
 function addMsg(text,dir){
-  const m=document.getElementById('wab');
-  const now=new Date();const t=now.getHours()+':'+String(now.getMinutes()).padStart(2,'0');
-  const el=document.createElement('div');el.className=`wm ${dir}`;
-  el.innerHTML=`<div class="wm-b">${text.replace(/\n/g,'<br>').replace(/</g,'&lt;')}</div><div class="wm-m">${t}${dir==='out'?' <span class="tick">✓✓</span>':''}</div>`;
+  var m=document.getElementById('wab');
+  var now=new Date();var t=now.getHours()+':'+('0'+now.getMinutes()).slice(-2);
+  var el=document.createElement('div');el.className='wm '+dir;
+  el.innerHTML='<div class="wm-b">'+text.replace(/\n/g,'<br>')+'</div><div class="wm-m">'+t+(dir==='out'?' <span class="tick">✓✓</span>':'')+'</div>';
   m.appendChild(el);m.scrollTop=m.scrollHeight;
 }
 
-function addRetryMsg(originalText){
-  const m=document.getElementById('wab');
-  const el=document.createElement('div');el.className='retry-msg';
-  el.innerHTML='⚠️ Connection issue — <u>tap to retry</u>';
-  el.onclick=()=>{el.remove();document.getElementById('wai').value=originalText;sendMsg()};
-  m.appendChild(el);m.scrollTop=m.scrollHeight;
-}
-
-let tyEl=null;
-function showTyping(){const m=document.getElementById('wab');tyEl=document.createElement('div');tyEl.className='wm out';tyEl.innerHTML='<div class="tyw"><div class="td"></div><div class="td"></div><div class="td"></div></div>';m.appendChild(tyEl);m.scrollTop=m.scrollHeight}
+var tyEl=null;
+function showTyping(){var m=document.getElementById('wab');tyEl=document.createElement('div');tyEl.className='wm out';tyEl.innerHTML='<div class="tyw"><div class="td"></div><div class="td"></div><div class="td"></div></div>';m.appendChild(tyEl);m.scrollTop=m.scrollHeight}
+function hideTyping(){if(tyEl){tyEl.remove();tyEl=null}}
+function showToast(m){var t=document.getElementById('toast');t.textContent=m;t.classList.add('on');setTimeout(function(){t.classList.remove('on')},2800)}
+</script>
+</body>
+</html>

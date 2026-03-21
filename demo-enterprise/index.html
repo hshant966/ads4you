@@ -569,7 +569,12 @@ const BIZC={
 
 let curBiz='construction';let busy2=false;let lastReq2=0;
 
-function toggleTheme(){const h=document.documentElement,d=h.getAttribute('data-theme')==='dark';h.setAttribute('data-theme',d?'light':'dark');document.getElementById('thm').textContent=d?'🌙':'☀️'}
+function toggleTheme(){
+  var h=document.documentElement;
+  var isDark=h.getAttribute('data-theme')==='dark';
+  h.setAttribute('data-theme', isDark ? 'light' : 'dark');
+  document.getElementById('thm').textContent = isDark ? '🌙' : '☀️';
+}
 function sharePage(){
   if(navigator.share){navigator.share({title:'SARTHI — Construction AI Demo by Ads4You',url:window.location.href})}
   else{navigator.clipboard.writeText(window.location.href).then(()=>showToast('🔗 Demo link copied! Share with your contacts.'))}
@@ -632,15 +637,10 @@ async function sendMsg2(){
   showTyping2();
   try{
     const b=BIZC[curBiz];
-    const r=await fetch('https://api.anthropic.com/v1/messages',{
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:200,system:b.sys,messages:[{role:'user',content:text}]})
-    });
-    if(!r.ok)throw new Error('API '+r.status);
-    const d=await r.json();
+    // Smart pre-scripted responses
+    var reply = getEnterpriseReply(text);
     hideTyping2();
-    addMsg2(d.content?.[0]?.text||'Ek second... dobara try karein 🙏','out');
+    addMsg2(reply,'out');
   }catch(e){
     hideTyping2();
     addRetry2(text);
@@ -716,6 +716,40 @@ function sendRem(name,amt,days,id){
 }
 
 function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('on');setTimeout(()=>t.classList.remove('on'),3500)}
+
+// ENTERPRISE PRE-SCRIPTED RESPONSES
+function getEnterpriseReply(text){
+  var t=text.toLowerCase();
+  var b=BIZC[curBiz];
+  
+  if(t.match(/project|construction|build|ghar|renovation|banwana/))
+    return 'Namaskar! 🙏 SARTHI boltoy.\n\nAapka project discuss karna chahenge.\n\nPlease share:\n📍 Location\n🏠 Project type (residential/commercial)\n📅 Timeline\n💰 Approximate budget\n\nSahaj Sir aaj shaam callback karenge. Details secure hain! ✅';
+  
+  if(t.match(/site.*update|kiti.*zale|progress|kaam.*kitna/))
+    return 'Patil Residency — Site Update 🏗️\n\n✅ Current progress: 72% complete\n📅 Foundation: Done\n📅 Structure: Done\n📅 Plastering: In progress\n📅 Tile work: April 8 start\n\n⏳ Expected completion: April 15\n\nPhoto update WhatsApp par bhejenge shaam tak! 📸';
+  
+  if(t.match(/quote|estimate|cost.*kitna|price.*project|kitna.*lagega/))
+    return 'Quote ke liye details chahiye 📋\n\nPlease share:\n• Project type (residential/office/renovation)\n• Square feet / area\n• Location\n• Timeline\n• Any specific requirements\n\n24 hours mein detailed estimate bhejenge. Free estimate! ✅';
+  
+  if(t.match(/payment|paise|due|outstanding|bill.*status/))
+    return '💰 Payment Status\n\nAapka account check kar rahe hain.\n\nPayment details:\n• Amount due: As per agreement\n• Due date: As discussed\n• UPI: 9767066941\n• Bank transfer details available\n\nReceipt chahiye toh bataiye! 🙏';
+  
+  if(t.match(/property|flat|3bhk|2bhk|buy|purchase|available/))
+    return '🏢 Property Available!\n\nCurrent inventory:\n🏠 2BHK: ₹45L–55L\n🏠 3BHK: ₹65L–80L\n🏢 Commercial: ₹80L–1.2Cr\n\n📍 Hinjewadi Phase 3\n✅ RERA registered\n✅ Bank loan approved\n\nSite visit book karein? Weekend slots available! 🔑';
+  
+  if(t.match(/legal|advocate|lawyer|case|property.*dispute|court/))
+    return 'Namaskar! ⚖️ Advocate Sharma AI Assistant.\n\n🔒 100% Confidential\n\nKaunsa matter discuss karna hai?\n• Property dispute\n• Business/corporate matter\n• Family law\n• Criminal defense\n\nConsultation: ₹1,500\nAvailable: Mon-Sat 10 AM – 7 PM\n\nAppointment book karein? 🙏';
+  
+  if(t.match(/interior|design|modular|kitchen|sofa|decor/))
+    return 'Namaskar! 🏠 Riya Interiors AI.\n\n200+ projects completed ✨\n\nKaunsa kaam chahiye?\n🍳 Modular Kitchen\n🛋️ Living Room Design\n🛏️ Bedroom Interior\n🏢 Office Interior\n\n💰 Starting: ₹3,000/sqft\n\nRoom ka size aur style (modern/traditional) share karein — estimate bhejenge! 😊';
+  
+  if(t.match(/broker|property.*sale|sell.*property|rent/))
+    return '🏘️ PropEdge Realty AI.\n\nKya dhundh rahe hain?\n• Buy property\n• Sell property\n• Rent/lease\n\n500+ properties available\n📍 Pune, Nashik, Aurangabad\n✅ RERA registered agents\n\nRequirement share karein — matching properties bhejenge! 😊';
+  
+  // Default
+  return 'Namaskar! 🙏 SARTHI — AI Business Assistant.\n\nAapki baat samajh aayi. Kya main madad kar sakta hoon?\n\n🏗️ Project enquiry\n📊 Site update\n💰 Payment status\n📞 Callback request\n\nDetails share karein — Sahaj Sir se connect karenge! ✅';
+}
+
 </script>
 </body>
 </html>
