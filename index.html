@@ -196,41 +196,124 @@
 }
 /* ══ LIGHT THEME ══ */
 [data-theme="light"]{
-  --bg:#F7F5F0;
-  --bg1:#EFEDE8;
-  --bg2:#E8E4DC;
-  --bg3:#DDD8CE;
-  --border:rgba(0,0,0,.08);
-  --border-h:rgba(255,107,53,.4);
+  --bg:#FAFAF7;
+  --bg1:#F3F1EC;
+  --bg2:#EAE7DF;
+  --bg3:#E0DCCE;
+  --border:rgba(0,0,0,.09);
+  --border-h:rgba(255,107,53,.45);
   --accent:#FF6B35;
   --accent2:#e55a25;
-  --accent-dim:rgba(255,107,53,.08);
-  --accent-glow:rgba(255,107,53,.2);
-  --t1:#17130B;
-  --t2:#5A5240;
-  --t3:#9A9080;
-  --shadow:0 20px 60px rgba(255,107,53,.1);
+  --accent-dim:rgba(255,107,53,.09);
+  --accent-glow:rgba(255,107,53,.22);
+  --green:#1a9e50;
+  --t1:#14100A;
+  --t2:#4A4030;
+  --t3:#8A8070;
+  --grad:linear-gradient(135deg,#FF6B35,#e55a25);
+  --shadow:0 16px 48px rgba(255,107,53,.12);
 }
+/* light bg grid — very subtle warm tones */
 [data-theme="light"] body::before{
   background-image:
-    linear-gradient(rgba(255,107,53,.04) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(255,107,53,.04) 1px,transparent 1px);
+    linear-gradient(rgba(200,140,100,.06) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(200,140,100,.06) 1px,transparent 1px);
   background-size:80px 80px;
 }
-[data-theme="light"] .orb-1{background:rgba(255,107,53,.06)}
-[data-theme="light"] .orb-2{background:rgba(255,107,53,.04)}
-[data-theme="light"] .orb-3{background:rgba(255,107,53,.03)}
-[data-theme="light"] .navbar{background:rgba(247,245,240,.92)!important;border-bottom-color:rgba(0,0,0,.06)!important}
-[data-theme="light"] .service-card,[data-theme="light"] .why-card,[data-theme="light"] .proof-card,[data-theme="light"] .faq-item{background:rgba(255,255,255,.8)!important;border-color:rgba(0,0,0,.08)!important}
-[data-theme="light"] .hero-badge{background:rgba(255,255,255,.7);border-color:rgba(0,0,0,.1)}
-[data-theme="light"] #about,[data-theme="light"] #portfolio{background:rgba(0,0,0,.015)!important}
-[data-theme="light"] .mob-menu{background:rgba(247,245,240,.98)!important}
-[data-theme="light"] .section-tag{color:var(--accent)}
-[data-theme="light"] .stat-card{background:rgba(255,255,255,.7)!important;border-color:rgba(0,0,0,.08)!important}
-[data-theme="light"] .cta-banner{background:linear-gradient(135deg,rgba(255,107,53,.08),rgba(255,107,53,.04))!important}
-[data-theme="light"] .demo-btn-smb{background:rgba(255,107,53,.06)}
-[data-theme="light"] .demo-btn-ent{background:rgba(0,212,255,.06)}
-[data-theme="light"] #neural-canvas{opacity:.35}
+/* soft warm orbs */
+[data-theme="light"] .orb-1{background:rgba(255,120,60,.07);filter:blur(140px)}
+[data-theme="light"] .orb-2{background:rgba(255,180,100,.05);filter:blur(120px)}
+[data-theme="light"] .orb-3{background:rgba(255,107,53,.04);filter:blur(100px)}
+/* navbar */
+[data-theme="light"] .navbar{
+  background:rgba(250,250,247,.94)!important;
+  border-bottom:1px solid rgba(0,0,0,.07)!important;
+  box-shadow:0 2px 20px rgba(0,0,0,.06)!important;
+}
+[data-theme="light"] .navbar.scrolled{
+  background:rgba(250,250,247,.98)!important;
+  box-shadow:0 2px 24px rgba(0,0,0,.09)!important;
+}
+[data-theme="light"] .logo-text .w{color:#14100A}
+[data-theme="light"] .nav-links a{color:#4A4030}
+[data-theme="light"] .nav-links a:hover{color:var(--accent)}
+/* hero */
+[data-theme="light"] .hero-badge{
+  background:rgba(255,255,255,.85);
+  border:1.5px solid rgba(255,107,53,.2);
+  color:#4A4030;
+  box-shadow:0 2px 12px rgba(255,107,53,.08);
+}
+[data-theme="light"] .hero h1{color:#14100A}
+[data-theme="light"] .hero-sub{color:#5A4E3C}
+[data-theme="light"] .trust-pill{
+  background:rgba(255,255,255,.7);
+  border-color:rgba(0,0,0,.1);
+  color:#6A5E50;
+}
+/* cards — crisp white with warm shadow */
+[data-theme="light"] .service-card,
+[data-theme="light"] .why-card,
+[data-theme="light"] .proof-card,
+[data-theme="light"] .faq-item,
+[data-theme="light"] .stat-card,
+[data-theme="light"] .process-step{
+  background:#FFFFFF!important;
+  border:1.5px solid rgba(0,0,0,.07)!important;
+  box-shadow:0 4px 20px rgba(0,0,0,.06)!important;
+}
+[data-theme="light"] .service-card:hover{
+  border-color:rgba(255,107,53,.35)!important;
+  box-shadow:0 12px 40px rgba(255,107,53,.13)!important;
+}
+[data-theme="light"] .service-icon{background:rgba(255,107,53,.08)!important;border-color:rgba(255,107,53,.15)!important}
+/* sections alternating bg */
+[data-theme="light"] #about{background:rgba(240,238,232,.6)!important}
+[data-theme="light"] #portfolio{background:rgba(240,238,232,.6)!important}
+[data-theme="light"] #why{background:#FAFAF7!important}
+[data-theme="light"] #process{background:rgba(240,238,232,.6)!important}
+[data-theme="light"] #contact{background:#FAFAF7!important}
+/* section labels */
+[data-theme="light"] .section-tag{color:var(--accent)!important}
+[data-theme="light"] .section-title{color:#14100A}
+/* mobile menu */
+[data-theme="light"] .mob-menu{background:rgba(250,250,247,.99)!important;border-bottom:1px solid rgba(0,0,0,.08)!important}
+/* cta banner */
+[data-theme="light"] .cta-banner{
+  background:linear-gradient(135deg,rgba(255,107,53,.1),rgba(255,107,53,.05))!important;
+  border:1.5px solid rgba(255,107,53,.18)!important;
+}
+/* demo strip */
+[data-theme="light"] .demo-strip{background:rgba(255,255,255,.6);border-color:rgba(0,0,0,.08)}
+[data-theme="light"] .demo-btn-smb{background:rgba(255,107,53,.07);border-color:rgba(255,107,53,.25)!important}
+[data-theme="light"] .demo-btn-ent{background:rgba(0,180,220,.07);border-color:rgba(0,180,220,.25)!important}
+[data-theme="light"] .demo-strip-label{color:#6A5E50}
+[data-theme="light"] .demo-strip-pricing a{color:#8A7A6A}
+[data-theme="light"] .demo-btn-smb .demo-btn-title{color:#CC4A1A}
+[data-theme="light"] .demo-btn-ent .demo-btn-title{color:#007BA0}
+[data-theme="light"] .demo-btn-sub{color:#8A7A6A}
+/* faq */
+[data-theme="light"] .faq-q{color:#14100A}
+[data-theme="light"] .faq-a{color:#5A4E3C}
+/* stats */
+[data-theme="light"] .stat-num{color:var(--accent)}
+[data-theme="light"] .stat-label{color:#5A4E3C}
+/* why cards */
+[data-theme="light"] .why-icon{background:rgba(255,107,53,.08)!important}
+[data-theme="light"] .why-title{color:#14100A}
+[data-theme="light"] .why-text{color:#5A4E3C}
+/* proof cards */
+[data-theme="light"] .proof-tag{background:rgba(255,107,53,.1)!important;color:var(--accent)!important}
+[data-theme="light"] .proof-result{color:#1a9e50!important}
+/* float buttons */
+[data-theme="light"] .float-top{background:var(--accent)!important}
+/* neural canvas lighter */
+[data-theme="light"] #neural-canvas{opacity:.28}
+/* marquee */
+[data-theme="light"] .m-item{color:#6A5E50}
+[data-theme="light"] .m-dot{background:var(--accent)}
+/* theme toggle in light mode */
+[data-theme="light"] .theme-toggle{background:#FFFFFF;border-color:rgba(0,0,0,.1);color:#14100A}
 
 /* ══ THEME TOGGLE BUTTON ══ */
 .theme-toggle{
@@ -1841,7 +1924,7 @@ window.addEventListener('resize', fixProof, {passive:true});
 
 /* ══ THEME TOGGLE ══ */
 (function(){
-  var saved = localStorage.getItem('a4y-theme') || 'dark';
+  var saved = localStorage.getItem('a4y-theme') || 'light';
   document.documentElement.setAttribute('data-theme', saved);
   var btn = document.getElementById('themeToggle');
   if(btn) btn.textContent = saved === 'dark' ? '🌙' : '☀️';
