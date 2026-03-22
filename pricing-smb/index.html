@@ -143,6 +143,15 @@ footer .a4{color:var(--cy)}
 .fade:nth-child(1){animation-delay:.07s}.fade:nth-child(2){animation-delay:.13s}.fade:nth-child(3){animation-delay:.18s}.fade:nth-child(4){animation-delay:.23s}.fade:nth-child(5){animation-delay:.28s}
 @keyframes fu{to{opacity:1;transform:translateY(0)}}
 </style>
+<script>
+// Anti-flash theme loader — must run before body renders
+(function(){
+  try{
+    var t=localStorage.getItem('a4y-theme')||'light';
+    document.documentElement.setAttribute('data-theme',t);
+  }catch(e){}
+})();
+</script>
 </head>
 <body>
 <div class="toast z1" id="toast"></div>

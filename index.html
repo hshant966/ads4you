@@ -1114,6 +1114,15 @@ footer{
   .rv,.rv-l,.rv-r{opacity:1!important;transform:none!important}
 }
 </style>
+<script>
+// Anti-flash theme loader — must run before body renders
+(function(){
+  try{
+    var t=localStorage.getItem('a4y-theme')||'light';
+    document.documentElement.setAttribute('data-theme',t);
+  }catch(e){}
+})();
+</script>
 </head>
 <body>
 
