@@ -305,6 +305,34 @@ footer .a4{color:var(--cy)}
 .toast.on{transform:translateX(-50%) translateY(0)}
 .fade{opacity:0;transform:translateY(20px);animation:fu .6s cubic-bezier(.22,1,.36,1) forwards}
 .fade:nth-child(1){animation-delay:.07s}.fade:nth-child(2){animation-delay:.13s}.fade:nth-child(3){animation-delay:.18s}.fade:nth-child(4){animation-delay:.22s}.fade:nth-child(5){animation-delay:.27s}
+
+.post-demo-cta2{
+  display:none;flex-direction:column;align-items:center;
+  gap:12px;padding:20px;margin:16px 0;
+  background:linear-gradient(135deg,rgba(37,211,102,.07),rgba(37,211,102,.03));
+  border:1.5px solid rgba(37,211,102,.28);border-radius:14px;text-align:center;
+}
+.post-demo-cta2 p{font-size:14px;font-weight:600;color:var(--tx)}
+.post-demo-cta2 a{
+  display:inline-flex;align-items:center;gap:8px;
+  background:#25D366;color:#fff;padding:14px 28px;
+  border-radius:50px;font-size:14px;font-weight:700;
+  text-decoration:none;min-height:48px;
+  width:100%;justify-content:center;
+  box-shadow:0 4px 20px rgba(37,211,102,.4);
+}
+
+@media(max-width:639px){
+  .tabs{
+    flex-wrap:nowrap!important;
+    overflow-x:auto;
+    -webkit-overflow-scrolling:touch;
+    scrollbar-width:none;
+    padding-bottom:4px;
+  }
+  .tabs::-webkit-scrollbar{display:none}
+  .tab{flex-shrink:0;font-size:11px;padding:9px 14px}
+}
 </style>
 <script>
 // Anti-flash theme loader — must run before body renders
@@ -418,7 +446,7 @@ footer .a4{color:var(--cy)}
             <span class="qrc2" onclick="sendQ2('Payment status?')">Payment</span>
           </div>
           <div class="wa2ir">
-            <input class="wa2i" id="wa2i" placeholder="Type a message..." onkeydown="if(event.key==='Enter'&&!event.shiftKey)sendMsg2()">
+            <input class="wa2i" id="wa2i" placeholder="Type a message..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" onkeydown="if(event.key==='Enter'&&!event.shiftKey)sendMsg2()">
             <button class="wa2snd" id="wa2snd" onclick="sendMsg2()"><svg width="17" height="17" viewBox="0 0 24 24" fill="white"><path d="M2 21l21-9L2 3v7l15 2-15 2z"/></svg></button>
           </div>
         </div>
@@ -723,14 +751,25 @@ async function sendMsg2(){
     hideTyping2();
     const clean=(reply||'').trim().replace(/^["']+|["']+$/g,'');
     addMsg2(clean||'Namaskar! Dobara try karein 🙏','out');
+    checkEntCTA();
   }catch(e){
     clearTimeout(timeout);
     hideTyping2();
     addMsg2(getEnterpriseReply(text),'out');
+    checkEntCTA();
   }
   busy2=false;if(btn){btn.disabled=false;btn.style.opacity='';}
 }
 
+
+var _entBotCount = 0;
+function checkEntCTA(){
+  _entBotCount++;
+  if(_entBotCount >= 3){
+    var c=document.getElementById('post-demo-cta2');
+    if(c){c.style.display='flex';c.scrollIntoView({behavior:'smooth',block:'nearest'});}
+  }
+}
 function addMsg2(text,dir){
   const m=document.getElementById('wa2bd');
   const now=new Date();const t=now.getHours()+':'+String(now.getMinutes()).padStart(2,'0');

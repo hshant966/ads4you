@@ -156,6 +156,26 @@ footer .a4{color:var(--cy)}
 .fade{opacity:0;transform:translateY(20px);animation:fu .6s cubic-bezier(.22,1,.36,1) forwards}
 .fade:nth-child(1){animation-delay:.07s}.fade:nth-child(2){animation-delay:.13s}.fade:nth-child(3){animation-delay:.18s}.fade:nth-child(4){animation-delay:.22s}.fade:nth-child(5){animation-delay:.27s}
 @keyframes fu{to{opacity:1;transform:translateY(0)}}
+
+/* Post-demo CTA */
+.post-demo-cta{
+  display:none;
+  flex-direction:column;align-items:center;
+  gap:12px;padding:20px;margin:16px 0;
+  background:linear-gradient(135deg,rgba(37,211,102,.08),rgba(37,211,102,.04));
+  border:1.5px solid rgba(37,211,102,.3);border-radius:14px;
+  text-align:center;animation:fu .5s ease forwards;
+}
+.post-demo-cta p{font-size:14px;font-weight:600;color:var(--tx)}
+.post-demo-cta a{
+  display:inline-flex;align-items:center;gap:8px;
+  background:#25D366;color:#fff;
+  padding:14px 28px;border-radius:50px;
+  font-size:14px;font-weight:700;text-decoration:none;
+  box-shadow:0 4px 20px rgba(37,211,102,.4);
+  min-height:48px;width:100%;justify-content:center;
+}
+.post-demo-cta a:hover{transform:translateY(-2px);box-shadow:0 6px 28px rgba(37,211,102,.55)}
 </style>
 <script>
 // Anti-flash theme loader — must run before body renders
@@ -256,7 +276,7 @@ footer .a4{color:var(--cy)}
           <span class="qrc" onclick="sendQ('Bill chahiye')">Bill</span>
         </div>
         <div class="wair">
-          <input class="wai" id="wai" placeholder="Type a message..." onkeydown="if(event.key==='Enter')sendMsg()">
+          <input class="wai" id="wai" placeholder="Type a message..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" onkeydown="if(event.key==='Enter')sendMsg()">
           <button class="wsnd" onclick="sendMsg()"><svg width="17" height="17" viewBox="0 0 24 24" fill="white"><path d="M2 21l21-9L2 3v7l15 2-15 2z"/></svg></button>
         </div>
       </div>
@@ -585,6 +605,7 @@ function sendMsg(){
     hideTyping();
     var clean=(reply||'').trim().replace(/^["']+|["']+$/g,'');
     addMsg(clean||'Namaskar! Ek second... dobara try karein 🙏','out');
+    checkPostDemoCTA();
     _busy=false;if(btn){btn.disabled=false;btn.style.opacity='';}
   })
   .catch(function(err){
@@ -596,6 +617,16 @@ function sendMsg(){
   });
 }
 
+
+// Post-demo CTA trigger after 3 bot responses
+var _botRespCount = 0;
+function checkPostDemoCTA(){
+  _botRespCount++;
+  if(_botRespCount >= 3){
+    var cta = document.getElementById('post-demo-cta');
+    if(cta){ cta.style.display = 'flex'; cta.scrollIntoView({behavior:'smooth',block:'nearest'}); }
+  }
+}
 function addMsg(text,dir){
   var m=document.getElementById('wab');
   var now=new Date();var t=now.getHours()+':'+('0'+now.getMinutes()).slice(-2);
