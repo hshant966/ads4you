@@ -238,11 +238,21 @@ footer .a4{color:var(--cy)}
 
 <script>
 // ── THEME TOGGLE (FIXED) ──
+// Theme persistence
+(function(){
+  var saved=localStorage.getItem('a4y-theme')||'dark';
+  document.documentElement.setAttribute('data-theme',saved);
+  var btn=document.getElementById('thm');
+  if(btn)btn.textContent=saved==='dark'?'☀️':'🌙';
+})();
 function toggleTheme(){
   var h=document.documentElement;
   var isDark=h.getAttribute('data-theme')==='dark';
-  h.setAttribute('data-theme', isDark ? 'light' : 'dark');
-  document.getElementById('thm').textContent = isDark ? '🌙' : '☀️';
+  var next=isDark?'light':'dark';
+  h.setAttribute('data-theme',next);
+  localStorage.setItem('a4y-theme',next);
+  var btn=document.getElementById('thm');
+  if(btn)btn.textContent=isDark?'☀️':'🌙';
 }
 
 // ── SHARE ──

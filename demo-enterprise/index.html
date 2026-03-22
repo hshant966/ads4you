@@ -569,11 +569,21 @@ const BIZC={
 
 let curBiz='construction';let busy2=false;let lastReq2=0;
 
+// Theme persistence
+(function(){
+  var saved=localStorage.getItem('a4y-theme')||'dark';
+  document.documentElement.setAttribute('data-theme',saved);
+  var btn=document.getElementById('thm');
+  if(btn)btn.textContent=saved==='dark'?'☀️':'🌙';
+})();
 function toggleTheme(){
   var h=document.documentElement;
   var isDark=h.getAttribute('data-theme')==='dark';
-  h.setAttribute('data-theme', isDark ? 'light' : 'dark');
-  document.getElementById('thm').textContent = isDark ? '🌙' : '☀️';
+  var next=isDark?'light':'dark';
+  h.setAttribute('data-theme',next);
+  localStorage.setItem('a4y-theme',next);
+  var btn=document.getElementById('thm');
+  if(btn)btn.textContent=isDark?'☀️':'🌙';
 }
 function sharePage(){
   if(navigator.share){navigator.share({title:'SARTHI — Construction AI Demo by Ads4You',url:window.location.href})}

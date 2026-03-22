@@ -204,5 +204,19 @@ footer .a4{color:var(--cy)}
 <footer class="z1">Ads<span class="a4">4</span>You AI Automation Studio &nbsp;·&nbsp; UDYAM-MH-26-1092780 &nbsp;·&nbsp; Wakad, Pune &nbsp;·&nbsp; <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="f3929780c78a9c86b3899c9b9c9e929a9fdd909c9e">[email&#160;protected]</a></footer>
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-function toggleTheme(){const h=document.documentElement,d=h.getAttribute('data-theme')==='light';h.setAttribute('data-theme',d?'dark':'light');document.getElementById('thm').textContent=d?'☀️':'🌙'}
+// Persist theme
+(function(){
+  var saved=localStorage.getItem('a4y-theme')||'light';
+  document.documentElement.setAttribute('data-theme',saved);
+  var btn=document.getElementById('thm');
+  if(btn)btn.textContent=saved==='light'?'🌙':'☀️';
+})();
+function toggleTheme(){
+  var h=document.documentElement;
+  var isLight=h.getAttribute('data-theme')==='light';
+  var next=isLight?'dark':'light';
+  h.setAttribute('data-theme',next);
+  localStorage.setItem('a4y-theme',next);
+  document.getElementById('thm').textContent=isLight?'☀️':'🌙';
+}
 function sharePage(){if(navigator.share){navigator.share({title:'Ads4You — Construction AI Pricing',url:window.location.href})}else{navigator.clipboard.writeText(window.l
