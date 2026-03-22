@@ -257,7 +257,14 @@ function cu(id,target,pre,suf,dur){
   var v=0;var step=target/60;
   var t=setInterval(function(){v=Math.min(v+step,target);el.textContent=pre+Math.floor(v)+suf;if(v>=target)clearInterval(t)},dur/60);
 }
-setTimeout(function(){cu('pc1',47,'','',1100);cu('pc2',3,'','h',1000);cu('pc3',8000,'₹','',1300)},500);
+window.addEventListener('load',function(){
+  setTimeout(function(){
+    var b=BIZ[curBiz]||BIZ['tiffin'];
+    cu('pc1',b.p1||47,'','',1100);
+    cu('pc2',b.p2||3,'','h',1000);
+    cu('pc3',b.p3||8000,'₹','',1300);
+  },500);
+});
 
 // ── PRE-SCRIPTED SMART RESPONSES ──
 var RESP = {
@@ -494,18 +501,49 @@ function getReply(text){
   return replies['default'];
 }
 
+var _busy=false;
 function sendMsg(){
+  if(_busy)return;
   var inp=document.getElementById('wai');
   var text=inp.value.trim();if(!text)return;
   inp.value='';
   addMsg(text,'in');
+  _busy=true;
+  var btn=document.getElementById('wsnd');
+  if(btn){btn.disabled=true;btn.style.opacity='.5';}
   showTyping();
-  var delay=900+Math.random()*600; // realistic typing delay
-  setTimeout(function(){
+  var b=BIZ[curBiz]||BIZ['tiffin'];
+  var controller=new AbortController();
+  var timeout=setTimeout(function(){controller.abort();},12000);
+  fetch('https://text.pollinations.ai/',{
+    method:'POST',
+    headers:{'Content-Type':'application/json'},
+    signal:controller.signal,
+    body:JSON.stringify({
+      messages:[{role:'user',content:text}],
+      model:'openai',
+      system:b.sys,
+      seed:Math.floor(Math.random()*9999)
+    })
+  })
+  .then(function(r){
+    clearTimeout(timeout);
+    if(!r.ok)throw new Error('HTTP '+r.status);
+    return r.text();
+  })
+  .then(function(reply){
+    hideTyping();
+    var clean=(reply||'').trim().replace(/^["']+|["']+$/g,'');
+    addMsg(clean||'Namaskar! Ek second... dobara try karein 🙏','out');
+    _busy=false;if(btn){btn.disabled=false;btn.style.opacity='';}
+  })
+  .catch(function(err){
+    clearTimeout(timeout);
     hideTyping();
     var reply=getReply(text);
     addMsg(reply,'out');
-  },delay);
+    _busy=false;if(btn){btn.disabled=false;btn.style.opacity='';}
+  });
 }
 
 function addMsg(text,dir){
