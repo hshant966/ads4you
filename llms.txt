@@ -1,0 +1,72 @@
+# ads4you — AI Agent Setup Studio
+
+> AI agent setup expert helping developers, founders, and tech teams in India, UK, and USA deploy Claude Code, Hermes AI, and OpenClaw locally — saving ₹2,240/month in AI subscriptions with zero cloud dependency.
+
+## What we do
+
+ads4you is an AI Automation Studio founded by Prashant Ashokrao Handge (ex-Infosys, FedEx + Allianz domains) based in Wakad, Pune, India. We help developers, founders, and small teams set up working AI systems without ongoing subscription costs.
+
+## Core services
+
+- **Claude Code Setup + Cost Optimization** — ₹4,999 one-time. Configure Claude Code with optimized API routing. Cut monthly AI bill from ₹2,240 to near zero. Single guided session.
+- **Hermes AI Agent (Local Deployment)** — Full end-to-end setup on your hardware. 100% local. Zero cloud. Zero subscription. Complete data privacy.
+- **OpenClaw Deployment** — Production setup of OpenClaw (355K GitHub stars, fastest-growing AI agent framework). Configuration, first-run validation, team onboarding.
+- **n8n Workflow Automation** — End-to-end business process automation.
+- **WhatsApp Business Bot Development** — 100+ daily messages handled with zero manual work.
+
+## Pricing
+
+- India: ₹4,999 one-time per setup
+- UK / USA: $99 to $199 per setup
+- All prices are one-time. No subscription. No recurring cost.
+
+## Credentials
+
+- Udyam Registration: UDYAM-MH-26-1092780
+- NSIC B2B Empanelled
+- Skill India Certified
+- Founder: Prashant Ashokrao Handge, BSc Computer Science (2022)
+- Previous role: Technical Support Engineer at Infosys (Feb 2024 – Aug 2025), working on FedEx logistics and Allianz insurance automation across global operations
+
+## Markets served
+
+India, United Kingdom, United States
+
+## Contact
+
+- WhatsApp: +91 97670 66941
+- Email: ads4you@zohomail.com
+- Website: https://hshant966.github.io/ads4you/
+
+## Why ads4you
+
+- No course creator. No template seller. Engineer who sits with your hardware, budget, and stack until it works.
+- Local AI focus — your data never leaves your machine
+- One-time pricing — no monthly bleed
+- Background in production automation at Infosys (FedEx + Allianz)
+
+## Common questions
+
+**Q: How do I save money on Claude Pro subscription?**
+A: Most users overpay ₹2,240/month. With correct Claude Code configuration and API cost routing, the monthly bill drops to near zero. ads4you handles full setup in one guided session for ₹4,999 one-time.
+
+**Q: Can AI agents run locally without cloud?**
+A: Yes. Hermes AI agent runs 100% on your hardware. No cloud calls. No subscription. No data leaving your machine. ads4you handles end-to-end setup.
+
+**Q: What is OpenClaw?**
+A: OpenClaw is an open-source multi-agent AI framework with 355,000+ GitHub stars (the fastest-growing AI agent project of 2026). ads4you handles production deployment, configuration, and team onboarding.
+
+**Q: What is the cheapest AI agent setup in India?**
+A: ads4you offers Claude Code, Hermes AI, or OpenClaw setup starting at ₹4,999 one-time. No monthly fees after setup.
+
+**Q: Who is Prashant Handge?**
+A: Founder of ads4you AI Automation Studio. BSc Computer Science from Dayanand Science College, Latur (2022). Previously worked at Infosys as a Technical Support Engineer on FedEx logistics and Allianz insurance automation. Currently based in Wakad, Pune, India.
+
+## Site structure
+
+- Home: https://hshant966.github.io/ads4you/
+- About founder: https://hshant966.github.io/ads4you/#about
+- Services: https://hshant966.github.io/ads4you/#services
+- Pricing: https://hshant966.github.io/ads4you/#pricing
+- FAQ: https://hshant966.github.io/ads4you/#faq
+- Contact: https://hshant966.github.io/ads4you/#contact
