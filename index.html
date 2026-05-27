@@ -1161,6 +1161,37 @@ footer{
 .hero h1 .gr.rot-in{animation:rotIn .38s cubic-bezier(0,0,.2,1) forwards}
 @keyframes rotOut{from{transform:translateY(0);opacity:1}to{transform:translateY(-110%);opacity:0}}
 @keyframes rotIn{from{transform:translateY(110%);opacity:0}to{transform:translateY(0);opacity:1}}
+
+/* ── Sticky WhatsApp CTA ── */
+.wa-sticky{position:fixed;bottom:28px;right:24px;z-index:9999;display:flex;align-items:center;gap:10px;background:#25D366;color:#fff;font-weight:700;font-size:.92rem;padding:13px 20px 13px 16px;border-radius:999px;box-shadow:0 4px 24px rgba(37,211,102,.45);text-decoration:none;transition:transform .2s ease,box-shadow .2s ease;animation:waFloat 3s ease-in-out infinite}
+.wa-sticky:hover{transform:translateY(-3px) scale(1.04);box-shadow:0 8px 32px rgba(37,211,102,.6);color:#fff}
+.wa-sticky svg{width:22px;height:22px;flex-shrink:0}
+.wa-sticky .wa-text{display:flex;flex-direction:column;line-height:1.2}
+.wa-sticky .wa-sub{font-size:.7rem;font-weight:400;opacity:.85}
+@keyframes waFloat{0%,100%{box-shadow:0 4px 24px rgba(37,211,102,.45)}50%{box-shadow:0 4px 36px rgba(37,211,102,.75)}}
+@media(max-width:480px){.wa-sticky .wa-text{display:none}.wa-sticky{padding:14px}}
+
+/* ── Urgency strip ── */
+.urgency-strip{background:linear-gradient(90deg,#FF6B35,#e03e00);color:#fff;text-align:center;padding:10px 20px;font-size:.82rem;font-weight:600;letter-spacing:.04em;position:relative;overflow:hidden}
+.urgency-strip::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(90deg,transparent,transparent 40px,rgba(255,255,255,.06) 40px,rgba(255,255,255,.06) 41px)}
+.urgency-strip span{background:rgba(0,0,0,.2);border-radius:4px;padding:2px 8px;margin:0 4px}
+
+/* ── Pricing badge on service cards ── */
+.svc-price{display:inline-flex;align-items:center;gap:5px;background:rgba(255,107,53,.12);border:1px solid rgba(255,107,53,.3);color:#FF6B35;font-size:.75rem;font-weight:700;padding:4px 10px;border-radius:999px;margin-top:12px;letter-spacing:.02em}
+[data-theme=light] .svc-price{background:rgba(255,107,53,.1);border-color:rgba(255,107,53,.25)}
+.svc-price::before{content:'₹';font-size:.7rem}
+
+/* ── Trust badges row ── */
+.trust-row{display:flex;flex-wrap:wrap;justify-content:center;gap:14px;padding:18px 0 0;margin-top:8px}
+.trust-badge{display:flex;align-items:center;gap:7px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:999px;padding:7px 16px;font-size:.78rem;font-weight:600;color:var(--text-muted,#9ca3af)}
+[data-theme=light] .trust-badge{background:rgba(0,0,0,.04);border-color:rgba(0,0,0,.1);color:#6b7280}
+.trust-badge svg{width:14px;height:14px;opacity:.7}
+
+/* ── Social proof ticker ── */
+.sp-ticker{background:rgba(37,211,102,.08);border:1px solid rgba(37,211,102,.2);border-radius:8px;padding:10px 18px;margin:20px 0 0;font-size:.82rem;display:flex;align-items:center;gap:10px;animation:spPop .5s ease}
+.sp-ticker .sp-dot{width:8px;height:8px;border-radius:50%;background:#25D366;flex-shrink:0;animation:spDot 1.5s ease-in-out infinite}
+@keyframes spDot{0%,100%{opacity:1}50%{opacity:.3}}
+@keyframes spPop{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
 </style>
 <script>
 // Anti-flash theme loader — must run before body renders
@@ -1173,6 +1204,20 @@ footer{
 </script>
 </head>
 <body>
+
+<!-- ═══ URGENCY STRIP ═══ -->
+<div class="urgency-strip" role="alert">
+  🔥 Only <span>3 slots left</span> for June 2026 — <strong>Book your free 15-min call before they fill up</strong>
+</div>
+
+<!-- ═══ STICKY WHATSAPP ═══ -->
+<a href="https://wa.me/919767066941?text=Hi%2C%20I%20saw%20your%20website.%20I%20want%20to%20discuss%20automation%20for%20my%20business." class="wa-sticky" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.112.546 4.1 1.5 5.832L.057 23.999l6.304-1.654A11.955 11.955 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.007-1.372l-.36-.213-3.737.98.998-3.65-.234-.374A9.818 9.818 0 1112 21.818z"/></svg>
+  <div class="wa-text">
+    <span>Chat on WhatsApp</span>
+    <span class="wa-sub">Usually replies in 5 min</span>
+  </div>
+</a>
 
 <!-- AMBIENT ORBS -->
 <div class="orbs" aria-hidden="true">
@@ -1230,9 +1275,9 @@ footer{
       <h1>
         We Build Smart<br>
         <span class="hero-rotate-wrap"><span class="gr" id="rotatingService">WhatsApp Bots</span></span>
-        <br>For Your Agency
+        <br>For Your Business
       </h1>
-      <p class="hero-sub">ads4you builds AI bots, n8n workflows, and smart systems for social media agencies and digital marketing firms in Pune — so your team stops doing manual work and starts scaling.</p>
+      <p class="hero-sub">ads4you builds AI bots, n8n workflows, and smart systems for businesses and digital marketing firms in Pune — so your team stops doing manual work and starts scaling.</p>
       <div class="hero-btns">
         <a href="https://wa.me/919767066941?text=Hi%2C%20mujhe%20apne%20business%20ke%20liye%20automation%20chahiye.%20Pricing%20bataiye." class="btn btn-wa-hero" aria-label="WhatsApp pe baat karo">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
@@ -1240,6 +1285,26 @@ footer{
         </a>
         <a href="#contact" class="btn btn-p">Get Free Audit →</a>
         <a href="#portfolio" class="btn btn-s">See Our Work</a>
+      </div>
+
+      <!-- TRUST SIGNALS -->
+      <div class="trust-row" aria-label="Trust signals">
+        <span class="trust-badge">
+          <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+          Udyam Registered MSME
+        </span>
+        <span class="trust-badge">
+          <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+          GeM Listed Vendor
+        </span>
+        <span class="trust-badge">
+          <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+          Starts at ₹2,500
+        </span>
+        <span class="trust-badge">
+          <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+          50% Advance Only
+        </span>
       </div>
 
       <!-- LIVE DEMO STRIP -->
@@ -1317,13 +1382,13 @@ footer{
     <div class="about-grid">
       <div class="rv-l">
         <div class="s-label">who we are</div>
-        <h2 class="s-title">Built in Pune.<br>Built for Agencies Like Yours.</h2>
+        <h2 class="s-title">Built in Pune.<br>Built for Businesses Like Yours.</h2>
         <div class="about-body">
           <p>ads4you is an AI Automation Studio based in Wakad, Pune — officially registered under the Government of India's Udyam scheme (UDYAM-MH-26-1092780), listed on GeM, empanelled with NSIC B2B, and certified under Skill India.</p>
-          <p>We are not a large agency with overhead costs passed on to you. We are a focused automation studio with one clear purpose: help agencies eliminate repetitive manual work using AI, bots, and intelligent workflows. Real technical depth, not surface-level tool reselling.</p>
+          <p>We are not a large agency with overhead costs passed on to you. We are a focused automation studio with one clear purpose: help businesses eliminate repetitive manual work using AI, bots, and intelligent workflows. Real technical depth, not surface-level tool reselling.</p>
           <p>Our model is simple: understand your bottleneck, build a solution that fits, deliver it clean, and stay available after handover. No bloated retainers. No locked-in contracts. No surprises.</p>
         </div>
-        <blockquote class="about-quote">"To make enterprise-grade AI automation accessible to every growing agency in Pune — honestly priced, properly built, and actually supported."</blockquote>
+        <blockquote class="about-quote">"To make enterprise-grade AI automation accessible to every growing business in Pune — honestly priced, properly built, and actually supported."</blockquote>
         <div class="stats-row">
           <div class="stat-block"><div class="num">7</div><div class="lbl">Services Offered</div></div>
           <div class="stat-block"><div class="num">50%</div><div class="lbl">Advance Only</div></div>
@@ -1361,7 +1426,7 @@ footer{
 <section id="services">
   <div class="container">
     <div class="s-label rv">our services</div>
-    <h2 class="s-title rv">What We Build For You</h2>
+    <h2 class="s-title rv">What We Build For Your Business</h2>
     <p class="s-desc rv">Every service targets a specific bottleneck. We don't sell tools — we solve problems.</p>
     <div class="srv-grid">
 
@@ -1370,8 +1435,11 @@ footer{
         <h3>WhatsApp &amp; Telegram Bot Development</h3>
         <p class="problem">Your team is buried in manual chat responses.</p>
         <p>Automated bots that qualify leads, answer FAQs, trigger workflows, and follow up — without a human in the loop. Available 24/7 at near-zero running cost.</p>
-        <div class="srv-for"><strong>For</strong>Social media agencies managing high-volume client or lead communication.</div>
-        <span class="srv-tag">messaging-api</span>
+        <div class="srv-for"><strong>For</strong>Businesses managing high-volume client or lead communication.</div>
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-top:12px">
+          <span class="srv-tag">messaging-api</span>
+          <span class="svc-price">2,500 – 8,000</span>
+        </div>
       </div>
 
       <div class="srv-card rv d2">
@@ -1379,8 +1447,11 @@ footer{
         <h3>Business Automation (n8n Workflows)</h3>
         <p class="problem">Your tools don't talk to each other.</p>
         <p>We design and deploy n8n automations connecting your CRM, ad platforms, spreadsheets, and comms tools — eliminating manual data entry and missed handoffs entirely.</p>
-        <div class="srv-for"><strong>For</strong>Digital marketing firms with 3+ tools that require manual bridging.</div>
-        <span class="srv-tag">n8n-workflows</span>
+        <div class="srv-for"><strong>For</strong>Businesses with 3+ tools that require manual bridging.</div>
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-top:12px">
+          <span class="srv-tag">n8n-workflows</span>
+          <span class="svc-price">3,500 – 12,000</span>
+        </div>
       </div>
 
       <div class="srv-card rv d3">
@@ -1388,8 +1459,11 @@ footer{
         <h3>Website Development &amp; Deployment</h3>
         <p class="problem">Your web presence doesn't match your work quality.</p>
         <p>Fast, mobile-first websites deployed on GitHub Pages, Netlify, or your host. Clean code, real performance, zero page-builder bloat.</p>
-        <div class="srv-for"><strong>For</strong>Agencies needing their own site upgraded or client sites delivered efficiently.</div>
-        <span class="srv-tag">web-deploy</span>
+        <div class="srv-for"><strong>For</strong>Businesses needing their own site upgraded or client sites delivered efficiently.</div>
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-top:12px">
+          <span class="srv-tag">web-deploy</span>
+          <span class="svc-price">2,500 – 7,000</span>
+        </div>
       </div>
 
       <div class="srv-card rv d4">
@@ -1397,8 +1471,11 @@ footer{
         <h3>AI Chatbot Integration</h3>
         <p class="problem">Your website goes silent after business hours.</p>
         <p>AI-powered chatbots using free LLMs — no per-token bills. Your site handles lead capture, FAQs, and support intelligently, around the clock.</p>
-        <div class="srv-for"><strong>For</strong>Agencies wanting AI on client sites without escalating API costs.</div>
-        <span class="srv-tag">llm-powered</span>
+        <div class="srv-for"><strong>For</strong>Businesses wanting AI on client sites without escalating API costs.</div>
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-top:12px">
+          <span class="srv-tag">llm-powered</span>
+          <span class="svc-price">4,000 – 10,000</span>
+        </div>
       </div>
 
       <div class="srv-card rv d5">
@@ -1406,8 +1483,11 @@ footer{
         <h3>Billing &amp; Invoice Systems</h3>
         <p class="problem">You're still chasing payments manually.</p>
         <p>Automate invoice generation, WhatsApp/email delivery, payment reminders, and reconciliation — so month-end takes minutes, not hours.</p>
-        <div class="srv-for"><strong>For</strong>Freelancers and agencies managing 5+ recurring client billing relationships.</div>
-        <span class="srv-tag">finops</span>
+        <div class="srv-for"><strong>For</strong>Freelancers and businesses managing 5+ recurring client billing relationships.</div>
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-top:12px">
+          <span class="srv-tag">finops</span>
+          <span class="svc-price">3,000 – 9,000</span>
+        </div>
       </div>
 
       <div class="srv-card rv d6">
@@ -1415,8 +1495,11 @@ footer{
         <h3>System Optimization</h3>
         <p class="problem">Your automations exist but keep breaking.</p>
         <p>Audit your current setup, identify failure points, rebuild fragile workflows, and document everything so your team can maintain it independently.</p>
-        <div class="srv-for"><strong>For</strong>Agencies with existing bots or workflows that need a professional rebuild.</div>
-        <span class="srv-tag">performance</span>
+        <div class="srv-for"><strong>For</strong>Businesses with existing bots or workflows that need a professional rebuild.</div>
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-top:12px">
+          <span class="srv-tag">performance</span>
+          <span class="svc-price">2,000 – 6,000</span>
+        </div>
       </div>
 
       <div class="srv-card rv d1">
@@ -1424,8 +1507,11 @@ footer{
         <h3>AI Bot Setup &amp; Deployment (Free LLMs)</h3>
         <p class="problem">AI API costs are unpredictable and expensive.</p>
         <p>Self-hosted AI models (Ollama, LLaMA, Mistral) on your infrastructure — powerful AI capability with zero ongoing API costs and full data privacy.</p>
-        <div class="srv-for"><strong>For</strong>Agencies wanting AI in their stack without vendor lock-in or usage bills.</div>
-        <span class="srv-tag">free-llm-setup</span>
+        <div class="srv-for"><strong>For</strong>Businesses wanting AI in their stack without vendor lock-in or usage bills.</div>
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-top:12px">
+          <span class="srv-tag">free-llm-setup</span>
+          <span class="svc-price">5,000 – 15,000</span>
+        </div>
       </div>
 
     </div>
@@ -1659,6 +1745,11 @@ footer{
         <span class="cta-badge">⚡ Fast Response</span>
         <span class="cta-badge">🔒 Confidential</span>
         <span class="cta-badge">✅ No Commitment</span>
+        <span class="cta-badge">🔥 3 June Slots Left</span>
+      </div>
+      <div class="sp-ticker" aria-live="polite">
+        <span class="sp-dot"></span>
+        <span>A business in Pune just booked their WhatsApp bot setup — <strong>response sent within 4 minutes.</strong></span>
       </div>
     </div>
   </div>
@@ -1746,7 +1837,7 @@ footer{
   <div class="container">
     <div class="s-label rv">get in touch</div>
     <h2 class="s-title rv">Let's Find Your Automation Opportunity.</h2>
-    <p class="s-desc rv">Tell us what's slowing your agency down. We'll tell you exactly what we can build — and what it'll cost. No pressure. No pitch deck.</p>
+    <p class="s-desc rv">Tell us what's slowing your business down. We'll tell you exactly what we can build — and what it'll cost. No pressure. No pitch deck.</p>
     <div class="contact-grid">
 
       <div class="c-info rv-l">
@@ -1770,7 +1861,7 @@ footer{
           <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.555 4.116 1.527 5.845L0 24l6.341-1.503A11.944 11.944 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.9c-1.85 0-3.585-.5-5.083-1.373l-.363-.216-3.766.893.951-3.663-.237-.376A9.855 9.855 0 0 1 2.1 12c0-5.468 4.432-9.9 9.9-9.9 5.467 0 9.9 4.432 9.9 9.9 0 5.467-4.433 9.9-9.9 9.9z"/></svg>
           Message Us on WhatsApp
         </a>
-        <div class="c-closing">"You built your agency by doing serious work. We'll treat your automation project the same way."</div>
+        <div class="c-closing">"You built your business by doing serious work. We'll treat your automation project the same way."</div>
       </div>
 
       <div class="rv-r">
@@ -1807,7 +1898,7 @@ footer{
             </div>
             <div class="fg">
               <label for="cf-msg">Describe Your Problem</label>
-              <textarea id="cf-msg" name="message" placeholder="What's slowing your agency down? Describe the workflow, pain point, or tool you're stuck on..." required></textarea>
+              <textarea id="cf-msg" name="message" placeholder="What's slowing your business down? Describe the workflow, pain point, or tool you're stuck on..." required></textarea>
             </div>
             <button type="submit" class="submit-btn" id="submitBtn">Send via WhatsApp →</button>
           </form>
