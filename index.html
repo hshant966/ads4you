@@ -1929,7 +1929,7 @@ footer{
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© 2025 ads4you — AI Automation Studio | Udyam No: UDYAM-MH-26-1092780 | Wakad, Pune, Maharashtra</span>
+      <span>© 2026 ads4you — AI Automation Studio | Udyam No: UDYAM-MH-26-1092780 | Wakad, Pune, Maharashtra</span>
       <div class="f-links">
         <a href="https://wa.me/919767066941" target="_blank" rel="noopener">💬 WhatsApp</a>
         <a href="mailto:ads4you@zohomail.com">ads4you@zohomail.com</a>
@@ -1978,6 +1978,7 @@ hamburger.addEventListener('click', function(){
   var open = hamburger.classList.toggle('open');
   mobMenu.classList.toggle('open', open);
   hamburger.setAttribute('aria-expanded', String(open));
+  hamburger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
   document.body.style.overflow = open ? 'hidden' : '';
 });
 
@@ -1986,6 +1987,7 @@ document.querySelectorAll('.mob-link').forEach(function(a){
     hamburger.classList.remove('open');
     mobMenu.classList.remove('open');
     hamburger.setAttribute('aria-expanded','false');
+    hamburger.setAttribute('aria-label', 'Open menu');
     document.body.style.overflow = '';
   });
 });
